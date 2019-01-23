@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Politica</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+    <header class="container ">
+        <h1 class="logo">
+            <a href="index.html">Politica</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li class="highlight vote-btn"><a href="">Vote</a></li>
+                <li class="highlight"><a href="">Login</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <div class="banner bgImgCenter">
+            <main class="container">
+                    <section class="hero container">
+                        <h1>A transparent platform for all eligible citizens</h1>
+                        <p class="ads">No polling units, no delay in collation of results, no hanky-panky,
+                            just register and vote without, queues and monitor your results live.</p>
+                        <a href="">Register</a>
+                    </section>
+                    <div class="image">
+                        <figure>
+                            <img src="" alt="">
+                        </figure>
+                    </div>
+                </main>
+    </div>
+
+     <div class="voters-parent">
+        <div class=" container voters">
+                <div class="voter-item"><h2><strong id="voter-text">VOTE</strong> Like Your <strong id="voter-text">RIGHT</strong> To Vote Depend On It.</h2></div>
+        </div>
+   </div>
+
+
+    <div class="wrapper">
+        <section class="index-links" id="features">
+            <h2 class="process">Features</h2>
+            <hr>
+            <div class="index-boxlink">
+                <i class="fas fa-concierge-bell fa-3x"></i>
+                <h2>Register</h2>
+                <p>You must register to vote, citizens below 18 years are not eligible, trust the process,
+                     citizens cannot register twice, and you can always update your bio data at anytime</p>
+            </div>
+            <div class="index-boxlink">
+                <i class="far fa-clock fa-3x"></i>
+                <h2>Vote</h2>
+                <p>Vote your choice candidates who are have registered on this platform across
+                     Federal, states and local governments, candidates can decamp to another party 30 days before election. </p>
+            </div>
+            <div class="index-boxlink">
+                <i class="fas fa-truck fa-3x"></i>
+                <h2>Expression Of Interests</h2>
+                <p>All paper work for expression of interest to contest at any level are done on this platform, we will verify all information and see if they are consistent 
+                    with the national database
+                </p>
+            </div>
+        </section>
+    </div>
+    <section class="schedule" id="schedule">
+        <div class="container schedule">
+                <div class="container">
+
+                        <!-- elections-->
+                
+                        <table>
+                          <thead>
+                            <tr>
+                              <th scope="row">
+                                Schedule
+                              </th>
+                              <td class="schedule-offset" colspan="2" id="warning">
+                                Portal will be opened 24 hours on election days for voting.
+                              </td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">
+                                <p>February</p>
+                              </th>
+                              <td class="schedule-offset" colspan="2">
+                                Federal Elections
+                              </td>
+                            </tr>
+                            <tr>
+                              <th scope="row">
+                              </th>
+                              <td>
+                                <a href="">
+                                 Presidential and National Assembly
+                                </a>
+                              </td>
+                              <td>
+                                <a href="">
+                                  February 16, 2019.
+                                </a>
+                              </td>
+                            </tr>
+                            <tr>
+                              <th scope="row">
+                                <p>March</p>
+                              </th>
+                              <td class="schedule-offset" colspan="2">
+                                States Elections
+                              </td>
+                            </tr>
+                            <tr>
+                              <th scope="row">
+                              </th>
+                              <td>
+                                <a href="">
+                                  Governorships and State Assemblies
+                                </a>
+                              </td>
+                              <td>
+                                <a href="">
+                                  March 2nd, 2019.
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                
+                      </div>
+        </div>
+    </section>
+
+
+    <!-- Modal for all call to actions-->
+
+    <section>
+            <div id="signinform" class="modal">
+                <form class="modal-content animate" action="profile.html">
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('signinform').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    </div>
+    
+                    <div class="modal-container">
+                        <div class="modalTab">
+                            <label id="email-label" for="email">
+                                <strong>*Email:</strong>
+                        </div>
+                        <div class="rightmodalTab">
+                            <input id="input" autofocus type="text" name="email" id="email" placeholder="Enter your email">
+                        </div>
+    
+    
+                        <div class="modalTab">
+                            <label id="password-label" for="password">
+                                <strong>*Password:</strong>
+                        </div>
+                        <div class="rightmodalTab">
+                            <input id="input" type="password" name="password" minlength="8" maxlength="12" placeholder="Enter your password"
+                                required>
+                        </div>
+    
+    
+                        <button id="button" class="submit" type="submit">Sign In</button>
+                    </div>
+    
+                    <div class="modal-container signup-div" style="background-color:#f1f1f1">
+                        <span class="psw">Don't have an account yet?
+                            <a href="#">Sign Up!</a>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <!-- signup-->
+            <div id="signupform" class="modal">
+                <form class="modal-content animate" action="signup.html">
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('signupform').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    </div>
+    
+                    <div class="modal-container">
+                        <div class="modalTab">
+                            <label id="username-label" for="username">
+                                <strong>*Username:</strong>
+                        </div>
+                        <div class="rightmodalTab">
+                            <input id="input" autofocus type="text" name="username" id="username" minlength="6" maxlength="10"
+                                placeholder="Enter your username">
+                        </div>
+                        <div class="modalTab">
+                            <label id="email-label" for="email">
+                                <strong>*Email:</strong>
+                        </div>
+                        <div class="rightmodalTab">
+                            <input id="input" autofocus type="text" name="email" id="email" placeholder="Enter your email">
+                        </div>
+    
+    
+                        <div class="modalTab">
+                            <label id="password-label" for="password">
+                                <strong>*Password:</strong>
+                        </div>
+                        <div class="rightmodalTab">
+                            <input id="input" type="password" name="password" minlength="8" maxlength="12" placeholder="Enter your password"
+                                required>
+                        </div>
+    
+    
+                        <button id="button" class="submit" type="submit">Sign In</button>
+                    </div>
+    
+                    <div class="modal-container signup-div" style="background-color:#f1f1f1">
+                        <span class="psw">Don't have an account yet?
+                            <a href="#">Sign Up!</a>
+                        </span>
+                    </div>
+                </form>
+            </div>
+    
+        </section>
+
+
+
+
+
+
+  
+    <!-- Footer -->
+    <div>
+            <footer>
+                <small>&copy; 2019 Politica</small>
+                <nav>
+                    <ul class="footer-main">
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">About</a>
+                        </li>
+                        <li>
+                            <a href="#">Support</a>
+                        </li>
+                    </ul>
+                </nav>
+            </footer>
+        </div>
+</body>
+
+</html>
