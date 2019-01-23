@@ -1,0 +1,467 @@
+
+@import url('https://fonts.googleapis.com/css?family=Lato|Raleway|Roboto|Source+Sans+Pro');
+
+/* http://meyerweb.com/eric/tools/css/reset/ 2. v2.0 | 20110126
+  License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* end of reset
+*/
+
+body {
+    font-family: 'Roboto', sans-serif;
+  
+}
+
+* {
+    text-decoration: none;
+}
+
+/* head */
+
+.container{ 
+    max-width: 1005px;
+    margin: 0 auto;
+    padding: 2em 1em;
+}
+
+
+
+    /*
+    ========================================
+   mobile header 
+    ========================================
+  */
+ 
+header {
+    text-align: center;
+}
+
+header .logo {
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: .5px;
+    line-height: 44px;
+    padding: 10px 0;
+    text-transform: uppercase;
+    text-align: center;
+    color: #055902;
+}
+
+nav {
+    margin: 2em auto 0;
+    max-width: 600px;
+}
+nav ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul li {
+    list-style: none;
+
+}
+
+nav ul li a {
+    font-size: 1.25em;
+    color: #055902;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.banner {
+    color: #09A603;
+    background-color: #032E2C
+}
+main {
+    display: flex;
+    flex-flow: column;
+    
+}
+
+.hero {
+   text-align: center;
+}
+
+
+.hero h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.2em;
+    font-weight: 600;
+    max-width: 500px;
+    line-height: 1.8em;
+    margin: 3em auto;
+}
+
+.hero p:before {
+    content: "";
+    display: block;
+    width: 120px;
+    border: 2px solid #FFDB37;
+    margin: 1em auto; 
+}
+
+.hero a {
+    background: rgb(206, 206, 2);
+    padding: 1em 3em;
+    border-radius: 50px;
+    color: green;
+    text-decoration: none;
+    font-size: 1.375em;
+    font-weight: 700;
+}
+
+a:hover {
+    color: rgba(178, 224, 9, 0.5);
+}
+
+
+.ads {
+    color: #010A30;
+}
+figure {
+    text-align: center;
+}
+
+figure img{
+    margin: 3em auto 0;
+    width: 300px;
+}
+
+
+    /*
+    ========================================
+    large scrren header 
+    ========================================
+  */
+ 
+
+@media screen and (min-width: 820px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+        flex-flow: wrap;
+        align-items: center;
+    }
+
+    header .logo {
+        font-size: 25px;
+        font-weight: 900;
+        letter-spacing: .5px;
+        line-height: 44px;
+        padding: 10px 0;
+        text-transform: uppercase;
+        text-align: center;
+        color: #09A603;
+    }
+    
+    nav {
+        margin: 0;
+    }
+    nav ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+    
+    nav ul li {
+        list-style: none;
+        padding: 0.5em 2em;
+    }
+    
+    nav ul li a {
+        font-size: 1.2em;
+        color: #055902;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .highlight {
+        border: 3px solid #FFDb37;
+        border-radius: 30px;
+        margin: 0 5px;
+    }
+
+    .vote-btn {
+        background-color: rgb(206, 206, 2);
+    }
+    
+    main {
+        display: flex;
+        flex-flow: column;
+    }
+    
+    .hero {
+       text-align: left;
+    }
+
+    .hero h1 {
+        font-size: 4em;
+    }
+    
+    .hero p {
+        font-size: 1.3em;
+        padding: 0;
+        margin: 0 0 3em 0;
+    }
+    
+    .hero p:before {
+        margin: 1em 0; 
+    }
+    .hero a {
+        background: rgb(206, 206, 2);
+    }
+
+    a:hover {
+        color: rgba(178, 224, 9, 0.5);
+    }
+    
+    figure {
+        text-align: center;
+    }
+    
+    .figure img{
+        margin: 0;
+        width: 300px;
+    }
+}
+
+
+/*
+    ========================================
+    main
+    ========================================
+  */
+
+  .flex-container {
+      display: flex;
+      justify-content: space-around;
+      height: 600px;   
+  }
+
+  .panel {
+    flex-grow: 1;
+    background-color: #ceebcd;
+   
+  }
+
+  .show {
+    flex-grow: 12;
+    background-color: whitesmoke;
+
+  }
+
+  .navbar {
+      font-weight: 700;
+      margin: 30px 5px;
+      color: black;
+      font-size: 20px;
+  }
+
+.navbar li {
+    margin: 10px 10px 0 0;
+    border-radius: 50px;   
+}
+
+.navbar ul li {
+    list-style: none;
+    padding: 0.5em 2em;
+}
+
+.navbar ul li a {
+    font-size: 1em;
+    color: #070222;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 6px solid #055902;
+  background-color: whitesmoke;
+
+}
+
+.navbar ul li a:hover {
+    color: rgb(83, 69, 7);
+}
+
+.navbar ul li i {
+    margin: 0  5px 0 8px;
+    color: red;
+}
+
+
+/*
+    ========================================
+    create party
+    ========================================
+  */
+  * {
+    box-sizing: border-box; 
+   }
+   .myForm {
+     display: flex;
+     background-color: beige;
+     border-radius: 3px;
+     padding: 1.8em;
+   }
+   .message {
+        margin-right: 2em; 
+     display: flex;
+     flex-direction: column;
+   }
+   .message > textarea {
+    flex: 1; 
+    min-width: 18em;
+   }
+   .contact {
+        flex: 1; 
+   }
+   .contact input {
+     width: 100%;
+   }
+   .contact input,
+   .contact button {
+     padding: 1em;
+     margin-bottom: 1em;
+   }
+   .contact button {
+    background: gray;
+    color: white;
+    border: 0;
+   }
+
+/*
+    ========================================
+    create office
+    ========================================
+  */
+
+   .wrapper {
+    background-color: whitesmoke;
+    list-style-type: none;
+    padding: 0;
+    border-radius: 3px;
+  }
+  .form-row {
+    display: flex;
+    justify-content: flex-end;
+    padding: .5em;
+  }
+  .form-row > label {
+    padding: .5em 1em .5em 0;
+    flex: 1;
+  }
+  .form-row > input {
+    flex: 2;
+  }
+  .form-row > input,
+  .form-row > button {
+    padding: .5em;
+  }
+  .form-row > button {
+   background: gray;
+   color: white;
+   border: 0;
+  }
+
+/*
+    ========================================
+    Footer
+    ========================================
+  */
+
+  footer {
+    width: calc(100% - 80px);
+    padding: 20px 40px;
+    background-color: #f2f2f2;
+    overflow: hidden;
+}
+
+footer ul {
+    width: fit-content;
+    float: left;
+    padding-left: 20px;
+}
+
+footer ul li {
+    display: block;
+    list-style: none;
+}
+
+footer ul li a {
+    font-size: 16px;
+    color: #055902;
+    line-height: 30px;
+}
+
+@media only screen and (min-width: 1000px) {
+    .footer {
+        color: #055902;
+        font-size: 14px;
+        padding: 20px 0;
+        
+      }
+      .footer small {
+        float: left;
+        font-weight: 400;
+      }
+      footer ul {
+        width: fit-content;
+        float: right;
+        
+    }
+    footer ul li {
+        display: inline-block;
+        margin: 10px;
+      
+
+    }
+}
+
