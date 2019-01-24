@@ -302,9 +302,9 @@ figure img{
 
   .navbar {
       font-weight: 700;
-      margin: 30px 5px;
+      margin: 20px 5px;
       color: black;
-      font-size: 20px;
+      font-size: 18px;
   }
 
 .navbar li {
@@ -314,17 +314,14 @@ figure img{
 
 .navbar ul li {
     list-style: none;
-    padding: 0.5em 2em;
+    padding: 0.5em 1em 0.5em 2em;
 }
 
 .navbar ul li a {
-    font-size: 1em;
     color: #070222;
     font-weight: 500;
     text-decoration: none;
-    border-bottom: 6px solid #055902;
-  background-color: whitesmoke;
-
+    white-space:nowrap;
 }
 
 .navbar ul li a:hover {
@@ -332,7 +329,7 @@ figure img{
 }
 
 .navbar ul li i {
-    margin: 0  5px 0 8px;
+    margin: 0  10px 0 8px;
     color: red;
 }
 
@@ -345,37 +342,86 @@ figure img{
   * {
     box-sizing: border-box; 
    }
+
+   #title {
+       text-align: center;
+       font-size: 18px;
+       background-color: rgb(140, 207, 138);
+       padding: 0 40px;
+
+   }
    .myForm {
      display: flex;
-     background-color: beige;
-     border-radius: 3px;
-     padding: 1.8em;
+     background-color: white;
+     padding: 0.5em 2.5em 1.8em 10em;
    }
-   .message {
-        margin-right: 2em; 
-     display: flex;
-     flex-direction: column;
-   }
-   .message > textarea {
-    flex: 1; 
-    min-width: 18em;
-   }
-   .contact {
+   .party {
         flex: 1; 
    }
-   .contact input {
+   .party input {
      width: 100%;
    }
-   .contact input,
-   .contact button {
+   .party input,
+   .party button {
      padding: 1em;
      margin-bottom: 1em;
    }
-   .contact button {
+   .party button {
     background: gray;
     color: white;
     border: 0;
    }
+
+   .labels {
+    display: inline-block;
+    text-align: right;
+    width: 15%;
+    padding: 5px 10px ;
+    vertical-align: middle;
+    margin-top: 10px;
+    color: #055902;
+  }
+
+  .input-field {
+    height: 40px;
+    width: 200px;
+    padding: 5px;
+    margin: 10px;
+    border: 1.5px solid #c0c0c0;
+    border-radius: 10px;
+  }
+  
+  
+  .submit {
+    border-radius: 5px;
+    background-color: rgb(9, 133, 9);
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    letter-spacing: .5px;
+    margin: 0;
+    text-transform: uppercase;
+    border: 1px solid #fff;
+    padding: 10px 30px;
+  }
+  
+  
+  @media screen and (max-width: 833px) {
+    .input-field {
+      width: 80%;
+    }
+  }
+  
+  @media screen and (max-width: 520px) {
+    .labels {
+      width: 100%;
+      text-align: left;
+    }
+    .input-field {
+      width: 70%;
+    }
+  }
 
 /*
     ========================================
