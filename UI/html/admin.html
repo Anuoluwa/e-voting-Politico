@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Politico Admin dashboards</title>
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="container ">
+        <h1 class="logo">
+            <a href="index.html">Politica</a>
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="">Admin Dashboard</a></li>
+                <li class="highlight"><a href="">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <mainc class="container">
+        <div class="flex-container">
+            <section class="panel">
+                <div class="nav">
+                    <div class="navbar">
+                        <ul>
+                            <li><a href=""> <i class="fas fa-plus-circle"></i> Create Party</a></li>
+                            <li><a href=""> <i class="far fa-handshake"></i> All Parties</a></li>
+                            <li><a href=""> <i class="fas fa-paste"></i> Create Office</a> </li>
+                            <li><a href=""> <i class="fas fa-portrait"></i> All Offices</a></li>
+                            <li><a href=""> <i class="far fa-address-card"></i> All Voters</a></li>
+                            <li><a href=""> <i class="fas fa-users"></i> All Candidates</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+            <section class="show">
+                <div id="createparty">
+                    <h3 id="title">Register a new Party</h3>
+                    <div>
+                        <form class="myForm">
+                            <div class="party">
+                                <label for="name">Name of Party</label>
+                                <input type="text" id="name" class="input-field" placeholder="Enter party name" required >
+
+                                <label for="townborn">Headquarters Address</label>
+                                <input type="text" id="hqAddress" class="input-field" placeholder="Enter party address" required >
+
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="input-field" placeholder="Enter party email" required >
+
+                                <label for="msg">Upload Party logo</label>
+                                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+    
+                                <button type="submit" id="submit" class="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="createparty">
+                        <h3 id="title">Register a new office</h3>
+                        <div>
+                            <form class="myForm">
+                                <div class="party">
+                                    <label for="name">Name of office</label>
+                                    <input type="text" id="name" class="input-field" placeholder="Enter party name" required >
+    
+                                    <label for="townborn">Year of Election</label>
+                                    <input type="month" id="start" class="input-field" name="start" min="2019-02" value="2019-2">
+    
+                                    <li class="form-row">
+                                            <label for="election">Choose election type:</label>
+                                            <select class="input-field" id="election-select">
+                                                <option value="">--Please choose an option--</option>
+                                                <option value="Federal">Federal</option>
+                                                <option value="Federal-leg">Federal Legislative</option>
+                                                <option value="State">State</option>
+                                                <option value="State-leg">State Legislative</option>
+                                                <option value="Local-gov">Local Government</option>
+                                                <option value="Councillor">Councillor</option>
+                                            </select>
+                                        </li>
+        
+                                    <button type="submit" id="submit" class="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                <div id="allparties">
+                    <div>
+                        <div class="wrapper">
+                            <div class="Rtable Rtable--5cols Rtable--collapse">
+                                <div class="Rtable-row Rtable-row--head">
+                                    <div class="Rtable-cell date-cell column-heading">Date</div>
+                                    <div class="Rtable-cell topic-cell column-heading">Name</div>
+                                    <div class="Rtable-cell topic-cell column-heading">Headquarters</div>
+                                    <div class="Rtable-cell replay-link-cell column-heading">Logo</div>
+                                    <div class="Rtable-cell pdf-cell column-heading">Actions</div>
+                                </div>
+
+                                <div class="Rtable-row">
+                                    <div class="Rtable-cell date-cell">
+                                        <div class="Rtable-cell--heading">Date</div>
+                                        <div class="Rtable-cell--content date-content"><span class="webinar-date">August
+                                                2nd, 2016</span><br /></div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--content title-content">Accord Party of Nigeria</div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--heading">Headquarters</div>
+                                        <div class="Rtable-cell--content title-content"> 6 Ceddi Plaza Abuja</div>
+                                    </div>
+                                    <div class="Rtable-cell replay-link-cell">
+                                        <div class="Rtable-cell--heading">Logo</div>
+                                        <div class="Rtable-cell--content replay-link-content"><a href="#0"><i class="fas fa-hands-helping"></i></a></div>
+                                    </div>
+                                    <div class="Rtable-cell Rtable-cell--foot pdf-cell">
+                                        <div class="Rtable-cell--heading">Actions</div>
+                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
+                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
+                                    </div>
+                                </div>
+
+                                <div class="Rtable-row is-striped">
+
+                                    <div class="Rtable-cell date-cell">
+                                        <div class="Rtable-cell--heading">Date</div>
+                                        <div class="Rtable-cell--content date-content"><span class="webinar-date">September
+                                                6th, 2016</span><br /></div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--content title-content">Africa Democratic Party</div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--heading">Headquarters</div>
+                                        <div class="Rtable-cell--content title-content"> 6 Ceddi Plaza Abuja</div>
+                                    </div>
+                                    <div class="Rtable-cell replay-link-cell">
+                                        <div class="Rtable-cell--heading">Logo</div>
+                                        <div class="Rtable-cell--content replay-link-content"><a href="#0"><i class="fas fa-hands-helping"></i></a></div>
+                                    </div>
+                                    <div class="Rtable-cell Rtable-cell--foot pdf-cell">
+                                        <div class="Rtable-cell--heading">Actions</div>
+                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
+                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
+                                    </div>
+                                </div>
+
+                                <div class="Rtable-row">
+                                    <div class="Rtable-cell date-cell">
+                                        <div class="Rtable-cell--heading">Date</div>
+                                        <div class="Rtable-cell--content date-content"><span class="webinar-date">October
+                                                4th, 2016</span><br /></div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--content title-content">All Peaceful Party</div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--heading">Headquarters</div>
+                                        <div class="Rtable-cell--content title-content"> 6 Ceddi Plaza Abuja</div>
+                                    </div>
+                                    <div class="Rtable-cell replay-link-cell">
+                                        <div class="Rtable-cell--heading">Logo</div>
+                                        <div class="Rtable-cell--content replay-link-content"><a href="#0"><i class="fas fa-hands-helping"></i></a></div>
+                                    </div>
+                                    <div class="Rtable-cell Rtable-cell--foot pdf-cell">
+                                        <div class="Rtable-cell--heading">Actions</div>
+                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
+                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
+                                    </div>
+                                </div>
+
+                                <div class="Rtable-row is-striped">
+                                    <div class="Rtable-cell date-cell">
+                                        <div class="Rtable-cell--heading">Date</div>
+                                        <div class="Rtable-cell--content date-content"><span class="webinar-date">November
+                                                1st, 2016</span><br /></div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--content title-content">Action Alliance of Nigeria</div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--heading">Headquarters</div>
+                                        <div class="Rtable-cell--content title-content"> 6 Ceddi Plaza Abuja</div>
+                                    </div>
+                                    <div class="Rtable-cell replay-link-cell">
+                                        <div class="Rtable-cell--heading">Logo</div>
+                                        <div class="Rtable-cell--content replay-link-content"><a href="#0"><i class="fas fa-hands-helping"></i></a></div>
+                                    </div>
+                                    <div class="Rtable-cell Rtable-cell--foot pdf-cell">
+                                        <div class="Rtable-cell--heading">Actions</div>
+                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
+                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
+                                    </div>
+                                </div>
+
+                                <div class="Rtable-row">
+                                    <div class="Rtable-cell date-cell">
+                                        <div class="Rtable-cell--heading">Date</div>
+                                        <div class="Rtable-cell--content date-content"><span class="webinar-date">December
+                                                6th, 2016</span><br /></div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--content title-content">African Democratic Party</div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--heading">Headquarters</div>
+                                        <div class="Rtable-cell--content title-content"> 6 Ceddi Plaza Abuja</div>
+                                    </div>
+                                    <div class="Rtable-cell replay-link-cell">
+                                        <div class="Rtable-cell--heading">Logo</div>
+                                        <div class="Rtable-cell--content replay-link-content"><a href="#0"><i class="fas fa-hands-helping"></i></a></div>
+                                    </div>
+                                    <div class="Rtable-cell Rtable-cell--foot pdf-cell">
+                                        <div class="Rtable-cell--heading">Actions</div>
+                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
+                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
+                                    </div>
+                                </div>
+
+                                <div class="Rtable-row is-striped">
+                                    <div class="Rtable-cell date-cell">
+                                        <div class="Rtable-cell--heading">Date</div>
+                                        <div class="Rtable-cell--content date-content"><span class="webinar-date">January
+                                                3rd, 2017</span><br /></div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--content title-content">Grassroot Democratic Party</div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--heading">Headquarters</div>
+                                        <div class="Rtable-cell--content title-content"> 6 Ceddi Plaza Abuja</div>
+                                    </div>
+                                    <div class="Rtable-cell replay-link-cell">
+                                        <div class="Rtable-cell--heading">Logo</div>
+                                        <div class="Rtable-cell--content replay-link-content"><a href="#0"><i class="fas fa-hands-helping"></i></i></a></div>
+                                    </div>
+                                    <div class="Rtable-cell Rtable-cell--foot pdf-cell">
+                                        <div class="Rtable-cell--heading">Actions</div>
+                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
+                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="alloffices"></div>
+                <div></div>
+
+            </section>
+        </div>
+        </main>
+</body>
+
+<div>
+    <footer>
+        <small>&copy; 2019 Politica</small>
+        <nav>
+            <ul class="footer-main">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Support</a>
+                </li>
+                <li>
+                    <a href="admin.html">Admin</a>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+</div>
+
+</html>
