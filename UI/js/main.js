@@ -19,7 +19,3 @@ parties.addEventListener('click', ()=> {
     document.querySelector('.active').className = '';
     allParties.className = 'active';
 });
-
-// console.log(allParties);
-// console.log(allParties);
-// console.log(allParties);
