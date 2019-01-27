@@ -14,12 +14,24 @@ class Parties {
     try {
       const partyItem = await parties.filter(party => party.partyId == partyId)[0];
       if (!partyItem) {
-        return res.status(404).json({ message: 'Order does not exist!' });
+        return res.status(404).json({ message: 'Party does not exist!' });
       }
       return res.status(200).json(partyItem);
     } catch (err) {
       return res.status(500).json({ message: 'Sorry about that, not available', err });
     }
+  }
+
+  static createParty(req, res) {
+    const newParty = {
+      partyId: parties.length + 1,
+      name: req.body.name,
+      hqAddress: req.body.hqAddress,
+      logoUrl: req.body.logoUrl,
+      createdOn: req.body.createdOn,
+    };
+    parties.push(newParty);
+    res.status(201).json({ message: 'party was created successfully', data: parties });
   }
 }
 
