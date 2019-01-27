@@ -21,6 +21,17 @@ class Offices {
       return res.status(500).json({ message: 'Sorry about that, not available', err });
     }
   }
+
+  static createOffice(req, res) {
+    const newOffice = {
+      officeId: offices.length + 1,
+      type: req.body.type,
+      year: req.body.year,
+      createdOn: req.body.createdOn,
+    };
+    offices.push(newOffice);
+    res.status(201).json({ message: 'office was created successfully', data: offices });
+  }
 }
 
 export default Offices;
