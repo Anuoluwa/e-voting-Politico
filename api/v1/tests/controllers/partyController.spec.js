@@ -77,3 +77,66 @@ describe('GET /parties/:id', () => {
       });
   });
 });
+
+describe('POST /parties/, to post single party resource', () => {
+  describe('POST /parties', () => {
+    it('should responds with json', (done) => {
+      request(app)
+        .post('/parties')
+        .send({
+          partyId: 1,
+          name: 'Action People Of Nigeria',
+          hqAddress: '23 Hulu Abuja',
+          logoUrl: 'ww.dummy.logo/jfknfkfnjf',
+          createdOn: '23-11-2019',
+        })
+        .set('Accept', 'application/json')
+        .expect(200)
+        .end((err) => {
+          if (err) return done(err);
+          done();
+        });
+    });
+    it('should be an object with keys and values', (done) => {
+      request(app)
+        .post('/api/v1/orders/')
+        .set('Accept', 'application/json')
+        .expect(200)
+        .send({
+          partyId: 1,
+          name: 'Action People Of Nigeria',
+          hqAddress: '23 Hulu Abuja',
+          logoUrl: 'ww.dummy.logo/jfknfkfnjf',
+          createdOn: '23-11-2019',
+        })
+        .end((err, res) => {
+          expect(res.err).to.be.not.eql(null);
+          expect(res.status).to.be.not.eql(null);
+          done();
+        });
+    });
+    it('it return object in json', (done) => {
+      request(app)
+        .post('/api/v1/orders')
+        .send({
+          partyId: 1,
+          name: 'Action People Of Nigeria',
+          hqAddress: '23 Hulu Abuja',
+          logoUrl: 'ww.dummy.logo/jfknfkfnjf',
+          createdOn: '23-11-2019',
+        })
+        .set('Accept', 'application/json')
+        .expect(200)
+        .end((err, res) => {
+          expect(res.body.partyId).to.not.equal(null);
+          expect(res.body.date).to.not.equal(null);
+          expect(res.body.foodItem).to.not.equal(null);
+          expect(res.body.quantity).to.not.equal(null);
+          expect(res.body.price).to.not.equal(null);
+          expect(res.body.address).to.not.equal(null);
+          expect(res.body.customerDetails).to.not.equal(null);
+          done();
+        });
+    });
+  });
+});
