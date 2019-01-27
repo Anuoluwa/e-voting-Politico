@@ -1,6 +1,6 @@
 import express from 'express';
-import Party from '../controllers/partyController';
 import Office from '../controllers/officeController';
+import Party from '../controllers/partyController';
 import Validator from '../middlewares/partyValidator';
 
 
@@ -13,7 +13,7 @@ router.post('/parties', Party.createParty);
 router.put('/parties/:id', Validator.validateId, Party.editParty);
 router.delete('/parties/:id', Validator.validateId, Party.deleteParty);
 router.get('/offices', Office.getOffices);
-
+router.get('/offices/:id', Validator.validateId, Office.getOneOffice);
 
 
 export default router;
