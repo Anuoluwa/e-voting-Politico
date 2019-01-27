@@ -99,7 +99,7 @@ describe('POST /parties/, to post single party resource', () => {
     });
     it('should be an object with keys and values', (done) => {
       request(app)
-        .post('/api/v1/orders/')
+        .post('/api/v1/parties/')
         .set('Accept', 'application/json')
         .expect(200)
         .send({
@@ -117,7 +117,7 @@ describe('POST /parties/, to post single party resource', () => {
     });
     it('it return object in json', (done) => {
       request(app)
-        .post('/api/v1/orders')
+        .post('/api/v1/parties')
         .send({
           partyId: 1,
           name: 'Action People Of Nigeria',
@@ -135,6 +135,32 @@ describe('POST /parties/, to post single party resource', () => {
           expect(res.body.price).to.not.equal(null);
           expect(res.body.address).to.not.equal(null);
           expect(res.body.customerDetails).to.not.equal(null);
+          done();
+        });
+    });
+  });
+});
+
+describe('PUT /parties/, to update single party resource', () => {
+  describe('PUT /parties', () => {
+    it('it return object in json', (done) => {
+      request(app)
+        .put('/api/v1/parties')
+        .send({
+          partyId: 1,
+          name: 'Action People Of Nigeria',
+          hqAddress: '23 Hulu Abuja',
+          logoUrl: 'ww.dummy.logo/jfknfkfnjf',
+          createdOn: '23-11-2019',
+        })
+        .set('Accept', 'application/json')
+        .expect(200)
+        .end((err, res) => {
+          expect(res.body.partyId).to.not.equal(null);
+          expect(res.body.name).to.not.equal(null);
+          expect(res.body.hqAddress).to.not.equal(null);
+          expect(res.body.logoUrl).to.not.equal(null);
+          expect(res.body.createdOn).to.not.equal(null);
           done();
         });
     });
