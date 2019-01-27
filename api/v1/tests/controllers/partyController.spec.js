@@ -51,3 +51,29 @@ describe('Test suite for parties endpoint controller', () => {
     });
   });
 });
+describe('GET /parties/:id', () => {
+  it('should be an object with keys and values that are not null', (done) => {
+    request(app)
+      .get('/api/v1/parties/1')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end((err, res) => {
+        expect(res.body.partyId).to.not.equal(null);
+        expect(res.body.name).to.not.equal(null);
+        expect(res.body.hqAddress).to.not.equal(null);
+        expect(res.body.logoUrl).to.not.equal(null);
+        expect(res.body.createdOn).to.not.equal(null);
+        done();
+      });
+  });
+  it('should be an object with keys and values', (done) => {
+    request(app)
+      .get('/api/v1/parties/1')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end((err, res) => {
+        expect(res.body).to.be.a('object');
+        done();
+      });
+  });
+});
