@@ -10,6 +10,6 @@ router.get('/parties', Party.getParties);
 router.get('/parties/:id', Validator.validateId, Party.getOneParty);
 router.post('/parties', Party.createParty);
 router.put('/parties/:id', Validator.validateId, Party.editParty);
-
+router.delete('/parties/:id', Validator.validateId, Party.deleteParty);
 
 export default router;

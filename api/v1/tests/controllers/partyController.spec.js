@@ -141,7 +141,7 @@ describe('POST /parties/, to post single party resource', () => {
   });
 });
 
-describe('PUT /parties/, to update single party resource', () => {
+describe('DELETE /parties/, to update single party resource', () => {
   describe('PUT /parties', () => {
     it('it return object in json', (done) => {
       request(app)
