@@ -14,6 +14,7 @@ router.put('/parties/:id', Validator.validateId, Party.editParty);
 router.delete('/parties/:id', Validator.validateId, Party.deleteParty);
 router.get('/offices', Office.getOffices);
 router.get('/offices/:id', Validator.validateId, Office.getOneOffice);
+router.post('/offices', Office.createOffice);
 
 
 export default router;
