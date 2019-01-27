@@ -53,6 +53,21 @@ class Parties {
       res.status(500).json({ message: 'Sorry about that, not available', err });
     }
   }
+
+  static async deleteParty(req, res) {
+    try {
+      const partyId = parseInt(req.params.id, 10);
+      const party = parties.filter(item => item.partyId == partyId)[0];
+      const index = parties.indexOf(party);
+      if (!party) {
+        return res.status(404).json({ message: 'Party does not exist!' });
+      }
+      parties.splice(index, 1);
+      res.status(200).json({ message: `The is party with this id: ${partyId} has been removed.` });
+    } catch (err) {
+      res.status(500).json({ message: 'Sorry about that, not available', err });
+    }
+  }
 }
 
 export default Parties;
