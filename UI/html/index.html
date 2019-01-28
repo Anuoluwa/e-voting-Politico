@@ -7,19 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Politica</title>
     <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
 
 <body>
     <header class="container ">
         <h1 class="logo">
-            <a href="index.html">Politica</a>
+            <a id="politico" href="index.html">Politico</a>
         </h1>
         <nav>
             <ul>
                 <li><a href="">Home</a></li>
                 <li><a href="#features">Features</a></li>
-                <li class="highlight vote-btn"><a href="">Vote</a></li>
-                <button class="signinform" id="signin" class="header-login signup" onclick="document.getElementById('signinform').style.display='block'"
+                <button class="signinform signin vote-btn" id="signin" class="header-login signup" onclick="document.getElementById('signupform').style.display='block'"
+                style="width:auto;">Vote</button>
+                
+                <button class="signinform signin" id="signin" class="header-login signup" onclick="document.getElementById('signinform').style.display='block'"
             style="width:auto;">LOG IN</button>
             </ul>
         </nav>
@@ -30,6 +33,11 @@
       <section>
             <div id="signinform" class="modal">
                 <form class="modal-content animate" action="profile.html">
+                        <div class="modal-container signup-div" style="background-color:#1c91f0">
+                                <span class="psw">Don't have an account yet?
+                                    <a href="#">Sign Up!</a>
+                                </span>
+                            </div>
                     <div class="imgcontainer">
                         <span onclick="document.getElementById('signinform').style.display='none'" class="close" title="Close Modal">&times;</span>
                     </div>
@@ -56,10 +64,10 @@
     
                         <button id="button" class="submit" type="submit">Sign In</button>
                     </div>
-    
+
                     <div class="modal-container signup-div" style="background-color:#f1f1f1">
-                        <span class="psw">Don't have an account yet?
-                            <a href="#">Sign Up!</a>
+                        <span class="psw">Forgot Your password?
+                            <a href="#">Reset Password</a>
                         </span>
                     </div>
                 </form>
@@ -176,22 +184,19 @@
             <h2 class="process">Features</h2>
             <hr>
             <div class="index-boxlink">
-                <i class="fas fa-concierge-bell fa-3x"></i>
-                <h2>Register</h2>
+                <h2><i class="fas fa-address-book"></i> Register</h2>
                 <p>You must register to vote, citizens below 18 years are not eligible, trust the process,
                     citizens cannot register twice, and you can always update your bio data at anytime</p>
             </div>
             <div class="index-boxlink">
-                <i class="far fa-clock fa-3x"></i>
-                <h2>Vote</h2>
+                <h2><i class="fas fa-vote-yea"></i> Vote</h2>
                 <p>Vote your choice candidates who are have registered on this platform across
                     Federal, states and local governments, candidates can decamp to another party 30 days before
                     election. </p>
             </div>
             <div class="index-boxlink">
-                <i class="fas fa-truck fa-3x"></i>
-                <h2>Expression Of Interests</h2>
-                <p>All paper work for expression of interest to contest at any level are done on this platform, we will
+                <h2><i class="fas fa-male"></i> EOI</h2>
+                <p>EOI, Expression of interests:All paper work for expression of interest to contest at any level are done on this platform, we will
                     verify all information and see if they are consistent
                     with the national database
                 </p>
@@ -364,7 +369,7 @@
     <!-- Footer -->
     <div>
         <footer>
-            <small>&copy; 2019 Politica</small>
+            <small>&copy; 2019 Politico</small>
             <nav>
                 <ul class="footer-main">
                     <li>
