@@ -225,7 +225,7 @@ figure img{
 }
 .index-links  i {
     margin: 10px 0 10px 0;
-    color:rgb(73, 238, 8);
+    color:rgb(72, 255, 0);
 }
 
 
@@ -394,7 +394,7 @@ figure img{
     .index-boxlink {
         width: calc(32% - 20px) !important;
         border-radius: 15px;
-        box-shadow: 3px 4px #888888
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
     .process{
       margin: 35px 0 20px 0;
@@ -426,8 +426,6 @@ figure img{
     .index-links  i {
        
     }
-
-
 
 }
 
