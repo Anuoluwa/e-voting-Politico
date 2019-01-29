@@ -76,7 +76,7 @@ body {
 
 header {
     text-align: center;
-    color: whitesmoke; 
+    color: rgba(248, 232, 14, 0.938); 
     margin: 0 auto; 
 }
 
@@ -509,9 +509,6 @@ figure img{
 }
 
 
-
-
-
 /*
     ========================================
     Footer
@@ -676,7 +673,7 @@ table {
   margin-bottom: 15px;
   }
   .modalTab {
-  color: rgb(19, 212, 247);
+  color: green;
   }
   /* Set a style for all buttons */
   #button {
@@ -735,13 +732,13 @@ table {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(2,23,62,0.9); /* Black w/ opacity */
+    background-color: rgba(12, 158, 7, 0.4); /* Black w/ opacity */
     padding-top: 60px;
   }
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #164059;
+    background-color: gainsboro;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 2px solid #888;
     width: 27%; /* Could be more or less, depending on screen size */
@@ -753,7 +750,7 @@ table {
     position: absolute;
     right: 25px;
     top: 0;
-    color: whitesmoke;
+    color: rgba(248, 232, 14, 0.938);
     font-size: 35px;
     font-weight: bold;
     cursor: pointer;
@@ -801,7 +798,7 @@ table {
     margin-bottom: 15px;
     }
     .modalTab {
-    color: rgb(19, 212, 247);
+    color: green;
     }
     /* Set a style for all buttons */
     #button {
@@ -852,7 +849,7 @@ table {
     
     /* Modal Content/Box */
     .modal-content {
-      background-color: #164059;
+      background-color: gainsboro;
       margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
       border: 2px solid #888;
       width: 63%; 
@@ -864,7 +861,7 @@ table {
       position: absolute;
       right: 15px;
       top: 0;
-      color: whitesmoke;
+      color: rgba(248, 232, 14, 0.938);
       font-size: 35px;
       font-weight: bold;
       cursor: pointer;
@@ -872,7 +869,7 @@ table {
   }
   @media(max-width: 768px) {
     .modal-content {
-      background-color: #164059;
+      background-color: rgb(12, 158, 7);
       margin: 10% auto 35% auto; /* 5% from the top, 15% from the bottom and centered */
       border: 2px solid #888;
       width: 50%; 
@@ -903,7 +900,7 @@ table {
   margin-bottom: 15px;
   }
   .modalTab {
-  color: rgb(19, 212, 247);
+  color: green;
   }
   /* Set a style for all buttons */
   #button {
@@ -962,13 +959,13 @@ table {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(229, 230, 233, 0.9); /* Black w/ opacity */
+    background-color: rgba(12, 158, 7,0.4); /* Black w/ opacity */
     padding-top: 60px;
   }
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #164059;
+    background-color: gainsboro;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 2px solid #888;
     width: 27%; /* Could be more or less, depending on screen size */
@@ -980,7 +977,7 @@ table {
     position: absolute;
     right: 25px;
     top: 0;
-    color: whitesmoke;
+    color: rgba(248, 232, 14, 0.938);
     font-size: 35px;
     font-weight: bold;
     cursor: pointer;
@@ -1028,7 +1025,7 @@ table {
     margin-bottom: 15px;
     }
     .modalTab {
-    color: rgb(19, 212, 247);
+    color: green;
     }
     /* Set a style for all buttons */
     #button {
@@ -1079,7 +1076,7 @@ table {
     
     /* Modal Content/Box */
     .modal-content {
-      background-color: #164059;
+      background-color: gainsboro;
       margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
       border: 2px solid #888;
       width: 63%; 
@@ -1091,7 +1088,7 @@ table {
       position: absolute;
       right: 15px;
       top: 0;
-      color: whitesmoke;
+      color: rgba(248, 232, 14, 0.938);
       font-size: 35px;
       font-weight: bold;
       cursor: pointer;
@@ -1100,7 +1097,7 @@ table {
   
   @media(max-width: 768px) {
     .modal-content {
-      background-color: #164059;
+      background-color: gainsboro;
       margin: 10% auto 35% auto; /* 5% from the top, 15% from the bottom and centered */
       border: 2px solid #888;
       width: 50%; 
@@ -1130,7 +1127,7 @@ table {
   margin-bottom: 15px;
   }
   .modalTab {
-  color: rgb(19, 212, 247);
+  color: green;
   }
   /* Set a style for all buttons */
   #button {
@@ -1189,13 +1186,13 @@ table {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(2,23,62,0.9); /* Black w/ opacity */
+    background-color: rgba(12, 158, 7,0.4); /* Black w/ opacity */
     padding-top: 60px;
   }
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #164059;
+    background-color: gainsboro;;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 2px solid #888;
     width: 27%; /* Could be more or less, depending on screen size */
@@ -1207,7 +1204,7 @@ table {
     position: absolute;
     right: 25px;
     top: 0;
-    color: whitesmoke;
+    color: rgba(248, 232, 14, 0.938);
     font-size: 35px;
     font-weight: bold;
     cursor: pointer;
@@ -1255,7 +1252,7 @@ table {
     margin-bottom: 15px;
     }
     .modalTab {
-    color: rgb(19, 212, 247);
+    color: green;
     }
     /* Set a style for all buttons */
     #button {
@@ -1306,7 +1303,7 @@ table {
     
     /* Modal Content/Box */
     .modal-content {
-      background-color: #164059;
+      background-color: gainsboro;
       margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
       border: 2px solid #888;
       width: 63%; 
@@ -1318,7 +1315,7 @@ table {
       position: absolute;
       right: 15px;
       top: 0;
-      color: whitesmoke;
+      color: rgba(248, 232, 14, 0.938);
       font-size: 35px;
       font-weight: bold;
       cursor: pointer;
@@ -1328,7 +1325,7 @@ table {
 }
   @media(max-width: 768px) {
     .modal-content {
-      background-color: #164059;
+      background-color: gainsboro;
       margin: 10% auto 35% auto; /* 5% from the top, 15% from the bottom and centered */
       border: 2px solid #888;
       width: 50%; 
