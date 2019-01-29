@@ -132,80 +132,7 @@ body {
       font-weight: 700;
       text-decoration: none;
   }
-  
-  .banner {
-      margin-top: 200px;
-      margin-left: 0;
-      color: #09A603;
-      background-color: #032E2C
-  }
-  
-  main {
-      display: flex;
-      flex-flow: column;
-      
-  }
-  
-  .hero {
-     text-align: center;
-  }
-  
-  
-  .hero h1 {
-      font-size: 2.5em;
-      font-weight: 700;
-  }
-  
-  .hero p {
-      font-size: 1.2em;
-      font-weight: 600;
-      max-width: 500px;
-      line-height: 1.8em;
-      margin: 3em auto;
-  }
-  
-  .hero p:before {
-      content: "";
-      display: block;
-      width: 120px;
-      border: 2px solid #FFDB37;
-      margin: 1em auto; 
-  }
-  
-  .hero button {
-    background: rgb(206, 206, 2);
-    padding: 0.5em 1.5em;
-    border-radius: 50px;
-    color: green;
-    text-decoration: none;
-    font-size: 1.375em;
-    font-weight: 700;
-  }
-  
-  .hero a {
-      background: rgb(206, 206, 2);
-      padding: 1em 3em;
-      border-radius: 50px;
-      color: green;
-      text-decoration: none;
-      font-size: 1.375em;
-      font-weight: 700;
-  }
-  
-  a:hover {
-      color: rgba(248, 232, 14, 0.938);
-  }
-  
-  a:active {
-    color: rgba(179, 167, 1, 0.938);
-    font-size: 22px;
-  }
-  
-  .active, link:hover {
-    background-color: rgba(49, 48, 29, 0.938);
-    color: rgba(58, 54, 3, 0.938);
-  }
-  
+
   .signin {
     background: rgb(223, 230, 223);
     font-size:14px;
@@ -223,101 +150,20 @@ body {
       border-radius: 8px;
       margin: 0 2px;
   }
-  
-  .vote-btn {
-      background-color: rgb(206, 206, 2);
+
+  .main {
+    margin-top: 100px;
+    margin-bottom: 120px;
   }
-  
-  
-  
-  
-  
-  .ads {
-      color: rgb(87, 82, 82);
-  }
-  figure {
-      text-align: center;
-  }
-  
-  figure img{
-      margin: 3em auto 0;
-      width: 300px;
-  }
-  
-  
-  .bgImgCenter{
-      background-image: url('../img/hands-1768845_1920.jpg');
-      background-repeat: no-repeat;
-      overflow: hidden;
-      background-size: cover;
-      background-position: center;
-  }
-  
-  /* features */
-  .index-links{
-      background-color: gainsboro;
-  
-  
-  }
-  .index-links div {
-      margin: 16px 16px 0;
-      padding-top: 15px;
-      width: calc(100% - 32px);
-      height: 200px;
-      text-align: center;
-      background-color: #f2f2f2;
-  }
-  .process{
-    margin: 20px 0 10px 0;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 600;
-    color: #02173E;
-  }
-  .index-links p {
-      margin: 10px;
-      color: rgb(54, 50, 50);
-      text-align: center;
-      font-weight: 400;
-      line-height: 22px;
-  }
-  
-  .index-links div h2 {
-      font-weight: 500;
-      font-size: 26px;
-      color: rgb(5, 59, 3);
-  }
-  .index-links  i {
-      margin: 10px 0 10px 0;
-      color:rgb(72, 255, 0);
-  }
-  
-  
-  /*
-      ========================================
-      mobile voters education
-      ========================================
-  */
-  
-    .voters-parent {
-      background-color: rgb(239, 245, 239);
-      height: 80px;
-   } 
-    .voters {
-        display: flex;
-        justify-content: center;
-        
-    }
-  
-    .voter-item {
-        color: #09A603;
-        font-size: 14px;
-        height: 20px;
-    }
-  
-    .voter-item strong {
-      color: rgb(206, 206, 2);
-  }
+
+  a:hover {
+    color: rgba(248, 232, 14, 0.938);
+}
+
+a:active {
+  color: rgba(179, 167, 1, 0.938);
+  font-size: 22px;
+}
   
   
   @media screen and (min-width: 820px) {
@@ -365,79 +211,12 @@ body {
           text-decoration: none;
       }
   
-      .signin {
-        background: rgb(223, 230, 223);
-        font-size:14px;
-        padding: 0.5em 2em;
-        border-radius: 50px;
-        color: #055902;
-        text-decoration: none;
-        font-weight: 700;
-        border: 3px solid rgb(173, 236, 186);
-        border-radius: 30px;
-        margin: 0 5px;
-      }
-  
-      .highlight {
-          border: 3px solid #FFDb37;
-          border-radius: 30px;
-          margin: 0 5px;
-      }
-  
-      .vote-btn {
-          background-color: rgb(206, 206, 2);
-      }
+      
       
       main {
           display: flex;
           flex-flow: column;
-      }
-      
-      .hero {
-         text-align: left;
-      }
-  
-      .hero h1 {
-          font-size: 4em;
-      }
-      
-      .hero p {
-          font-size: 1.3em;
-          padding: 0;
-          margin: 0 0 3em 0;
-      }
-      
-      .hero p:before {
-          margin: 1em 0; 
-      }
-      .hero a {
-          background: rgb(206, 169, 2);
-      }
-  
-      a:hover {
-        color: rgba(243, 230, 41, 0.938);
-      }
-      
-      figure {
-          text-align: center;
-      }
-      
-      .figure img{
-          margin: 0;
-          width: 300px;
-      }
-  
-      .banner {
-        margin-top: 70px;
-        color: #09A603;
-        background-color: #032E2C
-    }
-  
-      /*
-      ========================================
-      voters education
-      ========================================
-    */ 
+      } 
   }
 
 /*
@@ -483,19 +262,24 @@ body {
 }
 
 .navbar ul li a {
-    color: #070222;
+    color: #055902;
     font-weight: 500;
     text-decoration: none;
     white-space:nowrap;
 }
 
 .navbar ul li a:hover {
-    color: rgb(83, 69, 7);
+  color: rgb(170, 159, 0);
+}
+
+.navbar ul li a:active {
+color: rgb(65, 61, 13);
+font-size: 22px;
 }
 
 .navbar ul li i {
     margin: 0  10px 0 8px;
-    color: red;
+    color:black;
 }
 
 
@@ -611,10 +395,6 @@ body {
     create office
     ========================================
   */
-
-  #title {
-  
-  }
   #createoffice {
     display: none;
   }
