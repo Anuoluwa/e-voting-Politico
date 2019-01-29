@@ -4,6 +4,9 @@ const officeLink = document.getElementById('office-link');
 const createParty = document.getElementById('createparty');
 const createOffice = document.getElementById('createoffice');
 const allParties = document.getElementById('allparties');
+const offices = document.getElementById('offices');
+const officesDetails = document.getElementById('offices-details');
+
 
 partyLink.addEventListener('click', () => {
   document.querySelector('.active').className = '';
@@ -20,14 +23,7 @@ parties.addEventListener('click', () => {
   allParties.className = 'active';
 });
 
-const header = document.getElementById('menu-active');
-const btns = header.getElementsByClassName('link');
-for (let i = 0; i < btns.length; i++) {
-  btns[i].addEventListener('click', function () {
-    const current = document.getElementsByClassName('active');
-    if (current.length > 0) {
-      current[0].className = current[0].className.replace(' active', '');
-    }
-    this.className += ' active';
-  });
-}
+offices.addEventListener('click', () => {
+  document.querySelector('.active').className = '';
+  officesDetails.className = 'active';
+});

@@ -12,23 +12,27 @@
 </head>
 
 <body>
-    <header class="container ">
-        <h1 class="logo">
-            <a href="index.html">Politico</a>
-        </h1>
-        <nav>
-            <ul>
-                <li><a href="">Admin Dashboard</a></li>
-                <li><a href="">Home</a></li>
-                <li class="highlight"><a href="">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="container">
+    <div class='top menu'>
+        <header class="container" id="menu-active">
+            <h1 class="logo">
+                <i class="fas fa-vote-yea fa-2x"></i> <a id="politico" href="index.html">Politico</a>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="./index.html" class="link">Home</a></li>
+                    <li><a href="#features" class="link">Admin Dashboard</a></li>
+                    <button class="signinform signin link" id="signin" class="header-login signup" onclick="document.getElementById('signinform').style.display='block'"
+                        style="width:auto;">Logout</button>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <main class="container main">
         <div class="flex-container">
             <section class="panel">
                 <div class="nav">
                     <div class="navbar">
+                        <div id="admin-operations"><h1> Admin Operations</h1></div>
                         <ul>
                             <li><a href="#" id="parties"> <i class="far fa-handshake"></i> All Parties</a></li>
                             <li><a href="#" id="party-link"> <i class="fas fa-plus-circle"></i> Create Party</a></li>
@@ -40,8 +44,10 @@
             </section>
             <section class="show">
                 <div id="createparty">
-                    <h3 id="title">Register a new Party</h3>
-                    <div>
+                    <div class="title">
+                        <h3 id="title">Register a new Party</h3>
+                    </div>
+                    <div class="party-form">
                         <form class="myForm">
                             <div class="party">
                                 <label for="name">Name of Party</label>
@@ -66,7 +72,9 @@
                 </div>
 
                 <div id="createoffice">
-                    <h3 id="title">Register a new office</h3>
+                    <div class="title">
+                        <h3 id="title">Register a new office</h3>
+                    </div>
                     <div>
                         <form class="myForm">
                             <div class="party">
@@ -118,7 +126,7 @@
                                     </div>
                                     <div class="Rtable-cell topic-cell">
                                         <div class="Rtable-cell--heading">Headquarters</div>
-                                        <div class="Rtable-cell--content title-content"> 6 Ceddi Plaza Abuja</div>
+                                        <div class="Rtable-cell--content title-content">6 Ceddi Plaza Abuja</div>
                                     </div>
                                     <div class="Rtable-cell replay-link-cell">
                                         <div class="Rtable-cell--heading">Logo</div>
@@ -126,8 +134,9 @@
                                     </div>
                                     <div class="Rtable-cell Rtable-cell--foot pdf-cell">
                                         <div class="Rtable-cell--heading">Actions</div>
-                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
-                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
+                                        <div class="Rtable-cell--content pdf-content"><a href="#0" id="istyle"><i class="far fa-edit fa-xs"
+                                                    id="edit"></i></a>
+                                            <a href="#0" id="istyle"><i class="fas fa-trash-alt fa-xs" id="delete"></i></a></div>
                                     </div>
                                 </div>
 
@@ -143,7 +152,7 @@
                                     </div>
                                     <div class="Rtable-cell topic-cell">
                                         <div class="Rtable-cell--heading">Headquarters</div>
-                                        <div class="Rtable-cell--content title-content"> 6 Ceddi Plaza Abuja</div>
+                                        <div class="Rtable-cell--content title-content">6 Ceddi Plaza Abuja</div>
                                     </div>
                                     <div class="Rtable-cell replay-link-cell">
                                         <div class="Rtable-cell--heading">Logo</div>
@@ -151,8 +160,9 @@
                                     </div>
                                     <div class="Rtable-cell Rtable-cell--foot pdf-cell">
                                         <div class="Rtable-cell--heading">Actions</div>
-                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
-                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
+                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"
+                                                    id="edit"></i></a>
+                                            <a href="#0"><i class="fas fa-trash-alt fa-xs" id="delete"></i></a></div>
                                     </div>
                                 </div>
 
@@ -175,8 +185,9 @@
                                     </div>
                                     <div class="Rtable-cell Rtable-cell--foot pdf-cell">
                                         <div class="Rtable-cell--heading">Actions</div>
-                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
-                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
+                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"
+                                                    id="edit"></i></a>
+                                            <a href="#0"><i class="fas fa-trash-alt fa-xs" id="delete"></i></a></div>
                                     </div>
                                 </div>
 
@@ -199,8 +210,9 @@
                                     </div>
                                     <div class="Rtable-cell Rtable-cell--foot pdf-cell">
                                         <div class="Rtable-cell--heading">Actions</div>
-                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
-                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
+                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"
+                                                    id="edit"></i></a>
+                                            <a href="#0"><i class="fas fa-trash-alt fa-xs" id="delete"></i></a></div>
                                     </div>
                                 </div>
 
@@ -223,8 +235,9 @@
                                     </div>
                                     <div class="Rtable-cell Rtable-cell--foot pdf-cell">
                                         <div class="Rtable-cell--heading">Actions</div>
-                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
-                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
+                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"
+                                                    id="edit"></i></a>
+                                            <a href="#0"><i class="fas fa-trash-alt fa-xs" id="delete"></i></a></div>
                                     </div>
                                 </div>
 
@@ -247,8 +260,9 @@
                                     </div>
                                     <div class="Rtable-cell Rtable-cell--foot pdf-cell">
                                         <div class="Rtable-cell--heading">Actions</div>
-                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
-                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
+                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"
+                                                    id="edit"></i></a>
+                                            <a href="#0"><i class="fas fa-trash-alt fa-xs" id="delete"></i></a></div>
                                     </div>
                                 </div>
                             </div>
@@ -262,27 +276,21 @@
         </div>
     </main>
 
-    <!-- <div>
+    <!-- Footer -->
+    <div>
         <footer>
-            <small>&copy; 2019 Politica</small>
             <nav>
                 <ul class="footer-main">
                     <li>
+                        <a href="index.html"><small>&copy; 2019 Politico</small></a>
+                    </li>
+                    <li>
                         <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Support</a>
-                    </li>
-                    <li>
-                        <a href="admin.html">Admin</a>
                     </li>
                 </ul>
             </nav>
         </footer>
-    </div> -->
+    </div>
     <script src="../js/main.js"></script>
 </body>
 

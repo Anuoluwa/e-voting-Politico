@@ -53,7 +53,7 @@ table {
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: rgb(244, 248, 244);
+    background-color: white;
   
 }
 
@@ -69,243 +69,179 @@ body {
     padding: 2em 1em;
 }
 
-
-
-    /*
+/*
     ========================================
-   mobile header 
+    header
     ========================================
   */
- 
-header {
-    text-align: center;
-}
-
-header .logo {
-    font-size: 25px;
-    font-weight: 900;
-    letter-spacing: .5px;
-    line-height: 44px;
-    padding: 10px 0;
-    text-align: center;
-    color: #09A603;
-}
-
-nav {
-    margin: 2em auto 0;
-    max-width: 600px;
-}
-nav ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-nav ul li {
-    list-style: none;
-
-}
-
-nav ul li a {
-    font-size: 1.25em;
-    color: #09A603;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-header h1 a {
-  font-size: 1.25em;
-  color: #09A603;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.banner {
-    color: #09A603;
-    background-color: #032E2C
-}
-main {
-    display: flex;
-    flex-flow: column;
+  .top {
+    background-color: #09A603;
     
-}
+  }
+  .menu {
+    overflow: hidden;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+  }
+  
+  header {
+      text-align: center;
+      color: rgba(248, 232, 14, 0.938); 
+      margin: 0 auto; 
+  }
+  
+  header .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: .5px;
+      line-height: 44px;
+      padding: 10px 0;
+      text-align: center;
+  }
+  
+  nav {
+      margin: 2em auto 0;
+      max-width: 600px;
+      font-size: 12px;
+  }
+  nav ul {
+      margin: 0 30px;
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  nav ul li {
+      list-style: none;
+      padding: 0 2px;
+  
+  }
+  
+  
+  header h1 a {
+    font-size: 1em;
+    color: rgb(240, 240, 240);
+    font-weight: 300;
+    text-decoration: none;
+  }
+  
+  nav ul li a {
+      font-size: 1.4em;
+      color: rgb(210, 214, 210);
+      font-weight: 700;
+      text-decoration: none;
+  }
 
-.hero {
-   text-align: center;
-}
-
-
-.hero h1 {
-    font-size: 2.5em;
-    font-weight: 700;
-}
-
-.hero p {
-    font-size: 1.2em;
-    font-weight: 600;
-    max-width: 500px;
-    line-height: 1.8em;
-    margin: 3em auto;
-}
-
-.hero p:before {
-    content: "";
-    display: block;
-    width: 120px;
-    border: 2px solid #FFDB37;
-    margin: 1em auto; 
-}
-
-.hero a {
-    background: rgb(206, 206, 2);
-    padding: 1em 3em;
+  .signin {
+    background: rgb(223, 230, 223);
+    font-size:14px;
     border-radius: 50px;
-    color: green;
+    color: #055902;
     text-decoration: none;
-    font-size: 1.375em;
     font-weight: 700;
+    border: 3px solid rgb(173, 236, 186);
+    border-radius: 30px;
+    margin: 0 5px;
+  }
+  
+  .highlight {
+      border: 1px solid #FFDb37;
+      border-radius: 8px;
+      margin: 0 2px;
+  }
+
+  .main {
+    margin-top: 100px;
+    margin-bottom: 120px;
+  }
+
+  a:hover {
+    color: rgba(248, 232, 14, 0.938);
 }
 
-a:hover {
-    color: rgba(178, 224, 9, 0.5);
+a:active {
+  color: rgba(179, 167, 1, 0.938);
+  font-size: 22px;
 }
-
-
-.ads {
-    color: #010A30;
-}
-figure {
-    text-align: center;
-}
-
-figure img{
-    margin: 3em auto 0;
-    width: 300px;
-}
-
-
-    /*
-    ========================================
-    large screen header 
-    ========================================
-  */
- 
-
-@media screen and (min-width: 820px) {
-    header {
-        display: flex;
-        justify-content: space-between;
-        flex-flow: wrap;
-        align-items: center;
-    }
-
-    header .logo {
-        font-size: 25px;
-        font-weight: 900;
-        letter-spacing: .5px;
-        line-height: 44px;
-        padding: 10px 0;
-        text-transform: uppercase;
-        text-align: center;
-        color: #09A603;
-    }
-    
-    nav {
-        margin: 0;
-    }
-    nav ul {
-        margin: 0;
-        padding: 0;
-        display: flex;
-    }
-    
-    nav ul li {
-        list-style: none;
-        padding: 0.5em 2em;
-    }
-    
-    nav ul li a {
-        font-size: 1.2em;
-        color: #09A603;
-        font-weight: 700;
-        text-decoration: none;
-    }
-
-    .highlight {
-        border: 3px solid: gainsboro;
-        border-radius: 30px;
-        margin: 0 5px;
-        background-color: #FFDb37
-    }
-
-    .vote-btn {
-        background-color: rgb(206, 206, 2);
-    }
-    
-    main {
-        display: flex;
-        flex-flow: column;
-    }
-    
-    .hero {
-       text-align: left;
-    }
-
-    .hero h1 {
-        font-size: 4em;
-    }
-    
-    .hero p {
-        font-size: 1.3em;
-        padding: 0;
-        margin: 0 0 3em 0;
-    }
-    
-    .hero p:before {
-        margin: 1em 0; 
-    }
-    .hero a {
-        background: rgb(206, 206, 2);
-    }
-
-    a:hover {
-        color: rgba(178, 224, 9, 0.5);
-    }
-    
-    figure {
-        text-align: center;
-    }
-    
-    .figure img{
-        margin: 0;
-        width: 300px;
-    }
-}
-
+  
+  
+  @media screen and (min-width: 820px) {
+      header {
+          display: flex;
+          justify-content: space-between;
+          flex-flow: wrap;
+          align-items: center;
+          color: #dfe7e5;
+          height: 10px;
+      }
+  
+      .menu {
+        overflow: hidden;
+        position: fixed; /* Set the navbar to fixed position */
+        top: 0; /* Position the navbar at the top of the page */
+        width: 100%; /* Full width */
+      }
+      
+      nav {
+          margin: 0;
+      }
+      nav ul {
+          margin: 0;
+          padding: 0;
+          display: flex;
+      }
+      
+      nav ul li {
+          list-style: none;
+          padding: 0.7em 2em;
+      }
+  
+      header h1 a {
+        color: rgb(240, 240, 240);
+        font-size: 1.5em;
+        font-weight: 500px;
+        
+      }
+      
+      nav ul li a {
+          font-size: 1.5em;
+          color: rgb(210, 214, 210);
+          font-weight: 700;
+          text-decoration: none;
+      }
+  
+      
+      
+      main {
+          display: flex;
+          flex-flow: column;
+      } 
+  }
 
 /*
     ========================================
     main
     ========================================
   */
-
+  .main {
+    margin-top: 100px;
+    margin-bottom: 120px;
+  }
   .flex-container {
       display: flex;
       justify-content: space-around;
-      height: 700px;   
+      height: 100%;   
   }
 
   .panel {
     flex-grow: 1;
-    background-color: #ceebcd;
-   
+    background-color: #ceebcd; 
   }
 
   .show {
     flex-grow: 12;
     background-color: whitesmoke;
-
   }
 
   .navbar {
@@ -326,19 +262,24 @@ figure img{
 }
 
 .navbar ul li a {
-    color: #070222;
+    color: #055902;
     font-weight: 500;
     text-decoration: none;
     white-space:nowrap;
 }
 
 .navbar ul li a:hover {
-    color: rgb(83, 69, 7);
+  color: rgb(170, 159, 0);
+}
+
+.navbar ul li a:active {
+color: rgb(65, 61, 13);
+font-size: 22px;
 }
 
 .navbar ul li i {
     margin: 0  10px 0 8px;
-    color: red;
+    color:black;
 }
 
 
@@ -347,7 +288,9 @@ figure img{
     create party
     ========================================
   */
-
+  .party-form {
+ 
+  }
   #createparty {
     display: none;
   }
@@ -358,15 +301,26 @@ figure img{
 
    #title {
        text-align: center;
-       font-size: 18px;
-       background-color: rgb(140, 207, 138);
-       padding: 0 40px;
+       background-color: #ceebcd;
+       font-size: 20px;
+       height: 50px;
+       padding: 20px 10px;
+   } 
 
+   .title {
+   
+   }
+
+   #admin-operations {
+     text-align: center;
+     font-size: 20px;
+     color: rgba(56, 56, 9, 0.486);
    }
    .myForm {
      display: flex;
      background-color: white;
      padding: 0.5em 2.5em 1.8em 10em;
+    
    }
    .party {
         flex: 1; 
@@ -498,19 +452,18 @@ figure img{
   }
   
   .is-striped { 
-    background-color: rgba(233,200,147,0.2) 
+    background-color: rgb(199, 243, 198) 
   }
   
   
   /* Table column sizing
   ================================== */
   .date-cell  { 
-    width: 20%; 
   }
-  .topic-cell  { width: 41%; }
-  .access-link-cell  { width: 13%; }
-  .replay-link-cell  { width: 13%; }
-  .pdf-cell  { width: 13%; }
+  .topic-cell  { width: 42%; }
+  .access-link-cell  { width: 15%; }
+  .replay-link-cell  { width: 15%; }
+  .pdf-cell  { width: 25%; }
   
   /* Apply styles
   ================================== */
@@ -538,7 +491,7 @@ figure img{
         list-style: none;
   }
         .column-heading {
-          background-color: #055902;
+          background-color: #09A603;
           color: white;
           padding: 1em;
         }
@@ -556,6 +509,13 @@ figure img{
             font-weight: 700;
           }
   
+          #edit {
+            color: rgba(85, 85, 5, 0.555);
+          }
+
+          #delete {
+            color: red;
+          }
   /* Responsive
   ==================================== */
   @media all and (max-width: 750px) {
@@ -618,8 +578,12 @@ figure img{
     .Rtable-cell {
       width: 100%;
     }
-
+    
+    #istyle {
+      font-size: 1px;
+    }
 }
+
 /*
     ========================================
     Footer
@@ -629,8 +593,12 @@ figure img{
   footer {
     width: calc(100% - 80px);
     padding: 20px 40px;
-    background-color: white;
-    overflow: hidden;
+    background-color: #09A603;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
 
 footer ul {
@@ -646,13 +614,13 @@ footer ul li {
 
 footer ul li a {
     font-size: 16px;
-    color: #055902;
+    color: rgb(240, 240, 240);
     line-height: 30px;
 }
 
 @media only screen and (min-width: 1000px) {
     .footer {
-        color: #055902;
+        color: #09A603;
         font-size: 14px;
         padding: 20px 0;
         
@@ -669,8 +637,13 @@ footer ul li a {
     footer ul li {
         display: inline-block;
         margin: 10px;
-      
-
     }
+
+    footer ul li a {
+      font-size: 16px;
+      color: rgb(240, 240, 240);
+      line-height: 30px;
+  }
 }
+
 
