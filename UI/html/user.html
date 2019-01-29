@@ -12,112 +12,279 @@
 </head>
 
 <body>
-    <header class="container ">
-        <h1 class="logo">
-            <a href="index.html">Politica</a>
-        </h1>
-        <nav>
-            <ul>
-                <li><a href="">My dashboard</a></li>
-                <li class="highlight"><a href="">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="container">
+    <div class='top menu'>
+        <header class="container" id="menu-active">
+            <h1 class="logo">
+                <i class="fas fa-vote-yea fa-2x"></i> <a id="politico" href="index.html">Politico</a>
+            </h1>
+            <nav>
+                <ul>
+                    <li><a href="./index.html" class="link">Home</a></li>
+                    <li><a href="#features" class="link"><small>Welcome </small> John!</a></li>
+                    <button class="signinform signin link" id="signin" class="header-login signup" onclick="document.getElementById('signinform').style.display='block'"
+                        style="width:auto;">Logout</button>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <main class="container main">
         <div class="flex-container">
             <section class="panel">
-                <div class="nav flex-user">
-                    <div class="profile">
-                        <div class="card">
-                            <img src="../img/Avatar-PNG-Free-Download.png" alt="Avatar" style="">
-                            <div class="user-container">
-                                <h4><b>John Doe</b></h4>
-                                <h4><b>johndoe@gmail.com</b></h4>
-                                <p>Architect & Engineer</p>
-                                <h4><b>12-14-45</b></h4>
-                                <h4><b>4,cedr swer Lagos</b></h4>
-                            </div>
+                <div class="nav">
+                    <div class="navbar">
+                        <div id="admin-operations">
+                            <h1>Voter Dashboard</h1>
                         </div>
 
-                        <div class="navbar operation">
+                        <div class="profile">
+                            <div class="card">
+                                <img src="../img/Avatar-PNG-Free-Download.png" alt="Avatar" style="" height="200" width="220">
+                                <div class="user-container">
+                                    <h4><b> John Doe</b></h4>
+                                    <h4><b> johndoe@gmail.com</b></h4>
+                                    <h3><small>12-14-45</small></h3>
+                                    <h3> 4, Gerrard, Yaba, Lagos</h3>
+                                </div>
+                            </div>
                             <ul>
-                                <li><a href=""> <i class="far fa-handshake"></i> All Parties</a></li>
-                                <li><a href=""> <i class="fas fa-users"></i> All Candidates</a></li>
-                                <li><a href=""> <i class="fas fa-plus-circle"></i>Voting Details</a></li>
+                                <li><a href="#" id="parties"> <i class="far fa-handshake"></i>View Parties</a></li>
+                                <li><a href="#" id="offices"> <i class="far fa-handshake"></i>View Offices</a></li>
+                                <li><a href="#" id="office-link"> <i class="fas fa-paste"></i> My Votes</a> </li>
+                                <li><a href="#" id="party-link"> <i class="fas fa-plus-circle"></i> Interest Form</a></li>
+
                             </ul>
                         </div>
                     </div>
-
-                </div>
             </section>
             <section class="show">
-                <div id="allparties">
+                <div id="createparty">
+                    <div class="title">
+                        <h3 id="title">Expression Of Interest Form</h3>
+                    </div>
+                    <div class="party-form">
+                        <form class="myForm">
+                            <div class="party">
+                                <label for="name">Name of Candidate</label>
+                                <input type="text" id="name" class="input-field" placeholder="Enter party name"
+                                    required>
+
+                                <li class="form-row">
+                                    <label for="election">Choose Position Being Vied For:</label>
+                                    <select class="input-field" id="election-select">
+                                        <option value="">--Please choose an option--</option>
+                                        <option value="Federal">Federal</option>
+                                        <option value="Federal-leg">Federal Legislative</option>
+                                        <option value="State">State</option>
+                                        <option value="State-leg">State Legislative</option>
+                                        <option value="Local-gov">Local Government</option>
+                                        <option value="Councillor">Councillor</option>
+                                    </select>
+                                </li>
+
+                                <label for="townborn">Office Address</label>
+                                <input type="text" id="hqAddress" class="input-field" placeholder="Enter party address"
+                                    required>
+
+                                <label for="townborn">Phone</label>
+                                <input type="text" id="hqAddress" class="input-field" placeholder="Enter party address"
+                                    required>
+
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="input-field" placeholder="Enter party email"
+                                    required>
+
+                                <label for="msg">Upload Photo</label>
+                                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+
+
+
+                                <button type="submit" id="submit" class="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="createoffice">
                     <div>
                         <div class="wrapper">
                             <div class="Rtable Rtable--5cols Rtable--collapse">
                                 <div class="Rtable-row Rtable-row--head">
-                                    <div class="Rtable-cell date-cell column-heading">Date</div>
-                                    <div class="Rtable-cell topic-cell column-heading">Name</div>
-                                    <div class="Rtable-cell topic-cell column-heading">Headquarters</div>
-                                    <div class="Rtable-cell replay-link-cell column-heading">Logo</div>
-                                    <div class="Rtable-cell pdf-cell column-heading">Actions</div>
+                                    <div class="Rtable-cell date-cell column-heading">Candidate</div>
+                                    <div class="Rtable-cell topic-cell column-heading">Party Name</div>
+                                    <div class="Rtable-cell topic-cell column-heading">Elected Office</div>
+                                    <div class="Rtable-cell pdf-cell column-heading">Voted</div>
                                 </div>
 
                                 <div class="Rtable-row">
                                     <div class="Rtable-cell date-cell">
-                                        <div class="Rtable-cell--heading">Date</div>
-                                        <div class="Rtable-cell--content date-content"><span class="webinar-date">August
-                                                2nd, 2016</span><br /></div>
+                                        <div class="Rtable-cell--heading">Candidate</div>
+                                        <div class="Rtable-cell--content title-content">John Doe</div>
+
                                     </div>
                                     <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--heading">Party Name</div>
                                         <div class="Rtable-cell--content title-content">Accord Party of Nigeria</div>
                                     </div>
                                     <div class="Rtable-cell topic-cell">
-                                        <div class="Rtable-cell--heading">Headquarters</div>
-                                        <div class="Rtable-cell--content title-content"> 6 Ceddi Plaza Abuja</div>
-                                    </div>
-                                    <div class="Rtable-cell replay-link-cell">
-                                        <div class="Rtable-cell--heading">Logo</div>
-                                        <div class="Rtable-cell--content replay-link-content"><a href="#0"><i class="fas fa-hands-helping"></i></a></div>
+                                        <div class="Rtable-cell--heading">Elected Office</div>
+                                        <div class="Rtable-cell--content title-content">Presidential</div>
                                     </div>
                                     <div class="Rtable-cell Rtable-cell--foot pdf-cell">
-                                        <div class="Rtable-cell--heading">Actions</div>
-                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
-                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
+                                        <div class="Rtable-cell--heading">Voted</div>
+                                        <div class="Rtable-cell--content pdf-content">
+                                            <a href="#0"><i class="fas fa-vote-yea fa-xs" id="edit"></i></a>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="Rtable-row is-striped">
 
                                     <div class="Rtable-cell date-cell">
-                                        <div class="Rtable-cell--heading">Date</div>
-                                        <div class="Rtable-cell--content date-content"><span class="webinar-date">September
-                                                6th, 2016</span><br /></div>
+                                        <div class="Rtable-cell--heading">Candidate</div>
+                                        <div class="Rtable-cell--content title-content">John Doe</div>
+
                                     </div>
                                     <div class="Rtable-cell topic-cell">
                                         <div class="Rtable-cell--content title-content">Africa Democratic Party</div>
                                     </div>
                                     <div class="Rtable-cell topic-cell">
-                                        <div class="Rtable-cell--heading">Headquarters</div>
-                                        <div class="Rtable-cell--content title-content"> 6 Ceddi Plaza Abuja</div>
-                                    </div>
-                                    <div class="Rtable-cell replay-link-cell">
-                                        <div class="Rtable-cell--heading">Logo</div>
-                                        <div class="Rtable-cell--content replay-link-content"><a href="#0"><i class="fas fa-hands-helping"></i></a></div>
+                                        <div class="Rtable-cell--heading">Elected Office</div>
+                                        <div class="Rtable-cell--content title-content">House Of Reps</div>
                                     </div>
                                     <div class="Rtable-cell Rtable-cell--foot pdf-cell">
-                                        <div class="Rtable-cell--heading">Actions</div>
-                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
-                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
+                                        <div class="Rtable-cell--heading">Voted</div>
+                                        <div class="Rtable-cell--content pdf-content">
+                                            <a href="#0"><i class="fas fa-vote-yea fa-xs" id="edit"></i></a>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="Rtable-row">
                                     <div class="Rtable-cell date-cell">
-                                        <div class="Rtable-cell--heading">Date</div>
-                                        <div class="Rtable-cell--content date-content"><span class="webinar-date">October
-                                                4th, 2016</span><br /></div>
+                                        <div class="Rtable-cell--heading">Candidate</div>
+                                        <div class="Rtable-cell--content title-content">John Doe</div>
+
                                     </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--content title-content">All Peaceful Party</div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--heading">Elected Office</div>
+                                        <div class="Rtable-cell--content title-content">Senatorial District</div>
+                                    </div>
+                                    <div class="Rtable-cell Rtable-cell--foot pdf-cell">
+                                        <div class="Rtable-cell--heading">Voted</div>
+                                        <div class="Rtable-cell--content pdf-content">
+                                            <a href="#0"><i class="fas fa-vote-yea fa-xs" id="edit"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="Rtable-row is-striped">
+                                    <div class="Rtable-cell date-cell">
+                                        <div class="Rtable-cell--heading">Candidate</div>
+                                        <div class="Rtable-cell--content title-content">John Doe</div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--content title-content">Action Alliance of Nigeria</div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--heading">Elected Office</div>
+                                        <div class="Rtable-cell--content title-content">Gubernatorial</div>
+                                    </div>
+                                    <div class="Rtable-cell Rtable-cell--foot pdf-cell">
+                                        <div class="Rtable-cell--heading">Voted</div>
+                                        <div class="Rtable-cell--content pdf-content">
+                                            <a href="#0"><i class="fas fa-vote-yea fa-xs" id="edit"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="Rtable-row">
+                                    <div class="Rtable-cell date-cell">
+                                        <div class="Rtable-cell--heading">Candidate</div>
+                                        <div class="Rtable-cell--content title-content">John Doe</div>
+
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--content title-content">African Democratic Party</div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--heading">Elected Office</div>
+                                        <div class="Rtable-cell--content title-content">House Of Assembly</div>
+                                    </div>
+                                    <div class="Rtable-cell Rtable-cell--foot pdf-cell">
+                                        <div class="Rtable-cell--heading">Voted</div>
+                                        <div class="Rtable-cell--content pdf-content">
+                                            <a href="#0"><i class="fas fa-vote-yea fa-xs" id="edit"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="Rtable-row is-striped">
+                                    <div class="Rtable-cell date-cell">
+                                        <div class="Rtable-cell--heading">Candidate</div>
+                                        <div class="Rtable-cell--content title-content">John Doe</div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--content title-content">Grassroot Democratic Party</div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--heading">Elected Office</div>
+                                        <div class="Rtable-cell--content title-content">Local Chairmanship</div>
+                                    </div>
+                                    <div class="Rtable-cell Rtable-cell--foot pdf-cell">
+                                        <div class="Rtable-cell--heading">Voted</div>
+                                        <div class="Rtable-cell--content pdf-content">
+                                            <a href="#0"><i class="fas fa-vote-yea fa-xs" id="edit"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="allparties" class="active">
+                    <div>
+                        <div class="wrapper">
+                            <div class="Rtable Rtable--5cols Rtable--collapse">
+                                <div class="Rtable-row Rtable-row--head">
+                                    <div class="Rtable-cell topic-cell column-heading">Name</div>
+                                    <div class="Rtable-cell topic-cell column-heading">Headquarters</div>
+                                    <div class="Rtable-cell replay-link-cell column-heading">Logo</div>
+                                </div>
+
+                                <div class="Rtable-row">
+
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--content title-content">Accord Party of Nigeria</div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--heading">Headquarters</div>
+                                        <div class="Rtable-cell--content title-content">6 Ceddi Plaza Abuja</div>
+                                    </div>
+                                    <div class="Rtable-cell replay-link-cell">
+                                        <div class="Rtable-cell--heading">Logo</div>
+                                        <div class="Rtable-cell--content replay-link-content"><a href="#0"><i class="fas fa-hands-helping"></i></a></div>
+                                    </div>
+                                </div>
+
+                                <div class="Rtable-row is-striped">
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--content title-content">Africa Democratic Party</div>
+                                    </div>
+                                    <div class="Rtable-cell topic-cell">
+                                        <div class="Rtable-cell--heading">Headquarters</div>
+                                        <div class="Rtable-cell--content title-content">6 Ceddi Plaza Abuja</div>
+                                    </div>
+                                    <div class="Rtable-cell replay-link-cell">
+                                        <div class="Rtable-cell--heading">Logo</div>
+                                        <div class="Rtable-cell--content replay-link-content"><a href="#0"><i class="fas fa-hands-helping"></i></a></div>
+                                    </div>
+                                </div>
+
+                                <div class="Rtable-row">
                                     <div class="Rtable-cell topic-cell">
                                         <div class="Rtable-cell--content title-content">All Peaceful Party</div>
                                     </div>
@@ -129,19 +296,9 @@
                                         <div class="Rtable-cell--heading">Logo</div>
                                         <div class="Rtable-cell--content replay-link-content"><a href="#0"><i class="fas fa-hands-helping"></i></a></div>
                                     </div>
-                                    <div class="Rtable-cell Rtable-cell--foot pdf-cell">
-                                        <div class="Rtable-cell--heading">Actions</div>
-                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
-                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
-                                    </div>
                                 </div>
 
                                 <div class="Rtable-row is-striped">
-                                    <div class="Rtable-cell date-cell">
-                                        <div class="Rtable-cell--heading">Date</div>
-                                        <div class="Rtable-cell--content date-content"><span class="webinar-date">November
-                                                1st, 2016</span><br /></div>
-                                    </div>
                                     <div class="Rtable-cell topic-cell">
                                         <div class="Rtable-cell--content title-content">Action Alliance of Nigeria</div>
                                     </div>
@@ -153,19 +310,9 @@
                                         <div class="Rtable-cell--heading">Logo</div>
                                         <div class="Rtable-cell--content replay-link-content"><a href="#0"><i class="fas fa-hands-helping"></i></a></div>
                                     </div>
-                                    <div class="Rtable-cell Rtable-cell--foot pdf-cell">
-                                        <div class="Rtable-cell--heading">Actions</div>
-                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
-                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
-                                    </div>
                                 </div>
 
                                 <div class="Rtable-row">
-                                    <div class="Rtable-cell date-cell">
-                                        <div class="Rtable-cell--heading">Date</div>
-                                        <div class="Rtable-cell--content date-content"><span class="webinar-date">December
-                                                6th, 2016</span><br /></div>
-                                    </div>
                                     <div class="Rtable-cell topic-cell">
                                         <div class="Rtable-cell--content title-content">African Democratic Party</div>
                                     </div>
@@ -177,19 +324,9 @@
                                         <div class="Rtable-cell--heading">Logo</div>
                                         <div class="Rtable-cell--content replay-link-content"><a href="#0"><i class="fas fa-hands-helping"></i></a></div>
                                     </div>
-                                    <div class="Rtable-cell Rtable-cell--foot pdf-cell">
-                                        <div class="Rtable-cell--heading">Actions</div>
-                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
-                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
-                                    </div>
                                 </div>
 
                                 <div class="Rtable-row is-striped">
-                                    <div class="Rtable-cell date-cell">
-                                        <div class="Rtable-cell--heading">Date</div>
-                                        <div class="Rtable-cell--content date-content"><span class="webinar-date">January
-                                                3rd, 2017</span><br /></div>
-                                    </div>
                                     <div class="Rtable-cell topic-cell">
                                         <div class="Rtable-cell--content title-content">Grassroot Democratic Party</div>
                                     </div>
@@ -201,169 +338,44 @@
                                         <div class="Rtable-cell--heading">Logo</div>
                                         <div class="Rtable-cell--content replay-link-content"><a href="#0"><i class="fas fa-hands-helping"></i></i></a></div>
                                     </div>
-                                    <div class="Rtable-cell Rtable-cell--foot pdf-cell">
-                                        <div class="Rtable-cell--heading">Actions</div>
-                                        <div class="Rtable-cell--content pdf-content"><a href="#0"><i class="far fa-edit fa-xs"></i></a>
-                                            <a href="#0"><i class="fas fa-trash-alt fa-xs"></i></a></div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <section class="food-item" id="menu">
-                        <h1 class="process"> <i class="fas fa-utensils"></i>Candidates</h1>
-                        <div class="wrapper-menu">
-                            <hr>
-                            <section class="menu-card-list">
-                                <div class="card">
-                                    <img src="./assets/images/salad.png">
-                                    <div class="card-details">
-                                        <h3></h3>
-                                        <h3 id="price"></h3>
-                                        <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Vote</button>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <img src="./assets/images/assorted.png">
-                                    <div class="card-details">
-                                        <h3></h3>
-                                        <h3 id="price"></h3>
-                                        <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Vote</button>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <img src="./assets/images/chips.jpeg">
-                                    <div class="card-details">
-                                        <h3></h3>
-                                        <h3 id="price"></h3>
-                                        <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Vote</button>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <img src="./assets/images/spicy-chicken-burger.png">
-                                    <div class="card-details">
-                                        <h3></h3>
-                                        <h3 id="price"></h3>
-                                        <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Vote</button>
-                                    </div>
-                                </div>
-                            </section>
-                            <section class="menu-card-list">
-                                <div class="card">
-                                    <img src="./assets/images/grilled_fish.png">
-                                    <div class="card-details">
-                                        <h3></h3>
-                                            <h3></h3>
-                                            <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Vote</button>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <img src="./assets/images/Ribs-on-Grill-with-Basting-Brush-.png">
-                                    <div class="card-details">
-                                        <h3></h3>
-                                        <h3></h3>
-                                        <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Vote</button>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <img src="./assets/images/jollofrice.jpg">
-                                    <div class="card-details">
-                                        <h3></h3>
-                                        <h3 id="price"></h3>
-                                        <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Vote</button>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <img src="./assets/images/whitericesauce.png">
-                                    <div class="card-details">
-                                        <h3></h3>
-                                        <h3 id="price"></h3>
-                                        <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Order</button>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <img src="./assets/images/informatin-nigeria-amala.jpeg">
-                                    <div class="card-details">
-                                        <h3></h3>
-                                        <h3 id="price"></h3>
-                                        <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Order</button>
-                                    </div>
-                                </div>
-                            </section>
-                            <section class="menu-card-list">
-                                    <div class="card">
-                                        <img src="./assets/images/friedchicken.png">
-                                        <div class="card-details">
-                                            <h3></h3>
-                                            <h3></h3>
-                                            <button id="cart" onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Vote</button>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <img src="./assets/images/salad.png">
-                                        <div class="card-details">
-                                            <h3></h3>
-                                            <h3 id="price"></h3>
-                                            <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Vote</button>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <img src="./assets/images/assorted.png">
-                                        <div class="card-details">
-                                            <h3></h3>
-                                            <h3 id="price"></h3>
-                                            <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Vote</button>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <img src="./assets/images/chips.jpeg">
-                                        <div class="card-details">
-                                            <h3></h3>
-                                            <h3 id="price"></h3>
-                                            <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Vote</button>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <img src="./assets/images/spicy-chicken-burger.png">
-                                        <div class="card-details">
-                                            <h3></h3>
-                                            <h3 id="price"></h3>
-                                            <button onclick="document.getElementById('signupform').style.display='block'" style="width:auto;">Vote</button>
-                                        </div>
-                                    </div>
-                                </section>
-                        </div>
-                    </section>
-                <div id="alloffices"></div>
-                <div></div>
+                <div id="offices-details">
+                    <div class="presidential">
 
+                    </div>
+
+                    <div class="Legislative">
+
+                    </div>
+
+                    <div class="gubernatorial">
+
+                    </div>
+                </div>
             </section>
         </div>
     </main>
+
+    <!-- Footer -->
     <div>
-            <footer>
-                <small>&copy; 2019 Politica</small>
-                <nav>
-                    <ul class="footer-main">
-                        <li>
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li>
-                            <a href="#">About</a>
-                        </li>
-                        <li>
-                            <a href="#">Support</a>
-                        </li>
-                        <li>
-                            <a href="admin.html">Admin</a>
-                        </li>
-                    </ul>
-                </nav>
-            </footer>
-        </div>
-
+        <footer>
+            <nav>
+                <ul class="footer-main">
+                    <li>
+                        <a href="index.html"><small>&copy; 2019 Politico</small></a>
+                    </li>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+    </div>
     <script src="../js/user.js"></script>
-
 </body>
+
 </html>
