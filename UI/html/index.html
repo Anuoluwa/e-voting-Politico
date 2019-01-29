@@ -11,23 +11,25 @@
 </head>
 
 <body>
-    <header class="container ">
-        <h1 class="logo">
-            <a id="politico" href="index.html">Politico</a>
-        </h1>
-        <nav>
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <button class="signinform signin vote-btn" id="signin" class="header-login signup" onclick="document.getElementById('signupform').style.display='block'"
-                style="width:auto;">Vote</button>
-                
-                <button class="signinform signin" id="signin" class="header-login signup" onclick="document.getElementById('signinform').style.display='block'"
-            style="width:auto;">LOG IN</button>
-            </ul>
-        </nav>
-
-    </header> 
+    <div class='top menu'>
+            <header class="container" id="menu-active">
+                    <h1 class="logo">
+                            <i class="fas fa-vote-yea fa-2x"></i> <a id="politico" href="index.html">Politico</a>
+                    </h1>
+                    <nav>
+                        <ul>
+                            <li><a href="" class="link">Home</a></li>
+                            <li><a href="#features" class="link">Features</a></li>
+                            <button class="signinform signin vote-btn link" id="signin" class="header-login signup" onclick="document.getElementById('signupform').style.display='block'"
+                            style="width:auto;">Vote</button>
+                            
+                            <button class="signinform signin link" id="signin" class="header-login signup" onclick="document.getElementById('signinform').style.display='block'"
+                        style="width:auto;">Login</button>
+                        </ul>
+                    </nav>
+                </header> 
+    </div>
+    
 
       <!-- modal -->
       <section>
@@ -149,10 +151,6 @@
         </section>
 
 
-
-
-
-    
     <div class="banner bgImgCenter">
         <main class="container">
             <section class="hero container">
@@ -369,17 +367,10 @@
     <!-- Footer -->
     <div>
         <footer>
-            <small>&copy; 2019 Politico</small>
             <nav>
                 <ul class="footer-main">
                     <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Support</a>
+                        <a href="index.html"><small>&copy; 2019 Politico</small></a>
                     </li>
                     <li>
                         <a href="admin.html">Admin</a>

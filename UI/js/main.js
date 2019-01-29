@@ -5,17 +5,29 @@ const createParty = document.getElementById('createparty');
 const createOffice = document.getElementById('createoffice');
 const allParties = document.getElementById('allparties');
 
-partyLink.addEventListener('click', ()=> {
-    document.querySelector('.active').className = '';
-    createParty.className = 'active';
+partyLink.addEventListener('click', () => {
+  document.querySelector('.active').className = '';
+  createParty.className = 'active';
 });
 
-officeLink.addEventListener('click', ()=> {
-    document.querySelector('.active').className = '';
-    createOffice.className = 'active';
+officeLink.addEventListener('click', () => {
+  document.querySelector('.active').className = '';
+  createOffice.className = 'active';
 });
 
-parties.addEventListener('click', ()=> {
-    document.querySelector('.active').className = '';
-    allParties.className = 'active';
+parties.addEventListener('click', () => {
+  document.querySelector('.active').className = '';
+  allParties.className = 'active';
 });
+
+const header = document.getElementById('menu-active');
+const btns = header.getElementsByClassName('link');
+for (let i = 0; i < btns.length; i++) {
+  btns[i].addEventListener('click', function () {
+    const current = document.getElementsByClassName('active');
+    if (current.length > 0) {
+      current[0].className = current[0].className.replace(' active', '');
+    }
+    this.className += ' active';
+  });
+}
