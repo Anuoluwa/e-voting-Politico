@@ -6,6 +6,7 @@ const createOffice = document.getElementById('createoffice');
 const allParties = document.getElementById('allparties');
 const offices = document.getElementById('offices');
 const officesDetails = document.getElementById('offices-details');
+const span = document.getElementsByClassName('close')[0];
 
 
 partyLink.addEventListener('click', () => {
@@ -23,7 +24,22 @@ parties.addEventListener('click', () => {
   allParties.className = 'active';
 });
 
-offices.addEventListener('click', () => {
-  document.querySelector('.active').className = '';
-  officesDetails.className = 'active';
-});
+// offices.addEventListener('click', () => {
+//   document.querySelector('.active').className = '';
+//   officesDetails.className = 'active';
+// });
+
+offices.onclick = function () {
+  officesDetails.style.display = 'block';
+};
+
+span.onclick = function () {
+  officesDetails.style.display = 'none';
+};
+
+
+window.onclick = function (event) {
+  if (event.target == officesDetails) {
+    officesDetails.style.display = 'none';
+  }
+};

@@ -282,6 +282,86 @@ font-size: 22px;
     color:black;
 }
 
+@media screen and (max-width: 420px) {
+
+  /*
+    ========================================
+    main
+    ========================================
+  */
+  .main {
+
+    margin: 180px 50px 100px 0;
+  }
+  .flex-container {
+      display: flex;
+      justify-content: space-around;
+      height: 100%;  
+      flex-wrap: wrap;  
+  }
+
+  .panel {
+    flex-grow: 1;
+    background-color: #ceebcd; 
+    height: 200px;  
+  }
+
+  .show {
+    flex-grow: 12;
+    background-color: whitesmoke;
+  }
+
+  .navbar {
+      font-weight: 700;
+      margin: 20px 5px;
+      color: black;
+      font-size: 18px;
+  }
+
+.navbar li {
+    margin: 10px 10px 0 0;
+    border-radius: 50px;   
+}
+
+.navbar ul li {
+    list-style: none;
+    padding: 0.5em 1em 0.5em 2em;
+}
+
+.navbar ul li a {
+    color: #055902;
+    font-weight: 500;
+    text-decoration: none;
+    white-space:nowrap;
+}
+
+.navbar ul li a:hover {
+  color: rgb(170, 159, 0);
+}
+
+.navbar ul li a:active {
+color: rgb(65, 61, 13);
+font-size: 22px;
+}
+
+.navbar ul li i {
+    margin: 0  10px 0 8px;
+    color:black;
+}
+}
+
+@media screen and (max-width: 768px) {
+
+  /*
+    ========================================
+    main
+    ========================================
+  */
+  .main {
+
+    margin: 180px 50px 100px 0;
+  }
+}
 
 /*
     ========================================
@@ -547,7 +627,7 @@ font-size: 22px;
             flex: 1;
             max-width: 120px;
             min-width: 120px;
-            color: #43BAC0;
+            color: #09A603;
             font-weight: 700;
             border-right: 1px solid #ccc;
             margin-right: 1em;
@@ -559,7 +639,7 @@ font-size: 22px;
           }
       
       .topic-cell {
-        background-color: #43BAC0;
+        background-color: #09A603;
         color: white;
         font-weight: 700;
         order: -1;
