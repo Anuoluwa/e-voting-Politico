@@ -717,7 +717,7 @@ color: rgb(65, 61, 13);
             flex: 1;
             max-width: 120px;
             min-width: 120px;
-            color: #43BAC0;
+            color: #09A603;
             font-weight: 700;
             border-right: 1px solid #ccc;
             margin-right: 1em;
@@ -729,7 +729,7 @@ color: rgb(65, 61, 13);
           }
       
       .topic-cell {
-        background-color: #43BAC0;
+        background-color: #09A603;
         color: white;
         font-weight: 700;
         order: -1;
@@ -816,5 +816,194 @@ footer ul li a {
   }
 }
 
+/*
+    ========================================
+    Modal for vote office, id=offices-details class = vote-office
+    ========================================
+*/
+
+/* The Modal (background) */
+.vote-office {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.office-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* 2% from the top and centered */
+  padding: 20px;
+  border: 3px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: rgb(117, 114, 114);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(243, 7, 7);
+  text-decoration: none;
+  cursor: pointer;
+}
 
 
+
+/*
+  ========================================
+  cards on Modal candidates
+  ========================================
+*/
+.office-item {
+  margin: 0 0 0 0;
+}
+.menu-card-list .card-office {
+  margin: 20px 16px 0;
+  padding-top: 15px;
+  width: calc(100% - 32px);
+  height: 310px;
+  background-color: white;
+  text-align: center;
+  float: left;
+}
+.card-office {
+      overflow: hidden;
+  }
+ 
+.card-office img {
+  width: 70%;
+  height: 180px;
+
+}
+
+.menu-card-list .card-details button {
+  font-size: 0.9em;
+  margin: 10px 0;
+  border: 0;
+  background: #F5900E;
+  color: whitesmoke;
+  border-radius: 50px;
+  padding: 5px 8px ;
+  cursor: pointer;
+}
+
+
+.card-header {
+  color: #09A603;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.3em;
+}
+
+.card-details .name {
+  color: #09A603;
+  font-size: 22px;
+}
+
+.card-details .party {
+  color: rgb(139, 130, 130);
+}
+
+.card-details div {
+  margin: 10px 0 0 0;
+}
+
+.menu-card-list .card-details button {
+  width: 70%;
+  font-size: 0.5em;
+  margin: 10px 0;
+  border: 0;
+  background: #F5900E;
+  color: rgb(4, 82, 1);
+  border-radius: 100px;
+  padding: 5px 8px ;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 1000px) {
+  .wrapper-office {
+      width: 1000px;
+      margin: 0 auto;
+  }
+  .office-item {
+    margin: 70px 0 0 0;
+  }
+  .menu-card-list .card-office {
+      margin: 10px 6px 10px 3px;
+      height: 270px;
+      width: calc(100% - 32px);
+      background-color: white;
+      text-align: center;
+      float: left;
+  }
+
+  .menu-card-list {
+      overflow: hidden;
+  }
+  .card-office {
+      width: calc(25% - 12px) !important;
+      border-radius: 15px;
+      box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  .card-office img {
+    width: 90%;
+    height: 150px;
+  
+  }
+
+  .card-details button {
+    font-size: 0.9em;
+    margin: 10px 0;
+    border: 0;
+    background: rgb(43, 25, 2);
+    color: whitesmoke;
+    border-radius: 50px;
+    padding: 5px 8px ;
+    cursor: pointer;
+  }
+
+  .card-header {
+    color: #09A603;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.3em;
+  }
+
+  .card-details .name {
+    color: #09A603;
+    font-size: 22px;
+  }
+
+  .card-details .party {
+    color: rgb(139, 130, 130);
+  }
+
+  .card-details div {
+    margin: 10px 0 0 0;
+  }
+
+  .menu-card-list .card-details button {
+    width: 70%;
+    font-size: 1em;
+    margin: 10px 0;
+    border: 0;
+    background: #F5900E;
+    color: rgb(4, 82, 1);
+    border-radius: 100px;
+    padding: 5px 8px ;
+    cursor: pointer;
+  }
+}
