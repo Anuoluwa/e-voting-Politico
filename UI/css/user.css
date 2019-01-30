@@ -882,7 +882,11 @@ footer ul li a {
 .card-office {
       overflow: hidden;
   }
- 
+  .card-office {
+    border-radius: 15px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
 .card-office img {
   width: 70%;
   height: 180px;
@@ -920,6 +924,11 @@ footer ul li a {
 .card-details div {
   margin: 10px 0 0 0;
 }
+
+.card-office{
+  margin: 10px 0;
+}
+
 
 .menu-card-list .card-details button {
   width: 70%;
