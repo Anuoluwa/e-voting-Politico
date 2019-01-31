@@ -1,10 +1,8 @@
-[{"officeId":1,"type":"Marin","name":"Quo Lux","year":1996,"createdOn":"9/12/2018"},
-    {"officeId":2,"type":"Salomone","name":"Sub-Ex","year":2011,"createdOn":"4/26/2018"},
-    {"officeId":3,"type":"Tabor","name":"Cardguard","year":1984,"createdOn":"11/7/2018"},
-    {"officeId":4,"type":"Zared","name":"Hatity","year":1995,"createdOn":"5/8/2018"},
-    {"officeId":5,"type":"Edith","name":"Wrapsafe","year":1994,"createdOn":"2/5/2018"},
-    {"officeId":6,"type":"Arabella","name":"Rank","year":1994,"createdOn":"5/27/2018"},
-    {"officeId":7,"type":"Lynde","name":"Voltsillam","year":2006,"createdOn":"6/19/2018"},
-    {"officeId":8,"type":"Blair","name":"Cardify","year":1995,"createdOn":"11/3/2018"},
-    {"officeId":9,"type":"Earl","name":"Vagram","year":2010,"createdOn":"3/5/2018"},
-    {"officeId":10,"type":"Zedekiah","name":"Lotstring","year":1988,"createdOn":"5/19/2018"}]
+[   {"officeId":1,"type":"Presidential","name":"Quo Lux"},
+    {"officeId":2,"type":"Senatorial","name":"Sub-Ex"},
+    {"officeId":3,"type":"Federal House","name":"Cardguard"},
+    {"officeId":4,"type":"Gubernatorial","name":"Hatity"},
+    {"officeId":5,"type":"Local Chairmanship","name":"Wrapsafe"},
+    {"officeId":6,"type":"Councillor","name":"Rank","year":1994},
+    {"officeId":7,"type":"State Assembly","name":"Voltsillam"}
+]
