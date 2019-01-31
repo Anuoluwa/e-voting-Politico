@@ -1,5 +1,4 @@
-# e-voting-Politico    [![Build Status](https://travis-ci.org/Anuoluwa/e-voting-Politico.svg?branch=develop)](https://travis-ci.org/Anuoluwa/e-voting-Politico)  [![Coverage Status](https://coveralls.io/repos/github/Anuoluwa/e-voting-Politico/badge.svg?branch=develop)](https://coveralls.io/github/Anuoluwa/e-voting-Politico?branch=develop) 
-[![Maintainability](https://api.codeclimate.com/v1/badges/b099512884c97c40dc3f/maintainability)](https://codeclimate.com/github/Anuoluwa/e-voting-Politico/maintainability)
+# e-voting-Politico    [![Build Status](https://travis-ci.org/Anuoluwa/e-voting-Politico.svg?branch=develop)](https://travis-ci.org/Anuoluwa/e-voting-Politico)  [![Coverage Status](https://coveralls.io/repos/github/Anuoluwa/e-voting-Politico/badge.svg?branch=develop)](https://coveralls.io/github/Anuoluwa/e-voting-Politico?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/b099512884c97c40dc3f/maintainability)](https://codeclimate.com/github/Anuoluwa/e-voting-Politico/maintainability)
 
 Politico enables citizens give their mandate to politicians running for different government offices
 while building trust in the process through transparency.
