@@ -15,6 +15,7 @@ router.delete('/parties/:id', Validator.validateId, Party.deleteParty);
 router.get('/offices', Office.getOffices);
 router.get('/offices/:id', Validator.validateId, Office.getOneOffice);
 router.post('/offices', Validator.officeInput, Office.createOffice);
+router.use('*', (req, res) => res.json('Route does not exist'));
 
 
 export default router;
