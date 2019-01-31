@@ -5,42 +5,86 @@ class ValidateInput {
       hqAddress,
       logoUrl,
     } = req.body;
+    // const validname = /^[a-zA-Z\-]+$/.test(name);
+    if (typeof name !== 'string') {
+      return res.status(400)
+        .json({ error: 'name input should be a string' });
+    }
+    if (name instanceof String) {
+      return res.status(400)
+        .json({ error: 'name input should be a string' });
+    }
+    if (name.length === '') {
+      return res.status(400)
+        .json({ error: 'name must not be empty' });
+    }
+    if (!(/[^a-zA-Z]/.test(name))) {
+      return res.status(400)
+        .json({ error: 'name input should be a string without number or special characters' });
+    }
     if (!name) {
-      return res.status(400).json({ message: '"name" must be a string!' })
+      return res.status(400).json({ error: 'name must be a string!' })
         .end();
     }
     if (name.length < 8) {
       return res.status(400).json(
-        { message: '"name" must be a string with minimum 20 characters' },
+        { error: 'name must be a string with minimum 20 characters' },
       )
         .end();
     }
     if (name.length > 100) {
-      return res.status(400).json({ message: '"name" must be a string with maximum 200 characters' })
+      return res.status(400).json({ error: 'name must be a string with maximum 200 characters' })
         .end();
     }
     if (!hqAddress) {
-      return res.status(400).json('"hqAddress" must be a string')
+      return res.status(400).json('hqAddress must be a string')
         .end();
     }
+
+    if (typeof hqAddress !== 'string') {
+      return res.status(400)
+        .json({ error: 'hqAddress input should be a string' });
+    }
+    if (hqAddress instanceof String) {
+      return res.status(400)
+        .json({ error: 'hqAddress input should be a string' });
+    }
+    if (hqAddress.length === '') {
+      return res.status(400)
+        .json({ error: 'hqAddress must not be empty' });
+    }
+
     if (hqAddress.length < 7) {
-      return res.status(400).json({ messge: '"hqAddress" must be a string with minimum 20 characters' })
+      return res.status(400).json({ messge: 'hqAddress must be a string with minimum 20 characters' })
         .end();
     }
     if (hqAddress.length > 50) {
-      return res.status(400).json({ message: '"hqAddress" must be a string with maximum 20 character ' })
+      return res.status(400).json({ error: 'hqAddress must be a string with maximum 20 character ' })
         .end();
     }
+
+    if (typeof logoUrl !== 'string') {
+      return res.status(400)
+        .json({ error: 'logoUrl input should be a string' });
+    }
+    if (logoUrl instanceof String) {
+      return res.status(400)
+        .json({ error: 'logoUrl input should be a string' });
+    }
+    if (logoUrl.length === '') {
+      return res.status(400)
+        .json({ error: 'logoUrl must not be empty' });
+    }
     if (!logoUrl) {
-      return res.status(400).json({ message: '"logoUrl" must be a string' })
+      return res.status(400).json({ error: 'logUrl must be a string' })
         .end();
     }
     if (logoUrl.length < 8) {
-      return res.status(400).json({ message: '"logoUrl" must be a string with minimum 20 characters' })
+      return res.status(400).json({ error: 'logUrl must be a string with minimum 20 characters' })
         .end();
     }
     if (logoUrl.length > 70) {
-      return res.status(400).json({ message: '"logoUrl" must be a string with maximum 20 character ' })
+      return res.status(400).json({ error: 'logUrl must be a string with maximum 20 character ' })
         .end();
     }
     next();
@@ -52,30 +96,58 @@ class ValidateInput {
       name,
     } = req.body;
 
+    if (typeof type !== 'string') {
+      return res.status(400)
+        .json({ error: 'type input should be a string' });
+    }
+    if (type instanceof String) {
+      return res.status(400)
+        .json({ error: 'type input should be a string' });
+    }
+    if (type.length === '') {
+      return res.status(400)
+        .json({ error: 'type must not be empty' });
+    }
     if (!type) {
-      return res.status(400).json('"type" must be a string')
+      return res.status(400).json('type must be a string')
         .end();
     }
     if (type.length < 7) {
-      return res.status(400).json({ messge: '"type" must be a string with minimum 7 characters' })
+      return res.status(400).json({ messge: 'type must be a string with minimum 7 characters' })
         .end();
     }
     if (type.length > 50) {
-      return res.status(400).json({ message: '"type" must be a string with maximum 50 character ' })
+      return res.status(400).json({ error: 'type must be a string with maximum 50 character ' })
         .end();
     }
+    if (typeof name !== 'string') {
+      return res.status(400)
+        .json({ error: 'name input should be a string' });
+    }
+    if (name instanceof String) {
+      return res.status(400)
+        .json({ error: 'name input should be a string' });
+    }
+    if (name.length === '') {
+      return res.status(400)
+        .json({ error: 'name must not be empty' });
+    }
+    if (!/[^a-zA-Z]/.test(name)) {
+      return res.status(400)
+        .json({ error: 'name input should be a string without number or special characters' });
+    }
     if (!name) {
-      return res.status(400).json({ message: '"name" must be a string!' })
+      return res.status(400).json({ error: 'name must be a string!' })
         .end();
     }
     if (name.length < 8) {
       return res.status(400).json(
-        { message: '"name" must be a string with minimum 8 characters' },
+        { error: 'name must be a string with minimum 8 characters' },
       )
         .end();
     }
     if (name.length > 100) {
-      return res.status(400).json({ message: '"name" must be a string with maximum 100 characters' })
+      return res.status(400).json({ error: 'name must be a string with maximum 100 characters' })
         .end();
     }
     next();
@@ -85,12 +157,12 @@ class ValidateInput {
     const { id } = req.params;
     const parsedId = parseInt(id, 10);
     if (id.length === '') {
-      return res.status(400).json({ message: '"ID" should not be empty!' })
+      return res.status(400).json({ error: '"ID" should not be empty!' })
         .end();
     }
     if (Number.isNaN(parsedId) === true) {
       return res.status(400).json({
-        message: 'PartyId must be a number',
+        error: 'PartyId must be a number',
       });
     }
     next();
