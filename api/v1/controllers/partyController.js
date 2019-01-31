@@ -47,7 +47,7 @@ class Parties {
         party[key] = req.body[key];
       });
       parties[index] = party;
-      res.status(202).json({ status: 200, data: [parties[index]] });
+      res.status(200).json({ status: 200, data: [parties[index]] });
     } catch (err) {
       res.status(500).json({ status: 500, error: 'Sorry about that, not available' });
     }
