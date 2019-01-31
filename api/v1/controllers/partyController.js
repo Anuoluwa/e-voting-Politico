@@ -3,9 +3,9 @@ import parties from '../models/parties';
 class Parties {
   static async getParties(req, res) {
     try {
-      return await res.json(parties);
+      return await res.json({ status: 200, parties });
     } catch (err) {
-      return res.status(404).json({ message: 'Parties not found!', err });
+      return res.status(404).json({ status: 404, error: 'Parties not found!' });
     }
   }
 
@@ -14,11 +14,11 @@ class Parties {
     try {
       const partyItem = await parties.filter(party => party.partyId == partyId)[0];
       if (!partyItem) {
-        return res.status(404).json({ message: 'Party does not exist!' });
+        return res.status(404).json({ status: 404, error: 'Party does not exist!' });
       }
-      return res.status(200).json(partyItem);
+      return res.status(200).json({ status: 200, data: [partyItem] });
     } catch (err) {
-      return res.status(500).json({ message: 'Sorry about that, not available', err });
+      return res.status(500).json({ status: 500, error: 'Sorry about that, not available' });
     }
   }
 
@@ -28,10 +28,9 @@ class Parties {
       name: req.body.name,
       hqAddress: req.body.hqAddress,
       logoUrl: req.body.logoUrl,
-      createdOn: req.body.createdOn,
     };
     parties.push(newParty);
-    res.status(201).json({ message: 'party was created successfully', data: parties });
+    res.status(201).json({ status: 201, data: [parties[parties.length - 1]] });
   }
 
 
@@ -40,7 +39,7 @@ class Parties {
       const partyId = parseInt(req.params.id, 10);
       const party = await parties.filter(item => item.partyId == partyId)[0];
       if (!party) {
-        return res.status(404).json({ message: 'Party does not exist!' });
+        return res.status(404).json({ status: 404, error: 'Party does not exist!' });
       }
       const index = parties.indexOf(party);
       const keys = Object.keys(req.body);
@@ -48,9 +47,9 @@ class Parties {
         party[key] = req.body[key];
       });
       parties[index] = party;
-      res.status(202).json({ message: 'Party updated successfully!', data: parties[index] });
+      res.status(202).json({ status: 202, data: [parties[index]] });
     } catch (err) {
-      res.status(500).json({ message: 'Sorry about that, not available', err });
+      res.status(500).json({ status: 500, error: 'Sorry about that, not available' });
     }
   }
 
@@ -60,12 +59,12 @@ class Parties {
       const party = parties.filter(item => item.partyId == partyId)[0];
       const index = parties.indexOf(party);
       if (!party) {
-        return res.status(404).json({ message: 'Party does not exist!' });
+        return res.status(404).json({ status: 404, error: 'Party does not exist!' });
       }
       parties.splice(index, 1);
-      res.status(200).json({ message: `The is party with this id: ${partyId} has been removed.` });
+      res.status(200).json({ status: 200, message: `The is party with this id: ${partyId} has been removed.` });
     } catch (err) {
-      res.status(500).json({ message: 'Sorry about that, not available', err });
+      res.status(500).json({ status: 500, error: 'Sorry about that, not available' });
     }
   }
 }

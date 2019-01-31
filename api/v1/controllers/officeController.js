@@ -3,9 +3,9 @@ import offices from '../models/offices';
 class Offices {
   static async getOffices(req, res) {
     try {
-      return await res.json(offices);
+      return await res.json({ status: 200, offices });
     } catch (err) {
-      return res.status(404).json({ message: 'Parties not found!', err });
+      return res.status(404).json({ status: 404, error: 'Offices not found!' });
     }
   }
 
@@ -14,11 +14,11 @@ class Offices {
     try {
       const officeItem = await offices.filter(office => office.officeId == officeId)[0];
       if (!officeItem) {
-        return res.status(404).json({ message: 'Office does not exist!' });
+        return res.status(404).json({ status: 404, error: 'Office does not exist!' });
       }
-      return res.status(200).json(officeItem);
+      return res.status(200).json({ status: 200, data: [officeItem] });
     } catch (err) {
-      return res.status(500).json({ message: 'Sorry about that, not available', err });
+      return res.status(404).json({ status: 500, error: 'Sorry about that, not available' });
     }
   }
 
@@ -26,11 +26,10 @@ class Offices {
     const newOffice = {
       officeId: offices.length + 1,
       type: req.body.type,
-      year: req.body.year,
-      createdOn: req.body.createdOn,
+      name: req.body.name,
     };
     offices.push(newOffice);
-    res.status(201).json({ message: 'office was created successfully', data: offices });
+    res.status(201).json({ status: 201, data: [offices[offices.length - 1]] });
   }
 }
 
