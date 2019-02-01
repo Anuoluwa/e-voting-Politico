@@ -41,10 +41,6 @@ class ValidateInput {
       return res.status(400)
         .json({ error: 'hqAddress input should be a string' });
     }
-    if (hqAddress instanceof String) {
-      return res.status(400)
-        .json({ error: 'hqAddress input should be a string' });
-    }
     if (hqAddress.length === '') {
       return res.status(400)
         .json({ error: 'hqAddress must not be empty' });
