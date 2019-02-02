@@ -4,7 +4,7 @@
   "description": "electronic voting platform for national elections",
   "main": "Versioning.js",
   "scripts": {
-    "start": "nodemon --watch server.js --exec babel-node -- server.js",
+    "start": "babel-node server.js",
     "test": "nyc --reporter=html --reporter=text mocha  --require @babel/polyfill --require @babel/register \" api/v1/tests/**/*.spec.js\" --reporter progress --exit ",
     "lint": " esw server.js versioning.js api/v1/* --color",
     "lint-watch": "npm run lint -- --watch",
@@ -23,6 +23,12 @@
   "homepage": "https://github.com/Anuoluwa/e-voting-Politico#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/register": "^7.0.0",
     "chai": "^4.2.0",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
@@ -30,12 +36,6 @@
     "mocha": "^5.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/node": "^7.2.2",
-    "@babel/polyfill": "^7.2.5",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/register": "^7.0.0",
     "coveralls": "^3.0.2",
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
