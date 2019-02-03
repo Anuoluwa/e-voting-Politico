@@ -5,7 +5,12 @@ node_js:
 notifications:
   email: 
     false
+
+services:
+  - postgresql
+  
 before_install:
+  - psql -c 'create database travis_ci_politico;' -U postgres
   - npm i -g npm@6.7.0
   
 after_script:

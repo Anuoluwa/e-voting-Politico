@@ -4,8 +4,16 @@
   "description": "electronic voting platform for national elections",
   "main": "Versioning.js",
   "scripts": {
-    "start": "babel-node server.js",
-    "test": "nyc --reporter=html --reporter=text mocha  --require @babel/polyfill --require @babel/register \" api/v1/tests/**/*.spec.js\" --reporter progress --exit ",
+    "start": "cross-env NODE_ENV=production babel-node server.js",
+    "test": "npm run migrate-test cross-env NODE_ENV=test nyc --reporter=html --reporter=text mocha  --require @babel/polyfill --require @babel/register \" api/v1/tests/**/*.spec.js\" --reporter progress --exit ",
+    "migrate-test": "npm run drop-db-test && npm run create-db-test && npm run insert-db-test",
+    "create-db-test": "cross-env NODE_ENV=test babel-node ./api/v2/migrations/createTables.js",
+    "drop-db-test": "cross-env NODE_ENV=test babel-node ./api/v2/migrations/dropTables.js",
+    "insert-db-test": "cross-env NODE_ENV=test babel-node ./api/v2/migrations/seeders.js",
+    "create-db-prod": "cross-env NODE_ENV=production babel-node ./api/v2/migrations/createTables.js",
+    "drop-db-prod": "cross-env NODE_ENV=production babel-node ./api/v2/migrations/dropTables.js",
+    "insert-db-prod": "cross-env NODE_ENV=production babel-node ./api/v2/migrations/seeders.js",
+    "tests": "npm run migrations && npm run seeder:testadmin && npm run test",
     "lint": " esw server.js versioning.js api/v1/* --color",
     "lint-watch": "npm run lint -- --watch",
     "coveralls": "npm run coverage -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
@@ -22,27 +30,39 @@
   },
   "homepage": "https://github.com/Anuoluwa/e-voting-Politico#readme",
   "dependencies": {
-    "body-parser": "^1.18.3",
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.1",
     "@babel/register": "^7.0.0",
+    "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "express-api-versioning": "^2.0.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "morgan": "^1.9.1",
+    "pg": "^7.8.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.2",
+    "cross-env": "^5.2.0",
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.15.0",
+    "jsdoc": "^3.5.5",
     "mocha-lcov-reporter": "^1.3.0",
     "nodemon": "^1.18.9",
     "nyc": "^13.1.0",
     "supertest": "^3.4.2"
+  },
+  "nyc": {
+    "exclude": [
+      "UI",
+      "api/v2/test/**/*.spec.js",
+      "api/v2/config/*",
+      "server/config/config.js"
+    ]
   }
 }
