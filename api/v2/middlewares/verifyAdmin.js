@@ -7,17 +7,17 @@
 */
 const verifyAdmin = async (req, res, next) => {
   try {
-    if (req.user.admin === 'false' || req.user.admin !== 'true') {
-      return res.status(403).json({ message: 'Unauthorized, ACESSS DENIED' });
+    if (req.user.admin === 0 || req.user.admin !== '') {
+      return res.status(403).json({ status: 403, error: 'Unauthorized, ACESSS DENIED' });
     }
-    if (req.user.admin === 'true') {
+    if (req.user.admin === 1) {
       next();
     }
   } catch (error) {
     console.log({ message: `${error}` });
     return res.status(500).json({
-      status: 'operation not successful',
-      message: 'Oops,...something went wrong on this admin route, try again!',
+      status: 500,
+      error: 'Oops,...something went wrong on this admin route, try again!',
     });
   }
 };
