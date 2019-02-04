@@ -18,7 +18,7 @@ export const createUserAccount = reqBody => (`
    RETURNING *
    `);
 
-export const findUser = firstname => `SELECT * FROM users WHERE firstname = '${firstname}'`;
+export const findUser = email => `SELECT * FROM users WHERE email = '${email}'`;
 export const findUserById = id => `SELECT * FROM users WHERE id = '${id}'`;
 
 export const checkUser = (firstname, email) => `

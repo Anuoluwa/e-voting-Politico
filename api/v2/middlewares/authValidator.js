@@ -207,31 +207,19 @@ export default class authValidator {
        * @return {res.status()} A response object and emit appropriate errors.
        */
   static login(req, res, next) {
-    const { firstname, password } = req.body;
-    const validFirstname = /^[a-zA-Z\-]+$/.test(firstname);
+    const { email, password } = req.body;
+    const validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
     const validPassword = /^[a-zA-Z0-9.\-$@*!]{6,12}$/g.test(password);
-    if (!validFirstname) {
-      return res.status(400).json(
-        {
-          error: 'firstname should not contain special characters, numbers and whitespace',
-        },
-      );
-    }
-    if (typeof firstname === 'undefined') {
+    if (typeof email === 'undefined') {
       return res.status(400)
-        .json({ error: 'firstname field must not be undefined' });
+        .json({ error: '"email" field must not be undefined' });
     }
-    if (firstname.length === '') {
+    if (email.length === '') {
       return res.status(400)
-        .json({ error: 'firstname must not be empty' });
+        .json({ error: '"email" must be not empty' });
     }
-    if (firstname.length > 10) {
-      return res.status(400)
-        .json({ error: 'firstname must be a string with maximum length of 10' });
-    }
-    if (firstname.length < 6) {
-      return res.status(400)
-        .json({ error: 'firstname must be a string with with minimum length of 6' });
+    if (!validEmail) {
+      return res.status(400).json({ error: '"email" should be in the proper format' });
     }
     if (typeof password === 'undefined' || typeof validPassword === 'undefined') {
       return res.status(400)

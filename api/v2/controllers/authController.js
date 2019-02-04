@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import db from '../config/connection';
 import PasswordHelper from '../helpers/passwordHelper';
-import { createUserAccount, checkUser } from '../models/queries';
+import { createUserAccount, checkUser, findUser } from '../models/queries';
 
 /**
  * Creates a new AuthController.
@@ -88,6 +88,72 @@ export default class AuthController {
         status: '500',
         message: 'Oops, something went wrong, try again!',
       }]);
+    }
+  }
+
+
+  /**
+ * @method login
+ * @static
+ * @description this login implementation for returning users
+ * @constructor none
+ * @param {object} req req object
+ * @param {object} res res object
+ * @returns {Object} res status 404 if user could not be found with message
+ * @returns {Object} status 400 if password is wrong
+ * @returns {Object} status 200 for successful login with message and users' data
+ * @returns {Object} status 500 for server error
+ */
+  static async login(req, res) {
+    try {
+      const { email, password } = req.body;
+      const getUser = await db.query(findUser(email));
+      if (getUser.rowCount === 0) {
+        return res.status(404).json({
+          status: 404,
+          error: 'Invalid email or password!',
+        });
+      }
+      const validatePassword = await PasswordHelper
+        .verifyPassword(password, getUser.rows[0].password);
+      if (validatePassword === false) {
+        return res.status(400).json({
+          status: 400,
+          error: 'Wrong email or password',
+        });
+      }
+      const token = jwt.sign(
+        {
+          id: getUser.rows[0].id,
+          firstname: getUser.rows[0].firstname,
+          lastname: getUser.rows[0].lastname,
+          othername: getUser.rows[0].othername,
+          address: getUser.rows[0].address,
+          phoneNumber: getUser.rows[0].phoneNumber,
+          passportUrl: getUser.rows[0].passportUrl,
+          email: getUser.rows[0].email,
+          isAdmin: getUser.rows[0].isAdmin,
+        },
+        process.env.SECRET_KEY, { expiresIn: 86400 },
+      );
+      const data = {
+        token,
+        firstname: getUser.rows[0].firstname,
+        lastname: getUser.rows[0].firstname,
+        othername: getUser.rows[0].othername,
+        email: getUser.rows[0].email,
+        admin: getUser.rows[0].admin,
+      };
+      return res.status(200).json({
+        status: 200,
+        data: [token],
+      });
+    } catch (error) {
+      console.log({ message: `${error}` });
+      return res.status(500).json({
+        status: 500,
+        error: 'Oops, something went wrong, try again!',
+      });
     }
   }
 }
