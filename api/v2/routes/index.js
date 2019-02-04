@@ -3,7 +3,7 @@ import express from 'express';
 import Auth from '../controllers/authController';
 import Office from '../controllers/officeController';
 import Party from '../controllers/partyController';
-// import authValidation from '../middlewares/authValidator';
+import authValidation from '../middlewares/authValidator';
 import verifyToken from '../middlewares/verifyToken';
 import verifyAdmin from '../middlewares/verifyAdmin';
 
@@ -13,7 +13,7 @@ const router = express.Router();
 router.get('/', (req, res) => res.json('Successful!, Welcome to Politico API v1!'));
 
 
-router.post('/auth/signup', Auth.signUp);
+router.post('/auth/signup', authValidation.signup, Auth.signUp);
 router.get('/parties', verifyToken, verifyAdmin, Party.getParties);
 router.get('/parties/:id', verifyToken, verifyAdmin, Party.getOneParty);
 router.post('/parties', verifyToken, verifyAdmin, Party.createParty);
