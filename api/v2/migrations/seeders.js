@@ -2,12 +2,11 @@
 import db from '../config/connection';
 
 const insertUserTable = `
-INSERT INTO  users (id, firstname, lastname, othername, address, phoneNumber, passportUrl, email, password, isAdmin) 
-VALUES('1', 'admin', 'admin', 'admin', '3 Politico Str', '12345678900', 'www.findmylogo.com', 'admin@politico.com', 'password', '1'),
-('2', 'admintest', 'admintest', 'admintest', '4 Politico Str', '12345678901', 'www.findmylogo1.com', 'admin_@politico.com', 'password', '1'),
-('3', 'John', 'Doe', 'Junior', '5 Politico Str', '12345678902', 'www.findmylogo1.com', 'admin@politico.com', 'password1', '0'),
-('4', 'Jane', 'Doe', 'Junior', '5 Politico Str', '12345678902', 'www.findmylogo1.com', 'admin2@politico.com', 'password1', '0'),
-('5', 'Johnbull', 'Doe', 'Junior', '5 Politico Str', '12345678902', 'www.findmylogo1.com', 'admin3@politico.com', 'password3', '0')`;
+INSERT INTO  users (id, firstname, lastname, othername, address, phoneNumber, passportUrl, email, password) 
+VALUES
+('1', 'John', 'Doe', 'Junior', '5 Politico Str', '12345678902', 'www.findmylogo1.com', 'admin@politico.com', 'password1'),
+('2', 'Jane', 'Doe', 'Junior', '5 Politico Str', '12345678902', 'www.findmylogo1.com', 'admin2@politico.com', 'password1'),
+('3', 'Johnbull', 'Doe', 'Junior', '5 Politico Str', '12345678902', 'www.findmylogo1.com', 'admin3@politico.com', 'password3')`;
 
 const insertPartyTable = `
 INSERT INTO  parties (id, partyName, hqAddress, logoUrl) 
@@ -22,10 +21,10 @@ VALUES('1', 'Federal', 'Presidential'),
 ('3', 'Local', 'Chairmanship')`;
 
 
-const insertCandidatesTable = `
-INSERT INTO  candidates (id, office, party, candidate, createdAt) 
+/* const insertCandidatesTable = `
+INSERT INTO  candidates (id, office, party, candidate, createdAt)
 VALUES('1', '1', '1', '4', current_timestamp),
-('2', '2', '2', '5', current_timestamp)`;
+('2', '2', '2', '5', current_timestamp)`; */
 /*
 const insertVotersTable = `
 INSERT INTO votes (id, createdOn, createdBy, office, candidate)
@@ -63,19 +62,19 @@ db.query(insertUserTable).then((response) => {
       } else {
         console.log('Error while seeding Offices table');
       }
-      db.query(insertCandidatesTable).then((resCandidate) => {
+      /* db.query(insertCandidatesTable).then((resCandidate) => {
         if (resCandidate) {
           console.log('Candidates table seeded successfully');
         } else {
           console.log('Error while seeding Candidates table');
+        } */
+      db.query(insertPetitionsTable).then((resPetition) => {
+        if (resPetition) {
+          console.log('Petitions table seeded successfully');
+        } else {
+          console.log('Error while seeding Petitions table');
         }
-        db.query(insertPetitionsTable).then((resPetition) => {
-          if (resPetition) {
-            console.log('Petitions table seeded successfully');
-          } else {
-            console.log('Error while seeding Petitions table');
-          }
-          /* db.query(insertUserOfficeTable).then((resUserOffice) => {
+        /* db.query(insertUserOfficeTable).then((resUserOffice) => {
             if (resUserOffice) {
               console.log('user_office table seeded successfully');
             } else {
@@ -87,8 +86,8 @@ db.query(insertUserTable).then((response) => {
               } else {
                 console.log('Error while seeding vote_office table');
               } */
-        }).catch(error => console.log(`${error}`));
       }).catch(error => console.log(`${error}`));
     }).catch(error => console.log(`${error}`));
   }).catch(error => console.log(`${error}`));
 }).catch(error => console.log(`${error}`));
+// }).catch(error => console.log(`${error}`));
