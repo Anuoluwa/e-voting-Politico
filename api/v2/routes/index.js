@@ -14,6 +14,7 @@ router.get('/', (req, res) => res.json('Successful!, Welcome to Politico API v1!
 
 
 router.post('/auth/signup', authValidation.signup, Auth.signUp);
+router.post('/auth/login', authValidation.login, Auth.login);
 router.get('/parties', verifyToken, verifyAdmin, Party.getParties);
 router.get('/parties/:id', verifyToken, verifyAdmin, Party.getOneParty);
 router.post('/parties', verifyToken, verifyAdmin, Party.createParty);
