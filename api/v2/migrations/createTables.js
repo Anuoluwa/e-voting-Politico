@@ -10,8 +10,8 @@ CREATE TABLE IF NOT EXISTS users(
     phoneNumber text NOT NULL,
     passportUrl VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    password VARCHAR(50) NOT NULL,
-    isAdmin BOOL DEFAULT '0',
+    password VARCHAR(255) NOT NULL,
+    isAdmin INTEGER DEFAULT 0,
     createdAt TIMESTAMP DEFAULT Now()
 )`;
 
