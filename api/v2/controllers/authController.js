@@ -146,7 +146,7 @@ export default class AuthController {
       };
       return res.status(200).json({
         status: 200,
-        data: [token],
+        data: token,
       });
     } catch (error) {
       console.log({ message: `${error}` });

@@ -21,7 +21,7 @@ const verifyToken = (req, res, next) => {
   }
   if (req.headers.authorization === '') {
     return res.status(400).json({
-      status: 'operation not successful',
+      status: 400,
       error: 'Headers key: "Authorization" and "token XXXXXXXXX" should not be empty',
     });
   }
@@ -33,7 +33,9 @@ const verifyToken = (req, res, next) => {
         error: 'Failed to authenticate token',
       });
     }
+    console.log('coded', decoded);
     req.user = decoded;
+    console.log('user', req.user);
     next();
   });
 };
