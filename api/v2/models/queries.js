@@ -134,9 +134,9 @@ RETURNING *
  * @description This creates candidates
  * @returns {Object} Object
 */
-export const collateFetchResult = (table, office) => (`
+export const collateResult = (votes, office) => (`
 SELECT candidate, COUNT(createdBy) RESULT
-FROM '${table} '
+FROM '${votes} '
 WHERE '${office}'
 GROUP BY candidates
 ORDER BY RESULT DESC

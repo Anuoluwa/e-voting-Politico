@@ -108,6 +108,13 @@ class Offices {
       });
     }
   }
+
+  static async registerCandidate(req, res) {
+    const {
+      type, officeName,
+    } = req.body;
+
+  }
 }
 
 export default Offices;
