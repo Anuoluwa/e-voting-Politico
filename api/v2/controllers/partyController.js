@@ -1,5 +1,9 @@
 import db from '../config/connection';
-import { createParty, findParty, getAllParty } from '../models/queries';
+import {
+  createParty,
+  findParty,
+  getAllParty, findPartyById,
+} from '../models/queries';
 /**
  * Creates a new PartyController.
  * @class
@@ -83,8 +87,41 @@ class Parties {
     }
   }
 
+  /**
+ * @method getOneParty
+ * @static
+ * @description this takes of GET one specific party
+ * @constructor none
+ * @param {object} req req object
+ * @param {object} res res object
+ * @returns {Object} status 404 party does not exist
+ * @returns {Object} status 200 party details
+ * @returns {Object} status 500 for server error
+ */
   static async getOneParty(req, res) {
-    res.json({ error: 'logic to get all the one party' });
+    try {
+      const partyId = parseInt(req.params.id, 10);
+      console.log('idparty', partyId);
+      const getParty = await db.query(findPartyById(partyId));
+      if (getParty.rowCount === 0) {
+        return res.status(404).json({
+          status: 404,
+          error: 'party does not exist',
+        });
+      }
+      if (getParty.rowCount > 0) {
+        return res.status(200).json({
+          status: 200,
+          data: { party: [getParty.rows[0]] },
+        });
+      }
+    } catch (error) {
+      console.log({ message: `${error}` });
+      return res.status(500).json({
+        status: 500,
+        error: 'Sorry, something went wrong, try again!',
+      });
+    }
   }
 
   static async editParty(req, res) {
