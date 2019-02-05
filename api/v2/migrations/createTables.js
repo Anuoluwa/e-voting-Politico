@@ -37,46 +37,31 @@ CREATE TABLE IF NOT EXISTS offices(
 
 const createCandidateTable = `
 CREATE TABLE IF NOT EXISTS candidates(
-    id SERIAL PRIMARY KEY,
     office SERIAL REFERENCES offices(id) ON DELETE CASCADE,
     party SERIAL REFERENCES parties(id) ON DELETE CASCADE,
-    candidate SERIAL REFERENCES users(id) ON DELETE CASCADE ,
+    candidate SERIAL REFERENCES users(id) ON DELETE CASCADE,
+    CONSTRAINT candidateId PRIMARY KEY (office, candidate),
     createdAt TIMESTAMP DEFAULT Now()
 )`;
 
 const createVoteTable = `
 CREATE TABLE IF NOT EXISTS votes(
-    id SERIAL PRIMARY KEY,
     createdOn TIMESTAMP DEFAULT Now(),
     createdBy SERIAL REFERENCES users(id) ON DELETE CASCADE,
     office SERIAL REFERENCES offices(id) ON DELETE CASCADE,
-    candidate SERIAL REFERENCES candidates(id) ON DELETE CASCADE ,
+    candidate SERIAL REFERENCES candidates(id) ON DELETE CASCADE,
+    CONSTRAINT voteId PRIMARY KEY (office, createdBy),
     createdAt TIMESTAMP DEFAULT Now()
 )`;
 
 const createPetitionTable = `
 CREATE TABLE IF NOT EXISTS petitions(
-    id SERIAL PRIMARY KEY,
     createdOn TIMESTAMP DEFAULT Now(),
     createdBy SERIAL REFERENCES users(id) ON DELETE CASCADE,
     office SERIAL REFERENCES offices(id) ON DELETE CASCADE,
+    CONSTRAINT officeVoterPkey PRIMARY KEY (office, createdBy)
     body text NOT NULL
 )`;
-
-const createOfficeVotersTable = `
-CREATE TABLE IF NOT EXISTS vote_office (
-    officeId   int REFERENCES offices(id) ON UPDATE CASCADE ON DELETE CASCADE,
-    voterId    int REFERENCES votes(id) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT officeVoterPkey PRIMARY KEY (officeId, voterId)
-)`;
-
-const createUserOfficesTable = `
-CREATE TABLE IF NOT EXISTS user_office(
-    officeId   int REFERENCES offices (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    userId    int REFERENCES votes(id) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT userOfficePkey PRIMARY KEY (officeId, userId)
-)`;
-
 
 db.query(createUserTable).then((response) => {
   if (response) {
@@ -114,20 +99,6 @@ db.query(createUserTable).then((response) => {
             } else {
               console.log('Error while creating Petition table');
             }
-            db.query(createOfficeVotersTable).then((resOfficeVoter) => {
-              if (resOfficeVoter) {
-                console.log('OfficeVoters table created successfully');
-              } else {
-                console.log('Error while creating OfficeVoters table');
-              }
-              db.query(createUserOfficesTable).then((resUserOffice) => {
-                if (resUserOffice) {
-                  console.log('UserOffices table created successfully');
-                } else {
-                  console.log('Error while creating UserOffices table');
-                }
-              }).catch(error => console.log(`${error}`));
-            }).catch(error => console.log(`${error}`));
           }).catch(error => console.log(`${error}`));
         }).catch(error => console.log(`${error}`));
       }).catch(error => console.log(`${error}`));
