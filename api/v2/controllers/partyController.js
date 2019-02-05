@@ -1,5 +1,5 @@
 import db from '../config/connection';
-import { createParty, findParty } from '../models/queries';
+import { createParty, findParty, getAllParty } from '../models/queries';
 /**
  * Creates a new PartyController.
  * @class
@@ -49,14 +49,43 @@ class Parties {
     }
   }
 
+
+  /**
+ * @method getAllParties
+ * @static
+ * @description this returns all parties availabble at the time
+ * @constructor none
+ * @param {object} req req object
+ * @param {object} res res object
+ * @returns {Object} status 200 for success
+ * @returns {Object} status 200 these are the available parties on the platform
+ * @returns {Object} status 500 Sorry, something went wrong in returning all parties!
+ */
+  static async getAllParties(req, res) {
+    try {
+      const getOneParty = await db.query(getAllParty());
+      if (getOneParty.rowCount === 0) {
+        return res.status(200).json({
+          status: 200,
+          error: 'Sorry no party at the moment',
+        });
+      }
+      return res.status(200).json({
+        status: 200,
+        data: [{ party: getOneParty.rows }],
+      });
+    } catch (error) {
+      console.log({ message: `${error}` });
+      return res.status(500).json({
+        status: 500,
+        error: 'Sorry, something went wrong in getting all party!',
+      });
+    }
+  }
+
   static async getOneParty(req, res) {
     res.json({ message: 'logic to get all the one party' });
   }
-
-  static getAllParties(req, res) {
-    res.json({ message: 'logic to create party goes here' });
-  }
-
 
   static async editParty(req, res) {
     res.json({ message: 'logic to update a party' });
