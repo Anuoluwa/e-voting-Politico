@@ -1,5 +1,7 @@
 import db from '../config/connection';
-import { createOffice, findOffice, getAllOffice } from '../models/queries';
+import {
+  createOffice, findOffice, getAllOffice, findOfficeById,
+} from '../models/queries';
 /**
  * Creates a new OfficeController.
  * @class
@@ -71,8 +73,40 @@ class Offices {
     }
   }
 
+  /**
+ * @method getOneOffice
+ * @static
+ * @description this takes of GET one specific office
+ * @constructor none
+ * @param {object} req req object
+ * @param {object} res res object
+ * @returns {Object} status 404 office does not exist
+ * @returns {Object} status 200 office details
+ * @returns {Object} status 500 for server error
+ */
   static async getOneOffice(req, res) {
-    res.json({ message: 'logic to get an offices goes here' });
+    try {
+      const officeId = parseInt(req.params.id, 10);
+      const getOffice = await db.query(findOfficeById(officeId));
+      if (getOffice.rowCount === 0) {
+        return res.status(404).json({
+          status: 404,
+          error: 'office does not exist',
+        });
+      }
+      if (getOffice.rowCount > 0) {
+        return res.status(200).json({
+          status: 200,
+          data: { office: [getOffice.rows[0]] },
+        });
+      }
+    } catch (error) {
+      console.log({ message: `${error}` });
+      return res.status(500).json({
+        status: 500,
+        error: 'Sorry, something went wrong, try again!',
+      });
+    }
   }
 }
 
