@@ -19,10 +19,10 @@ router.post('/parties', verifyToken, Party.createParty);
 router.get('/parties', verifyToken, Party.getAllParties);
 router.get('/parties/:id', verifyToken, Party.getOneParty);
 router.get('/offices', verifyToken, Office.getOffices);
+router.get('/offices/:id', verifyToken, Office.getOneOffice);
 router.post('/offices', verifyToken, Office.createOffice);
 router.patch('/parties/:id', verifyToken, verifyAdmin, Party.editParty);
 router.delete('/parties/:id', verifyToken, verifyAdmin, Party.deleteParty);
-router.get('/offices/:id', verifyToken, verifyAdmin, Office.getOneOffice);
 router.use('*', (req, res) => res.json('Route does not exist'));
 
 

@@ -100,3 +100,5 @@ export const findOffice = officeName => `SELECT * FROM offices WHERE officeName 
 
 
 export const getAllOffice = () => ('SELECT * from offices');
+
+export const findOfficeById = officeId => (` SELECT * FROM parties WHERE id = ${officeId}`);
