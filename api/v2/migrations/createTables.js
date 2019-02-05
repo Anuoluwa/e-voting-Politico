@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users(
     passportUrl VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    isAdmin INTEGER DEFAULT 0,
+    isAdmin BOOLEAN DEFAULT 'false',
     createdAt TIMESTAMP DEFAULT Now()
 )`;
 
@@ -21,7 +21,8 @@ CREATE TABLE IF NOT EXISTS parties(
     partyName VARCHAR(255) NOT NULL,
     hqAddress VARCHAR(255) NOT NULL,
     logoUrl VARCHAR(255) NOT NULL,
-    createdAt TIMESTAMP DEFAULT Now()
+    createdAt TIMESTAMP DEFAULT Now(),
+    userId SERIAL REFERENCES users(id) ON DELETE CASCADE
 )`;
 
 
@@ -30,7 +31,8 @@ CREATE TABLE IF NOT EXISTS offices(
     id SERIAL PRIMARY KEY,
     type VARCHAR(255) NOT NULL,
     officeName VARCHAR(255) NOT NULL,
-    createdAt TIMESTAMP DEFAULT Now() 
+    createdAt TIMESTAMP DEFAULT Now(), 
+    userId SERIAL REFERENCES users(id) ON DELETE CASCADE
 )`;
 
 const createCandidateTable = `

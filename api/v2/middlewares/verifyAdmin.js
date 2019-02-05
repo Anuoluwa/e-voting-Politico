@@ -7,10 +7,10 @@
 */
 const verifyAdmin = async (req, res, next) => {
   try {
-    if (req.user.admin === 0 || req.user.admin !== '') {
+    if (req.user.isAdmin === 'false') {
       return res.status(403).json({ status: 403, error: 'Unauthorized, ACESSS DENIED' });
     }
-    if (req.user.admin === 1) {
+    if (req.user.isAdmin === 'true') {
       next();
     }
   } catch (error) {
