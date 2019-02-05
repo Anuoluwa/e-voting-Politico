@@ -1,5 +1,5 @@
 import db from '../config/connection';
-import { createOffice, findOffice } from '../models/queries';
+import { createOffice, findOffice, getAllOffice } from '../models/queries';
 /**
  * Creates a new OfficeController.
  * @class
@@ -50,7 +50,25 @@ class Offices {
   }
 
   static async getOffices(req, res) {
-    res.json({ message: 'logic to get all the offices goes here' });
+    try {
+      const getOneOffice = await db.query(getAllOffice());
+      if (getOneOffice.rowCount === 0) {
+        return res.status(200).json({
+          status: 200,
+          error: 'Sorry no office at the moment',
+        });
+      }
+      return res.status(200).json({
+        status: 200,
+        data: [{ offices: getOneOffice.rows }],
+      });
+    } catch (error) {
+      console.log({ message: `${error}` });
+      return res.status(500).json({
+        status: 500,
+        error: 'Sorry, something went wrong in getting all office!',
+      });
+    }
   }
 
   static async getOneOffice(req, res) {

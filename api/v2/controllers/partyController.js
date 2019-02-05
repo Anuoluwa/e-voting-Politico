@@ -72,10 +72,10 @@ class Parties {
       }
       return res.status(200).json({
         status: 200,
-        data: [{ party: getOneParty.rows }],
+        data: [{ parties: getOneParty.rows }],
       });
     } catch (error) {
-      console.log({ message: `${error}` });
+      console.log({ error: `${error}` });
       return res.status(500).json({
         status: 500,
         error: 'Sorry, something went wrong in getting all party!',
@@ -84,15 +84,15 @@ class Parties {
   }
 
   static async getOneParty(req, res) {
-    res.json({ message: 'logic to get all the one party' });
+    res.json({ error: 'logic to get all the one party' });
   }
 
   static async editParty(req, res) {
-    res.json({ message: 'logic to update a party' });
+    res.json({ error: 'logic to update a party' });
   }
 
   static async deleteParty(req, res) {
-    res.json({ message: 'logic to delete a party' });
+    res.json({ error: 'logic to delete a party' });
   }
 }
 
