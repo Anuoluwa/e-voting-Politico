@@ -3,6 +3,7 @@ import db from '../config/connection';
 import PasswordHelper from '../helpers/passwordHelper';
 import { createUserAccount, checkUser, findUser } from '../models/queries';
 
+
 /**
  * Creates a new AuthController.
  * @class
@@ -51,6 +52,7 @@ export default class AuthController {
           message: 'user not created',
         });
       }
+      console.log('newUser', createUser);
       const token = jwt.sign(
         {
           id: createUser.rows[0].id,
@@ -58,10 +60,10 @@ export default class AuthController {
           lastname: createUser.rows[0].lastname,
           othername: createUser.rows[0].othername,
           address: createUser.rows[0].address,
-          phoneNumber: createUser.rows[0].phoneNumber,
-          passportUrl: createUser.rows[0].passportUrl,
+          phoneNumber: createUser.rows[0].phonenumber,
+          passportUrl: createUser.rows[0].passporturl,
           email: createUser.rows[0].email,
-          admin: createUser.rows[0].isAdmin,
+          admin: createUser.rows[0].isadmin,
         },
         process.env.SECRET_KEY, { expiresIn: 86400 },
       );
