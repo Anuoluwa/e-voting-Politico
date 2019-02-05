@@ -81,3 +81,19 @@ export const checkPartyName = partyId => (`
 SELECT *
 FROM parties  
 WHERE parties.id = ${partyId}`);
+
+
+/**
+ * @function createOffice
+ * @description This creates party
+ * @returns {Object} Object
+*/
+export const createOffice = reqBody => (`
+INSERT INTO offices
+(type, officeName, userId)
+VALUES
+('${reqBody.type}', '${reqBody.officeName}', ${reqBody.userId})
+RETURNING *
+`);
+
+export const findOffice = officeName => `SELECT * FROM offices WHERE officeName = '${officeName}'`;
