@@ -17,11 +17,11 @@ router.post('/auth/signup', authValidation.signup, Auth.signUp);
 router.post('/auth/login', authValidation.login, Auth.login);
 router.post('/parties', verifyToken, Party.createParty);
 router.get('/parties', verifyToken, Party.getAllParties);
+router.get('/offices', verifyToken, Office.getOffices);
 router.post('/offices', verifyToken, Office.createOffice);
 router.get('/parties/:id', verifyToken, verifyAdmin, Party.getOneParty);
 router.patch('/parties/:id', verifyToken, verifyAdmin, Party.editParty);
 router.delete('/parties/:id', verifyToken, verifyAdmin, Party.deleteParty);
-router.get('/offices', verifyToken, verifyAdmin, Office.getOffices);
 router.get('/offices/:id', verifyToken, verifyAdmin, Office.getOneOffice);
 router.use('*', (req, res) => res.json('Route does not exist'));
 

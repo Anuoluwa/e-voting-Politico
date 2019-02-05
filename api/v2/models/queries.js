@@ -97,3 +97,6 @@ RETURNING *
 `);
 
 export const findOffice = officeName => `SELECT * FROM offices WHERE officeName = '${officeName}'`;
+
+
+export const getAllOffice = () => ('SELECT * from offices');
