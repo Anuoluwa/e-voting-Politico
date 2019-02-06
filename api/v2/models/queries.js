@@ -66,7 +66,7 @@ export const findPartyById = partyId => (`SELECT * FROM parties WHERE id = ${par
 */
 export const deleteParty = (partyId, userId) => (`
 DELETE FROM parties
-WHERE parties.id = ${partyId} AND parties.userId = ${userId}`);
+WHERE id = ${partyId} AND userId = ${userId}`);
 
 /**
  * @function checkPartyId

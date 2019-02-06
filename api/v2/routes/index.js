@@ -22,7 +22,7 @@ router.get('/offices', verifyToken, Office.getOffices);
 router.get('/offices/:id', verifyToken, Validator.validateId, Office.getOneOffice);
 router.post('/offices', verifyToken, verifyAdmin, Validator.partyInput, Office.createOffice);
 router.patch('/parties/:id/name', verifyToken, verifyAdmin, Party.editParty);
-router.delete('/parties/:id', verifyToken, verifyAdmin, Validator.validateId, Party.deleteParty);
+router.delete('/parties/:id', verifyToken, verifyAdmin, Party.deleteParty);
 router.post('/offices/:id/register', verifyToken, verifyAdmin, Office.registerCandidate);
 router.post('/votes', verifyToken, vote.voteCandidate);
 router.post('/office/:id/result', verifyToken, Office.collateResults);
