@@ -3,6 +3,7 @@ import express from 'express';
 import Auth from '../controllers/authController';
 import Office from '../controllers/officeController';
 import Party from '../controllers/partyController';
+import vote from '../controllers/voteController';
 import authValidation from '../middlewares/authValidator';
 import verifyToken from '../middlewares/verifyToken';
 import verifyAdmin from '../middlewares/verifyAdmin';
@@ -24,6 +25,7 @@ router.post('/offices', verifyToken, verifyAdmin, Validator.partyInput, Office.c
 router.patch('/parties/:id', verifyToken, verifyAdmin, Validator.validateId, Party.editParty);
 router.delete('/parties/:id', verifyToken, verifyAdmin, Validator.validateId, Party.deleteParty);
 router.post('/offices/:id/register', verifyToken, verifyAdmin, Office.registerCandidate);
+router.post('/votes', verifyToken, vote.voteCandidate);
 router.use('*', (req, res) => res.json({ status: 404, error: 'Route does not exist' }));
 
 

@@ -1,7 +1,6 @@
 import db from '../config/connection';
 import {
-  createOffice, findOffice, getAllOffice, findOfficeById,
-  findPartyById, findUserById, createCandidate,
+  createOffice, findOffice, getAllOffice, findOfficeById, createCandidate,
   checkOffice, checkParty, checkCandidate,
 } from '../models/queries';
 /**
@@ -40,8 +39,8 @@ class Offices {
       const addOffice = await db.query(createOffice(newOffice));
       if (addOffice.rowCount > 0) {
         return res.status(201).json({
-          status: 200,
-          office: addOffice.rows,
+          status: 201,
+          office: [addOffice.rows],
         });
       }
     } catch (error) {
@@ -147,7 +146,7 @@ class Offices {
         if (addCandidate.rowCount > 0) {
           return res.status(201).json({
             status: 201,
-            office: addCandidate.rows,
+            office: [addCandidate.rows],
           });
         }
       }
@@ -156,7 +155,7 @@ class Offices {
       if (error.constraint.includes('candidates_pkey')) {
         return res.status(409).json({
           status: 409,
-          error: 'Candidate cannot be register twice',
+          error: 'Candidate cannot be registered twice',
         });
       }
       return res.status(500).json({
