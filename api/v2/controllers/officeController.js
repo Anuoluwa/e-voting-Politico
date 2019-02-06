@@ -1,7 +1,7 @@
 import db from '../config/connection';
 import {
   createOffice, findOffice, getAllOffice, findOfficeById, createCandidate,
-  checkOffice, checkParty, checkCandidate,
+  checkOffice, checkParty, checkCandidate, collateResult,
 } from '../models/queries';
 /**
  * Creates a new OfficeController.
@@ -87,7 +87,7 @@ class Offices {
  */
   static async getOneOffice(req, res) {
     try {
-      const officeId = parseInt(req.params.id, 10);
+      const officeId = Number(req.params.id, 10);
       const getOffice = await db.query(findOfficeById(officeId));
       if (getOffice.rowCount === 0) {
         return res.status(404).json({
@@ -158,6 +158,32 @@ class Offices {
           error: 'Candidate cannot be registered twice',
         });
       }
+      return res.status(500).json({
+        status: 500,
+        error: 'Sorry, something went wrong, try again!',
+      });
+    }
+  }
+
+  static async collateResults(req, res) {
+    try {
+      const office = Number(req.params.id, 10);
+      const getOffice = await db.query(checkOffice(office));
+      if (getOffice.rowCount === 0) {
+        return res.status(404).json({
+          status: 404,
+          error: 'office does not exist',
+        });
+      }
+      if (getOffice.rowCount > 0) {
+        const fetchResult = await db.query(collateResult(office));
+        return res.status(200).json({
+          status: 200,
+          data: { results: [fetchResult.rows] },
+        });
+      }
+    } catch (error) {
+      console.log({ message: `${error}` });
       return res.status(500).json({
         status: 500,
         error: 'Sorry, something went wrong, try again!',
