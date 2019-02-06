@@ -13,7 +13,6 @@ const router = express.Router();
 
 router.get('/', (req, res) => res.json('Successful!, Welcome to Politico API v1!'));
 
-
 router.post('/auth/signup', authValidation.signup, Auth.signUp);
 router.post('/auth/login', authValidation.login, Auth.login);
 router.post('/parties', verifyToken, verifyAdmin, Validator.partyInput, Party.createParty);
@@ -26,6 +25,7 @@ router.patch('/parties/:id', verifyToken, verifyAdmin, Validator.validateId, Par
 router.delete('/parties/:id', verifyToken, verifyAdmin, Validator.validateId, Party.deleteParty);
 router.post('/offices/:id/register', verifyToken, verifyAdmin, Office.registerCandidate);
 router.post('/votes', verifyToken, vote.voteCandidate);
+router.post('/office/:id/result', verifyToken, Office.collateResults);
 router.use('*', (req, res) => res.json({ status: 404, error: 'Route does not exist' }));
 
 
