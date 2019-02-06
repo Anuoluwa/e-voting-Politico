@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS parties(
     hqAddress VARCHAR(255) NOT NULL,
     logoUrl VARCHAR(255) NOT NULL,
     createdAt TIMESTAMP DEFAULT Now(),
-    userId SERIAL REFERENCES users(id) ON DELETE CASCADE
+    userId INTEGER REFERENCES users(id) ON DELETE CASCADE
 )`;
 
 
@@ -32,34 +32,36 @@ CREATE TABLE IF NOT EXISTS offices(
     type VARCHAR(255) NOT NULL,
     officeName VARCHAR(255) NOT NULL,
     createdAt TIMESTAMP DEFAULT Now(), 
-    userId SERIAL REFERENCES users(id) ON DELETE CASCADE
+    userId INTEGER REFERENCES users(id) ON DELETE CASCADE
 )`;
 
 const createCandidateTable = `
 CREATE TABLE IF NOT EXISTS candidates(
-    office SERIAL REFERENCES offices(id) ON DELETE CASCADE,
-    party SERIAL REFERENCES parties(id) ON DELETE CASCADE,
-    candidate SERIAL REFERENCES users(id) ON DELETE CASCADE,
-    CONSTRAINT candidateId PRIMARY KEY (office, candidate),
+    id INTEGER NOT NULL UNIQUE,
+    office INTEGER REFERENCES offices(id) ON DELETE CASCADE,
+    party INTEGER REFERENCES parties(id) ON DELETE CASCADE,
+    candidate INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    PRIMARY KEY (office, candidate),
     createdAt TIMESTAMP DEFAULT Now()
 )`;
 
 const createVoteTable = `
 CREATE TABLE IF NOT EXISTS votes(
+    id INTEGER NOT NULL UNIQUE,
     createdOn TIMESTAMP DEFAULT Now(),
-    createdBy SERIAL REFERENCES users(id) ON DELETE CASCADE,
-    office SERIAL REFERENCES offices(id) ON DELETE CASCADE,
-    candidate SERIAL REFERENCES candidates(id) ON DELETE CASCADE,
-    CONSTRAINT voteId PRIMARY KEY (office, createdBy),
-    createdAt TIMESTAMP DEFAULT Now()
+    createdBy INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    office INTEGER REFERENCES offices(id) ON DELETE CASCADE,
+    candidate INTEGER REFERENCES candidates(id) ON DELETE CASCADE,
+    PRIMARY KEY (office, createdBy)
 )`;
 
 const createPetitionTable = `
 CREATE TABLE IF NOT EXISTS petitions(
+    id INTEGER NOT NULL UNIQUE,
     createdOn TIMESTAMP DEFAULT Now(),
-    createdBy SERIAL REFERENCES users(id) ON DELETE CASCADE,
-    office SERIAL REFERENCES offices(id) ON DELETE CASCADE,
-    CONSTRAINT officeVoterPkey PRIMARY KEY (office, createdBy)
+    createdBy INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    office INTEGER REFERENCES offices(id) ON DELETE CASCADE,
+    CONSTRAINT officeVoterPkey PRIMARY KEY (office, createdBy),
     body text NOT NULL
 )`;
 

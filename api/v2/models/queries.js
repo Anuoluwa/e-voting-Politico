@@ -123,7 +123,7 @@ RETURNING *
 */
 export const createCandidate = reqBody => (`
 INSERT INTO candidates
-(office, party, candidate, candidateId)
+(office, party, candidate)
 VALUES
 ('${reqBody.office}', '${reqBody.party}', '${reqBody.candidate}')
 RETURNING *

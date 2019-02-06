@@ -1,6 +1,7 @@
 import db from '../config/connection';
 import {
   createOffice, findOffice, getAllOffice, findOfficeById,
+  findPartyById, findUserById, createCandidate,
 } from '../models/queries';
 /**
  * Creates a new OfficeController.
@@ -110,10 +111,52 @@ class Offices {
   }
 
   static async registerCandidate(req, res) {
-    const {
-      type, officeName,
-    } = req.body;
+    try {
+      const candidate = parseInt(req.params.id, 10);
+      const officeId = parseInt(req.body.office, 10);
+      const partyId = parseInt(req.body.party, 10);
+      const getOffice = await db.query(findOfficeById(officeId));
+      if (getOffice.rowCount === 0) {
+        return res.status(404).json({
+          status: 404,
+          error: 'office does not exist',
+        });
+      }
 
+      const partyExists = await db.query(findPartyById(partyId));
+      if (partyExists.rowCount === 0) {
+        return res.status(404).json({
+          status: 404,
+          error: 'party does not exist',
+        });
+      }
+
+      const candidateExists = await db.query(findUserById(candidate));
+      if (candidateExists.rowCount === 0) {
+        return res.status(404).json({
+          status: 404,
+          error: 'candidate does not exist',
+        });
+      }
+      const newcandidate = {
+        officeId, partyId, candidate,
+      };
+      if (getOffice.rowCount > 0 && partyExists.rowCount > 0 && candidateExists.rowCount > 0) {
+        const addCandidate = await db.query(createCandidate(newcandidate));
+        if (addCandidate.rowCount > 0) {
+          return res.status(201).json({
+            status: 201,
+            office: addCandidate.rows,
+          });
+        }
+      }
+    } catch (error) {
+      console.log({ message: `${error}` });
+      return res.status(500).json({
+        status: 500,
+        error: 'Sorry, something went wrong, try again!',
+      });
+    }
   }
 }
 
