@@ -38,7 +38,7 @@ export const createParty = reqBody => (`
 INSERT INTO parties
 (partyName, hqAddress, logoUrl, userId)
 VALUES
-('${reqBody.partyName}', '${reqBody.hqAddress}', '${reqBody.logoUrl}', ${reqBody.userId})
+('${reqBody.partyName}', '${reqBody.hqAddress}', '${reqBody.logoUrl}', '${reqBody.userId}')
 RETURNING *
 `);
 
@@ -57,7 +57,7 @@ export const getAllParty = () => ('SELECT * from parties');
  * @description This gets a party by id
  * @returns {Object} Object
 */
-export const findPartyById = partyId => (` SELECT * FROM parties WHERE id = ${partyId}`);
+export const findPartyById = partyId => (`SELECT * FROM parties WHERE id = ${partyId}`);
 
 /**
  * @function DeleteParty
@@ -117,7 +117,7 @@ VALUES
 RETURNING *
 `);
 
-export const checkOffice = office => (` SELECT * FROM parties WHERE id = ${office}`);
+export const checkOffice = office => (`SELECT * FROM parties WHERE id = ${office}`);
 
 export const checkParty = party => (
   `SELECT id FROM parties WHERE parties.id = ${party}`
@@ -127,18 +127,18 @@ export const checkCandidate = id => `SELECT * FROM users WHERE id = '${id}'`;
 
 /**
  * @function vote
- * @description This creates candidates
+ * @description This creates vote
  * @returns {Object} Object
 */
-export default reqBody => (`
+export const createVote = reqBody => (`
 INSERT INTO votes
-(createdOn, createdBy, office)
+(createdBy, office, candidate)
 VALUES
-('${reqBody.createdOn}', '${reqBody.createdBy}', '${reqBody.office}')
+('${reqBody.createdBy}', '${reqBody.office}', '${reqBody.candidate}')
 RETURNING *
 `);
 
-
+export const checkContestant = candidate => `SELECT * FROM candidates WHERE id = '${candidate}'`;
 /**
  * @function collateFetchResult
  * @description This creates candidates
