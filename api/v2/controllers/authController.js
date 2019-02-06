@@ -52,7 +52,7 @@ export default class AuthController {
           message: 'user not created',
         });
       }
-      console.log('newUser', createUser);
+      // console.log('newUser', createUser);
       const token = jwt.sign(
         {
           id: createUser.rows[0].id,
@@ -124,6 +124,7 @@ export default class AuthController {
           error: 'Wrong email or password',
         });
       }
+      console.log('get', getUser.rows[0]);
       const token = jwt.sign(
         {
           id: getUser.rows[0].id,
@@ -131,24 +132,29 @@ export default class AuthController {
           lastname: getUser.rows[0].lastname,
           othername: getUser.rows[0].othername,
           address: getUser.rows[0].address,
-          phoneNumber: getUser.rows[0].phoneNumber,
-          passportUrl: getUser.rows[0].passportUrl,
+          phoneNumber: getUser.rows[0].phonenumber,
+          passportUrl: getUser.rows[0].passporturl,
           email: getUser.rows[0].email,
-          isAdmin: getUser.rows[0].isAdmin,
+          isAdmin: getUser.rows[0].isadmin,
         },
         process.env.SECRET_KEY, { expiresIn: 86400 },
       );
+      console.log('token', token);
       const data = {
         token,
+        id: getUser.rows[0].id,
         firstname: getUser.rows[0].firstname,
-        lastname: getUser.rows[0].firstname,
+        lastname: getUser.rows[0].lastname,
         othername: getUser.rows[0].othername,
+        address: getUser.rows[0].address,
+        phoneNumber: getUser.rows[0].phonenumber,
+        passportUrl: getUser.rows[0].passporturl,
         email: getUser.rows[0].email,
-        admin: getUser.rows[0].admin,
+        admin: getUser.rows[0].isadmin,
       };
       return res.status(200).json({
         status: 200,
-        data: token,
+        data: [token],
       });
     } catch (error) {
       console.log({ message: `${error}` });

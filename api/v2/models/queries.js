@@ -102,3 +102,42 @@ export const findOffice = officeName => `SELECT * FROM offices WHERE officeName 
 export const getAllOffice = () => ('SELECT * from offices');
 
 export const findOfficeById = officeId => (` SELECT * FROM parties WHERE id = ${officeId}`);
+
+/**
+ * @function vote
+ * @description This creates candidates
+ * @returns {Object} Object
+*/
+export const vote = reqBody => (`
+INSERT INTO votes
+(createdOn, createdBy, office)
+VALUES
+('${reqBody.createdOn}', '${reqBody.createdBy}', '${reqBody.office}')
+RETURNING *
+`);
+
+/**
+ * @function createCandidate
+ * @description This creates candidates
+ * @returns {Object} Object
+*/
+export const createCandidate = reqBody => (`
+INSERT INTO candidates
+(office, party, candidate)
+VALUES
+('${reqBody.office}', '${reqBody.party}', '${reqBody.candidate}')
+RETURNING *
+`);
+
+/**
+ * @function collateFetchResult
+ * @description This creates candidates
+ * @returns {Object} Object
+*/
+export const collateResult = (votes, office) => (`
+SELECT candidate, COUNT(createdBy) RESULT
+FROM '${votes} '
+WHERE '${office}'
+GROUP BY candidates
+ORDER BY RESULT DESC
+`);

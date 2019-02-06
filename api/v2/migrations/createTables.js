@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS parties(
     hqAddress VARCHAR(255) NOT NULL,
     logoUrl VARCHAR(255) NOT NULL,
     createdAt TIMESTAMP DEFAULT Now(),
-    userId SERIAL REFERENCES users(id) ON DELETE CASCADE
+    userId INTEGER REFERENCES users(id) ON DELETE CASCADE
 )`;
 
 
@@ -32,51 +32,38 @@ CREATE TABLE IF NOT EXISTS offices(
     type VARCHAR(255) NOT NULL,
     officeName VARCHAR(255) NOT NULL,
     createdAt TIMESTAMP DEFAULT Now(), 
-    userId SERIAL REFERENCES users(id) ON DELETE CASCADE
+    userId INTEGER REFERENCES users(id) ON DELETE CASCADE
 )`;
 
 const createCandidateTable = `
 CREATE TABLE IF NOT EXISTS candidates(
-    id SERIAL PRIMARY KEY,
-    office SERIAL REFERENCES offices(id) ON DELETE CASCADE,
-    party SERIAL REFERENCES parties(id) ON DELETE CASCADE,
-    candidate SERIAL REFERENCES users(id) ON DELETE CASCADE ,
+    id INTEGER NOT NULL UNIQUE,
+    office INTEGER REFERENCES offices(id) ON DELETE CASCADE,
+    party INTEGER REFERENCES parties(id) ON DELETE CASCADE,
+    candidate INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    PRIMARY KEY (office, candidate),
     createdAt TIMESTAMP DEFAULT Now()
 )`;
 
 const createVoteTable = `
 CREATE TABLE IF NOT EXISTS votes(
-    id SERIAL PRIMARY KEY,
+    id INTEGER NOT NULL UNIQUE,
     createdOn TIMESTAMP DEFAULT Now(),
-    createdBy SERIAL REFERENCES users(id) ON DELETE CASCADE,
-    office SERIAL REFERENCES offices(id) ON DELETE CASCADE,
-    candidate SERIAL REFERENCES candidates(id) ON DELETE CASCADE ,
-    createdAt TIMESTAMP DEFAULT Now()
+    createdBy INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    office INTEGER REFERENCES offices(id) ON DELETE CASCADE,
+    candidate INTEGER REFERENCES candidates(id) ON DELETE CASCADE,
+    PRIMARY KEY (office, createdBy)
 )`;
 
 const createPetitionTable = `
 CREATE TABLE IF NOT EXISTS petitions(
-    id SERIAL PRIMARY KEY,
+    id INTEGER NOT NULL UNIQUE,
     createdOn TIMESTAMP DEFAULT Now(),
-    createdBy SERIAL REFERENCES users(id) ON DELETE CASCADE,
-    office SERIAL REFERENCES offices(id) ON DELETE CASCADE,
+    createdBy INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    office INTEGER REFERENCES offices(id) ON DELETE CASCADE,
+    CONSTRAINT officeVoterPkey PRIMARY KEY (office, createdBy),
     body text NOT NULL
 )`;
-
-const createOfficeVotersTable = `
-CREATE TABLE IF NOT EXISTS vote_office (
-    officeId   int REFERENCES offices(id) ON UPDATE CASCADE ON DELETE CASCADE,
-    voterId    int REFERENCES votes(id) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT officeVoterPkey PRIMARY KEY (officeId, voterId)
-)`;
-
-const createUserOfficesTable = `
-CREATE TABLE IF NOT EXISTS user_office(
-    officeId   int REFERENCES offices (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    userId    int REFERENCES votes(id) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT userOfficePkey PRIMARY KEY (officeId, userId)
-)`;
-
 
 db.query(createUserTable).then((response) => {
   if (response) {
@@ -114,20 +101,6 @@ db.query(createUserTable).then((response) => {
             } else {
               console.log('Error while creating Petition table');
             }
-            db.query(createOfficeVotersTable).then((resOfficeVoter) => {
-              if (resOfficeVoter) {
-                console.log('OfficeVoters table created successfully');
-              } else {
-                console.log('Error while creating OfficeVoters table');
-              }
-              db.query(createUserOfficesTable).then((resUserOffice) => {
-                if (resUserOffice) {
-                  console.log('UserOffices table created successfully');
-                } else {
-                  console.log('Error while creating UserOffices table');
-                }
-              }).catch(error => console.log(`${error}`));
-            }).catch(error => console.log(`${error}`));
           }).catch(error => console.log(`${error}`));
         }).catch(error => console.log(`${error}`));
       }).catch(error => console.log(`${error}`));
