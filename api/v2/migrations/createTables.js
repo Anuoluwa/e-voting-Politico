@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS offices(
 
 const createCandidateTable = `
 CREATE TABLE IF NOT EXISTS candidates(
-    id INTEGER NOT NULL UNIQUE,
+    id SERIAL UNIQUE NOT NULL,
     office INTEGER REFERENCES offices(id) ON DELETE CASCADE,
     party INTEGER REFERENCES parties(id) ON DELETE CASCADE,
     candidate INTEGER REFERENCES users(id) ON DELETE CASCADE,
@@ -47,11 +47,11 @@ CREATE TABLE IF NOT EXISTS candidates(
 
 const createVoteTable = `
 CREATE TABLE IF NOT EXISTS votes(
-    id INTEGER NOT NULL UNIQUE,
+    id SERIAL UNIQUE NOT NULL,
     createdOn TIMESTAMP DEFAULT Now(),
+    candidate INTEGER REFERENCES candidates(id) ON DELETE CASCADE,
     createdBy INTEGER REFERENCES users(id) ON DELETE CASCADE,
     office INTEGER REFERENCES offices(id) ON DELETE CASCADE,
-    candidate INTEGER REFERENCES candidates(id) ON DELETE CASCADE,
     PRIMARY KEY (office, createdBy)
 )`;
 
