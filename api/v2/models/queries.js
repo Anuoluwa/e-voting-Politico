@@ -144,10 +144,11 @@ export const checkContestant = candidate => `SELECT * FROM candidates WHERE id =
  * @description This creates candidates
  * @returns {Object} Object
 */
-export const collateResult = (votes, office) => (`
-SELECT candidate, COUNT(createdBy) RESULT
-FROM '${votes} '
-WHERE '${office}'
-GROUP BY candidates
+
+export const collateResult = office => (`
+SELECT office, candidate, COUNT(createdBy) RESULT
+FROM  votes
+WHERE office = '${office}'
+GROUP BY candidate, office
 ORDER BY RESULT DESC
 `);
