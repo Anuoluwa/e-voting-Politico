@@ -2,7 +2,7 @@ import db from '../config/connection';
 import {
   createParty,
   findParty,
-  getAllParty, findPartyById,
+  getAllParty, findPartyById, editParty,
 } from '../models/queries';
 /**
  * Creates a new PartyController.
@@ -101,7 +101,6 @@ class Parties {
   static async getOneParty(req, res) {
     try {
       const partyId = parseInt(req.params.id, 10);
-      console.log('idparty', partyId);
       const getParty = await db.query(findPartyById(partyId));
       if (getParty.rowCount === 0) {
         return res.status(404).json({
@@ -134,50 +133,27 @@ class Parties {
  * @returns {Object} Object
 */
   static async editParty(req, res) {
-    const userId = req.user.id;
-    const partyId = req.params;
-    const { partyName, hqAddress, logoUrl } = req.body;
     try {
-      const checkQuestion = await db.query(findQuestion(partyId));
-      if (checkQuestion.rowCount === 0) {
-        return response.status(404).json({
-          status: 'fail',
-          message: 'question not found',
+      const partyId = Number(req.params.id, 10);
+      const { partyName } = req.body;
+      const getParty = await db.query(findPartyById(partyId));
+      if (getParty.rowCount === 0) {
+        return res.status(404).json({
+          status: 404,
+          error: 'party does not exist',
         });
       }
-      const checkIfAnswerExists = await db.query(checkAnswerId(partyId, answerId));
-      if (checkIfAnswerExists.rowCount === 0) {
-        return response.status(404).json({
-          status: 'fail',
-          message: 'Answer does not exist for question',
+      if (getParty.rowCount > 0) {
+        const updateParty = await db.query(editParty(partyId, partyName));
+        return res.status(404).json({
+          status: 200,
+          data: [{ office: updateParty.rows[0] }],
         });
       }
-      if (userId === checkQuestion.rows[0].user_id) {
-        const preferredResult = await db.query(setPreferedAnswer(answerId));
-        return response.status(200).json({
-          status: 'success',
-          message: 'Answer has been set to preferred successfully',
-          answer: preferredResult.rows,
-        });
-      }
-      if (userId === checkIfAnswerExists.rows[0].user_id) {
-        const updateResult = await db.query(updateAnswer(answerBody, answerId, userId));
-        if (updateResult.rowCount > 0) {
-          return response.status(200).json({
-            status: 'success',
-            message: 'Answer has been updated successfully',
-            answer: updateResult.rows,
-          });
-        }
-      }
-      return response.status(403).json({
-        status: 'fail',
-        message: 'you cannot perform this operation',
-      });
     } catch (error) {
-      return response.status(500).json({
-        status: 'error',
-        message: error.message,
+      return res.status(500).json({
+        status: 500,
+        error: 'Something went wrong, try again later',
       });
     }
   }
