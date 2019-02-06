@@ -2,7 +2,7 @@ import db from '../config/connection';
 import {
   createParty,
   findParty,
-  getAllParty, findPartyById, editParty,
+  getAllParty, findPartyById, editParty, deleteParty,
 } from '../models/queries';
 /**
  * Creates a new PartyController.
@@ -158,8 +158,38 @@ class Parties {
     }
   }
 
+  /**
+ * @method deleteParty
+ * @static
+ * @description This removes party
+ * @param {object} request request object
+ * @param {object} response response object
+ * @returns {Object} Object
+*/
   static async deleteParty(req, res) {
-    res.json({ error: 'logic to delete a party' });
+    try {
+      const partyId = Number(req.params.id, 10);
+      const userId = req.user.id;
+      const getParty = await db.query(findPartyById(partyId));
+      if (getParty.rowCount === 0) {
+        return res.status(404).json({
+          status: 404,
+          error: 'party does not exist',
+        });
+      }
+      const removeParty = await db.query(deleteParty(partyId, userId));
+      if (removeParty.rowCount > 0) {
+        return res.status(404).json({
+          status: 200,
+          data: { message: `The party with ${getParty.rows[0].id} has been deleted successfully` },
+        });
+      }
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        error: 'Something went wrong, try again later',
+      });
+    }
   }
 }
 
