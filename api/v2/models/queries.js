@@ -82,6 +82,17 @@ SELECT *
 FROM parties  
 WHERE parties.id = ${partyId}`);
 
+/**
+ * @function editParty
+ * @description edit party name
+ * @returns {Object} Object
+*/
+export const editParty = (partyId, partyName) => (`
+UPDATE parties 
+SET partyName = '${partyName}'
+WHERE id = ${partyId}
+RETURNING *`);
+
 
 /**
  * @function createOffice
