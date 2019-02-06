@@ -2,6 +2,7 @@ import db from '../config/connection';
 import {
   createOffice, findOffice, getAllOffice, findOfficeById,
   findPartyById, findUserById, createCandidate,
+  checkOffice, checkParty, checkCandidate,
 } from '../models/queries';
 /**
  * Creates a new OfficeController.
@@ -112,10 +113,10 @@ class Offices {
 
   static async registerCandidate(req, res) {
     try {
-      const candidate = parseInt(req.params.id, 10);
-      const officeId = parseInt(req.body.office, 10);
-      const partyId = parseInt(req.body.party, 10);
-      const getOffice = await db.query(findOfficeById(officeId));
+      const candidate = Number(req.params.id, 10);
+      const office = Number(req.body.office, 10);
+      const party = Number(req.body.party, 10);
+      const getOffice = await db.query(checkOffice(office));
       if (getOffice.rowCount === 0) {
         return res.status(404).json({
           status: 404,
@@ -123,7 +124,7 @@ class Offices {
         });
       }
 
-      const partyExists = await db.query(findPartyById(partyId));
+      const partyExists = await db.query(checkParty(party));
       if (partyExists.rowCount === 0) {
         return res.status(404).json({
           status: 404,
@@ -131,7 +132,7 @@ class Offices {
         });
       }
 
-      const candidateExists = await db.query(findUserById(candidate));
+      const candidateExists = await db.query(checkCandidate(candidate));
       if (candidateExists.rowCount === 0) {
         return res.status(404).json({
           status: 404,
@@ -139,7 +140,7 @@ class Offices {
         });
       }
       const newcandidate = {
-        officeId, partyId, candidate,
+        office, party, candidate,
       };
       if (getOffice.rowCount > 0 && partyExists.rowCount > 0 && candidateExists.rowCount > 0) {
         const addCandidate = await db.query(createCandidate(newcandidate));
@@ -152,6 +153,12 @@ class Offices {
       }
     } catch (error) {
       console.log({ message: `${error}` });
+      if (error.constraint.includes('candidates_pkey')) {
+        return res.status(409).json({
+          status: 409,
+          error: 'Candidate cannot be register twice',
+        });
+      }
       return res.status(500).json({
         status: 500,
         error: 'Sorry, something went wrong, try again!',

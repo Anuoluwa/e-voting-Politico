@@ -124,8 +124,62 @@ class Parties {
     }
   }
 
+
+  /**
+ * @method editParty
+ * @static
+ * @description This returns updates party
+ * @param {object} request request object
+ * @param {object} response response object
+ * @returns {Object} Object
+*/
   static async editParty(req, res) {
-    res.json({ error: 'logic to update a party' });
+    const userId = req.user.id;
+    const partyId = req.params;
+    const { partyName, hqAddress, logoUrl } = req.body;
+    try {
+      const checkQuestion = await db.query(findQuestion(partyId));
+      if (checkQuestion.rowCount === 0) {
+        return response.status(404).json({
+          status: 'fail',
+          message: 'question not found',
+        });
+      }
+      const checkIfAnswerExists = await db.query(checkAnswerId(partyId, answerId));
+      if (checkIfAnswerExists.rowCount === 0) {
+        return response.status(404).json({
+          status: 'fail',
+          message: 'Answer does not exist for question',
+        });
+      }
+      if (userId === checkQuestion.rows[0].user_id) {
+        const preferredResult = await db.query(setPreferedAnswer(answerId));
+        return response.status(200).json({
+          status: 'success',
+          message: 'Answer has been set to preferred successfully',
+          answer: preferredResult.rows,
+        });
+      }
+      if (userId === checkIfAnswerExists.rows[0].user_id) {
+        const updateResult = await db.query(updateAnswer(answerBody, answerId, userId));
+        if (updateResult.rowCount > 0) {
+          return response.status(200).json({
+            status: 'success',
+            message: 'Answer has been updated successfully',
+            answer: updateResult.rows,
+          });
+        }
+      }
+      return response.status(403).json({
+        status: 'fail',
+        message: 'you cannot perform this operation',
+      });
+    } catch (error) {
+      return response.status(500).json({
+        status: 'error',
+        message: error.message,
+      });
+    }
   }
 
   static async deleteParty(req, res) {

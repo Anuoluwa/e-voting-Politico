@@ -103,18 +103,6 @@ export const getAllOffice = () => ('SELECT * from offices');
 
 export const findOfficeById = officeId => (` SELECT * FROM parties WHERE id = ${officeId}`);
 
-/**
- * @function vote
- * @description This creates candidates
- * @returns {Object} Object
-*/
-export const vote = reqBody => (`
-INSERT INTO votes
-(createdOn, createdBy, office)
-VALUES
-('${reqBody.createdOn}', '${reqBody.createdBy}', '${reqBody.office}')
-RETURNING *
-`);
 
 /**
  * @function createCandidate
@@ -128,6 +116,28 @@ VALUES
 ('${reqBody.office}', '${reqBody.party}', '${reqBody.candidate}')
 RETURNING *
 `);
+
+export const checkOffice = office => (` SELECT * FROM parties WHERE id = ${office}`);
+
+export const checkParty = party => (
+  `SELECT id FROM parties WHERE parties.id = ${party}`
+);
+
+export const checkCandidate = id => `SELECT * FROM users WHERE id = '${id}'`;
+
+/**
+ * @function vote
+ * @description This creates candidates
+ * @returns {Object} Object
+*/
+export default reqBody => (`
+INSERT INTO votes
+(createdOn, createdBy, office)
+VALUES
+('${reqBody.createdOn}', '${reqBody.createdBy}', '${reqBody.office}')
+RETURNING *
+`);
+
 
 /**
  * @function collateFetchResult

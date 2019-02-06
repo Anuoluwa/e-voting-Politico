@@ -23,7 +23,7 @@ router.get('/offices/:id', verifyToken, Validator.validateId, Office.getOneOffic
 router.post('/offices', verifyToken, verifyAdmin, Validator.partyInput, Office.createOffice);
 router.patch('/parties/:id', verifyToken, verifyAdmin, Validator.validateId, Party.editParty);
 router.delete('/parties/:id', verifyToken, verifyAdmin, Validator.validateId, Party.deleteParty);
-router.post('/offices/:id/register', verifyToken, Validator.validateId, Office.registerCandidate);
+router.post('/offices/:id/register', verifyToken, verifyAdmin, Office.registerCandidate);
 router.use('*', (req, res) => res.json({ status: 404, error: 'Route does not exist' }));
 
 
