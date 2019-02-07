@@ -26,8 +26,12 @@ export default class authValidator {
       return res.status(400)
         .json({ error: 'The request body should not be empty!' });
     }
+    if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
+      return res.status(400)
+        .json({ error: 'The request body should not be empty!' });
+    }
     if (!firstname) {
-      return res.status(400).json({ error: 'firstname should not contain special characters, numbers and whitespace' });
+      return res.status(400).json({ error: 'firstname row should be present' });
     }
     if (typeof firstname === 'undefined') {
       return res.status(400)
@@ -49,12 +53,12 @@ export default class authValidator {
       return res.status(400)
         .json({ error: 'firstname must be a string with maximum length of 50' });
     }
-    if (firstname.length < 2) {
+    if (firstname.length < 6) {
       return res.status(400)
         .json({ error: 'firstname must be a string with with minimum length of 6' });
     }
     if (!lastname) {
-      return res.status(400).json({ error: 'firstname should not contain special characters, numbers and whitespace' });
+      return res.status(400).json({ error: 'lastname should not contain special characters, numbers and whitespace' });
     }
     if (typeof lastname === 'undefined') {
       return res.status(400)
@@ -70,19 +74,19 @@ export default class authValidator {
     }
     if (!(/^[a-zA-Z-]+$/.test(lastname))) {
       return res.status(400)
-        .json({ error: 'firstname input should be a string without number or special characters' });
+        .json({ error: 'lastname input should be a string without number or special characters' });
     }
     if (lastname.length > 50) {
       return res.status(400)
         .json({ error: 'lastname must be a string with maximum length of 50' });
     }
-    if (lastname.length < 2) {
+    if (lastname.length < 6) {
       return res.status(400)
         .json({ error: 'lastname must be a string with with minimum length of 6' });
     }
 
     if (!othername) {
-      return res.status(400).json({ error: 'firstname should not contain special characters, numbers and whitespace' });
+      return res.status(400).json({ error: 'othername should not contain special characters, numbers and whitespace' });
     }
     if (typeof othername === 'undefined') {
       return res.status(400)
@@ -98,13 +102,13 @@ export default class authValidator {
     }
     if (!(/^[a-zA-Z-]+$/.test(othername))) {
       return res.status(400)
-        .json({ error: 'firstname input should be a string without number or special characters' });
+        .json({ error: 'othername input should be a string without number or special characters' });
     }
     if (othername.length > 50) {
       return res.status(400)
         .json({ error: 'othername must be a string with maximum length of 50' });
     }
-    if (othername.length < 2) {
+    if (othername.length < 6) {
       return res.status(400)
         .json({ error: 'othername must be a string with with minimum length of 6' });
     }
@@ -132,26 +136,26 @@ export default class authValidator {
 
     if (typeof phoneNumber === 'undefined') {
       return res.status(400)
-        .json({ error: '"phoneNumber" field must not be empty' });
+        .json({ error: 'phoneNumber field must not be empty' });
     }
     if (phoneNumber.length === '') {
       return res.status(400)
-        .json({ error: '"phoneNumber" field must not be empty' });
+        .json({ error: 'phoneNumber field must not be empty' });
     }
     if (phoneNumber.length !== 11) {
       return res.status(400)
         .json(
-          { error: '"phoneNumber" must be digits of 11 numbers' },
+          { error: 'phoneNumber must be digits of 11 numbers' },
         );
     }
     if (!(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/.test(phoneNumber))) {
       return res.status(400)
-        .json({ error: '"phoneNumber" must be in the right format' });
+        .json({ error: 'phoneNumber must be in the right format' });
     }
 
 
     if (!passportUrl) {
-      return res.status(400).json({ error: 'firstname should not contain special characters, numbers and whitespace' });
+      return res.status(400).json({ error: 'passportUrl should not contain special characters, numbers and whitespace' });
     }
     if (typeof passportUrl === 'undefined') {
       return res.status(400)
@@ -167,35 +171,35 @@ export default class authValidator {
     }
     if (typeof email === 'undefined') {
       return res.status(400)
-        .json({ error: '"email" field must not be undefined' });
+        .json({ error: 'email field must not be undefined' });
     }
     if (email.length === '') {
       return res.status(400)
-        .json({ error: '"email" must be not empty' });
+        .json({ error: 'email must be not empty' });
     }
     if (!validEmail) {
-      return res.status(400).json({ error: '"email" should be in the proper format' });
+      return res.status(400).json({ error: 'email should be in the proper format' });
     }
     if (typeof password === 'undefined' || typeof validPassword === 'undefined') {
       return res.status(400)
-        .json({ error: '"password" field must not be undefined' });
+        .json({ error: 'password field must not be undefined' });
     }
     if (password.length === '') {
       return res.status(400)
-        .json({ error: '"password" must be not empty' });
+        .json({ error: 'password must be not empty' });
     }
     if (password.length < 6) {
       return res.status(400)
-        .json({ error: '"password" must be with minimum length of 6' });
+        .json({ error: 'password must be with minimum length of 6' });
     }
-    if (password.length > 13) {
+    if (password.length > 12) {
       return res.status(400)
         .json(
-          { error: '"password" must be a string with maximum length of 12' },
+          { error: 'password must be a string with maximum length of 12' },
         );
     }
     if (!validPassword) {
-      return res.status(400).json('"password" must be a string of numbers');
+      return res.status(400).json('password must be a string of numbers');
     }
     next();
   }
@@ -212,33 +216,33 @@ export default class authValidator {
     const validPassword = /^[a-zA-Z0-9.\-$@*!]{6,12}$/g.test(password);
     if (typeof email === 'undefined') {
       return res.status(400)
-        .json({ error: '"email" field must not be undefined' });
+        .json({ error: 'email field must not be undefined' });
     }
     if (email.length === '') {
       return res.status(400)
-        .json({ error: '"email" must be not empty' });
+        .json({ error: 'email must be not empty' });
     }
     if (!validEmail) {
-      return res.status(400).json({ error: '"email" should be in the proper format' });
+      return res.status(400).json({ error: 'email should be in the proper format' });
     }
     if (typeof password === 'undefined' || typeof validPassword === 'undefined') {
       return res.status(400)
-        .json({ error: '"password" field must not be undefined' });
+        .json({ error: 'password field must not be undefined' });
     }
     if (password.length === '') {
       return res.status(400)
-        .json({ error: '"password" must be not empty' });
+        .json({ error: 'password must be not empty' });
     }
     if (password.length < 6) {
       return res.status(400)
-        .json({ error: '"password" must be with minimum length of 6' });
+        .json({ error: 'password must be with minimum length of 6' });
     }
-    if (password.length > 13) {
+    if (password.length > 12) {
       return res.status(400)
-        .json({ error: '"password" must be a string with maximum length of 12' });
+        .json({ error: 'password must be a string with maximum length of 12' });
     }
     if (!validPassword) {
-      return res.status(400).json({ error: '"password" must be a string of numbers' });
+      return res.status(400).json({ error: 'password must be a string of numbers' });
     }
     next();
   }

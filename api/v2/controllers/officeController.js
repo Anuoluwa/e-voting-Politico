@@ -40,7 +40,7 @@ class Offices {
       if (addOffice.rowCount > 0) {
         return res.status(201).json({
           status: 201,
-          office: [addOffice.rows],
+          office: [{ data: [addOffice.rows] }],
         });
       }
     } catch (error) {
@@ -63,7 +63,7 @@ class Offices {
       }
       return res.status(200).json({
         status: 200,
-        data: [{ offices: getOneOffice.rows }],
+        data: [{ offices: [getOneOffice.rows] }],
       });
     } catch (error) {
       console.log({ message: `${error}` });
@@ -146,7 +146,7 @@ class Offices {
         if (addCandidate.rowCount > 0) {
           return res.status(201).json({
             status: 201,
-            office: [addCandidate.rows],
+            data: { office: [addCandidate.rows] },
           });
         }
       }
