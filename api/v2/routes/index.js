@@ -21,11 +21,11 @@ router.get('/parties/:id', verifyToken, Validator.validateId, Party.getOneParty)
 router.get('/offices', verifyToken, Office.getOffices);
 router.get('/offices/:id', verifyToken, Validator.validateId, Office.getOneOffice);
 router.post('/offices', verifyToken, verifyAdmin, Validator.partyInput, Office.createOffice);
-router.patch('/parties/:id/name', verifyToken, verifyAdmin, Party.editParty);
-router.delete('/parties/:id', verifyToken, verifyAdmin, Party.deleteParty);
-router.post('/offices/:id/register', verifyToken, verifyAdmin, Office.registerCandidate);
-router.post('/votes', verifyToken, vote.voteCandidate);
-router.post('/office/:id/result', verifyToken, Office.collateResults);
+router.patch('/parties/:id/name', verifyToken, verifyAdmin, Validator.validateId, Party.editParty);
+router.delete('/parties/:id', verifyToken, verifyAdmin, Validator.validateId, Party.deleteParty);
+router.post('/offices/:id/register', verifyToken, verifyAdmin, Validator.validateId, Validator.registerCandidateValidator, Office.registerCandidate);
+router.post('/votes', verifyToken, Validator.officeCandidateValidator, vote.voteCandidate);
+router.post('/office/:id/result', verifyToken, Validator.validateId, Validator.officeCandidateValidator, Office.collateResults);
 router.use('*', (req, res) => res.json({ status: 404, error: 'Route does not exist' }));
 
 

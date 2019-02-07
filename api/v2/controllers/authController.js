@@ -82,7 +82,7 @@ export default class AuthController {
       };
       return res.status(201).json({
         status: 201,
-        data: [data],
+        data: [{ user: [data] }],
       });
     } catch (error) {
       console.log([{ error: `${error}` }]);
@@ -154,7 +154,7 @@ export default class AuthController {
       };
       return res.status(200).json({
         status: 200,
-        data: [token],
+        data: [{ userToken: [token] }],
       });
     } catch (error) {
       console.log({ message: `${error}` });

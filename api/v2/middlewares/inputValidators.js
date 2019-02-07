@@ -5,44 +5,32 @@ class ValidateInput {
       hqAddress,
       logoUrl,
     } = req.body;
-      // const validname = /^[a-zA-Z\-]+$/.test(partyName);
+    if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
+      return res.status(400)
+        .json({ error: 'The request body should not be empty!' });
+    }
     if (typeof partyName !== 'string') {
       return res.status(400)
         .json({ error: 'partyName input should be a string' });
     }
     if (!partyName) {
-      return res.status(400).json({ error: 'partyName must be a string!' })
-        .end();
+      return res.status(400)
+        .json({ error: 'partyName must be a string!' });
     }
     if (partyName.length === '') {
       return res.status(400)
         .json({ error: 'partyName must not be empty' });
     }
-    if (partyName.trim() === '') {
-      return res.status(400)
-        .json({ error: 'partyName must not contain whitespaces at the beginning and at the end' });
-    }
-    if (partyName.trim().length < 8) {
-      return res.status(400)
-        .json({ error: 'partyName must not contain whitespaces, and minimum length of 8' });
-    }
-    if (partyName.length < 8) {
+    if (partyName.length < 7) {
       return res.status(400).json(
         { error: 'partyName must be a string with minimum 8 characters' },
-      )
-        .end();
+      );
     }
     if (partyName.length > 100) {
-      return res.status(400).json({ error: 'partyName must be a string with maximum 100 characters' })
-        .end();
-    }
-    if (!(/^[A-Za-z ]+$/.test(partyName))) {
-      return res.status(400)
-        .json({ error: 'partyName input should be a string without number or special characters' });
+      return res.status(400).json({ error: 'partyName must be a string with maximum 100 characters' });
     }
     if (!hqAddress) {
-      return res.status(400).json('hqAddress must be a string')
-        .end();
+      return res.status(400).json('hqAddress must be a string');
     }
 
     if (typeof hqAddress !== 'string') {
@@ -53,29 +41,14 @@ class ValidateInput {
       return res.status(400)
         .json({ error: 'hqAddress must not be empty' });
     }
-    if (hqAddress.trim() === '') {
-      return res.status(400)
-        .json({ error: 'hqAddress must not contain whitespaces at the beginning and at the end' });
-    }
-    if (hqAddress.trim().length < 7) {
-      return res.status(400)
-        .json({ error: 'hqAddress must not contain whitespaces, and minimum length of 7' });
-    }
-
     if (hqAddress.length < 7) {
-      return res.status(400).json({ messge: 'hqAddress must be a string with minimum 7 characters' })
-        .end();
+      return res.status(400).json({ error: 'hqAddress must be a string with minimum 7 characters' });
     }
     if (hqAddress.length > 50) {
-      return res.status(400).json({ error: 'hqAddress must be a string with maximum 50 character ' })
-        .end();
+      return res.status(400).json({ error: 'hqAddress must be a string with maximum 50 character ' });
     }
 
     if (typeof logoUrl !== 'string') {
-      return res.status(400)
-        .json({ error: 'logoUrl input should be a string' });
-    }
-    if (logoUrl instanceof String) {
       return res.status(400)
         .json({ error: 'logoUrl input should be a string' });
     }
@@ -84,16 +57,13 @@ class ValidateInput {
         .json({ error: 'logoUrl must not be empty' });
     }
     if (!logoUrl) {
-      return res.status(400).json({ error: 'logUrl must be a string' })
-        .end();
+      return res.status(400).json({ error: 'logUrl must be a string' });
     }
     if (logoUrl.length < 8) {
-      return res.status(400).json({ error: 'logUrl must be a string with minimum 8 characters' })
-        .end();
+      return res.status(400).json({ error: 'logUrl must be a string with minimum 8 characters' });
     }
     if (logoUrl.length > 70) {
-      return res.status(400).json({ error: 'logUrl must be a string with maximum 70 character ' })
-        .end();
+      return res.status(400).json({ error: 'logUrl must be a string with maximum 70 character ' });
     }
     next();
   }
@@ -103,7 +73,10 @@ class ValidateInput {
       type,
       officeName,
     } = req.body;
-
+    if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
+      return res.status(400)
+        .json({ error: 'The request body should not be empty!' });
+    }
     if (typeof type !== 'string') {
       return res.status(400)
         .json({ error: 'type input should be a string' });
@@ -112,25 +85,17 @@ class ValidateInput {
       return res.status(400)
         .json({ error: 'type must not be empty' });
     }
-    if (type.trim() === '') {
-      return res.status(400)
-        .json({ error: 'type must not contain whitespaces at the beginning and at the end' });
-    }
-    if (type.trim().length < 8) {
-      return res.status(400)
-        .json({ error: 'type must not contain whitespaces, and minimum length of 8' });
-    }
     if (!type) {
-      return res.status(400).json('type must be a string should not empty')
-        .end();
+      return res.status(400)
+        .json('type must be a string should not empty');
     }
     if (type.length < 6) {
-      return res.status(400).json({ messge: 'type must be a string with minimum 6 characters' })
-        .end();
+      return res.status(400)
+        .json({ error: 'type must be a string with minimum 6 characters' });
     }
     if (type.length > 50) {
-      return res.status(400).json({ error: 'type must be a string with maximum 50 character ' })
-        .end();
+      return res.status(400)
+        .json({ error: 'type must be a string with maximum 50 character ' });
     }
     if (!(/^[A-Za-z ]+$/.test(type))) {
       return res.status(400)
@@ -145,26 +110,18 @@ class ValidateInput {
         .json({ error: 'officeName must not be empty' });
     }
     if (!officeName) {
-      return res.status(400).json({ error: 'officeName must be a string and should not be empty!' })
-        .end();
-    }
-    if (officeName.trim() === '') {
       return res.status(400)
-        .json({ error: 'officeName must not contain whitespaces at the beginning and at the end' });
-    }
-    if (officeName.trim().length < 8) {
-      return res.status(400)
-        .json({ error: 'officeName must not contain whitespaces, and minimum length of 8' });
+        .json({ error: 'officeName must be a string and should not be empty!' });
     }
     if (officeName.length < 8) {
-      return res.status(400).json(
-        { error: 'officeName must be a string with minimum 8 characters' },
-      )
-        .end();
+      return res.status(400)
+        .json(
+          { error: 'officeName must be a string with minimum 8 characters' },
+        );
     }
     if (officeName.length > 100) {
-      return res.status(400).json({ error: 'officeName must be a string with maximum 100 characters' })
-        .end();
+      return res.status(400)
+        .json({ error: 'officeName must be a string with maximum 100 characters' });
     }
     if (!(/^[A-Za-z ]+$/.test(officeName))) {
       return res.status(400)
@@ -173,16 +130,105 @@ class ValidateInput {
     next();
   }
 
+  static officeCandidateValidator(req, res, next) {
+    const {
+      office,
+      candidate,
+    } = req.body;
+    if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
+      return res.status(400)
+        .json({ error: 'The request body should not be empty!' });
+    }
+    if (typeof office !== 'string') {
+      return res.status(400)
+        .json({ error: 'office input should be a string' });
+    }
+    if (office.length === '') {
+      return res.status(400)
+        .json({ error: 'office must not be empty' });
+    }
+    if (!office) {
+      return res.status(400)
+        .json('office must be a string should not empty');
+    }
+    if (typeof candidate !== 'string') {
+      return res.status(400)
+        .json({ error: 'candidate input should be a string' });
+    }
+    if (candidate.length === '') {
+      return res.status(400)
+        .json({ error: 'candidate must not be empty' });
+    }
+    if (!candidate) {
+      return res.status(400)
+        .json('candidate must be a string should not empty');
+    }
+    if (!(/^\d*[1-9]\d*$/.test(office))) {
+      return res.status(400)
+        .json({ error: 'office input should be a positive numbers only' });
+    }
+    if (!(/^\d*[1-9]\d*$/.test(candidate))) {
+      return res.status(400)
+        .json({ error: 'candidate input should be a positive numbers only' });
+    }
+    next();
+  }
+
+  static registerCandidateValidator(req, res, next) {
+    const {
+      office,
+      party,
+    } = req.body;
+    if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
+      return res.status(400)
+        .json({ error: 'The request body should not be empty!' });
+    }
+    if (typeof office !== 'string') {
+      return res.status(400)
+        .json({ error: 'office input should be a string' });
+    }
+    if (office.length === '') {
+      return res.status(400)
+        .json({ error: 'office must not be empty' });
+    }
+    if (!office) {
+      return res.status(400)
+        .json('office must be a string should not empty');
+    }
+    if (typeof party !== 'string') {
+      return res.status(400)
+        .json({ error: 'party input should be a string' });
+    }
+    if (party.length === '') {
+      return res.status(400)
+        .json({ error: 'party must not be empty' });
+    }
+    if (!party) {
+      return res.status(400)
+        .json('party must be a string should not empty');
+    }
+    if (!(/^\d*[1-9]\d*$/.test(office))) {
+      return res.status(400)
+        .json({ error: 'office input should be a positive numbers only' });
+    }
+    if (!(/^\d*[1-9]\d*$/.test(party))) {
+      return res.status(400)
+        .json({ error: 'party input should be a positive numbers only' });
+    }
+    next();
+  }
+
+
   static validateId(req, res, next) {
     const { id } = req.params;
     const parsedId = parseInt(id, 10);
     if (id.length === '') {
-      return res.status(400).json({ error: '"ID" should not be empty!' })
-        .end();
+      return res.status(400).json({ error: '"ID" should not be empty!' });
     }
     if (Number.isNaN(parsedId) === true) {
       return res.status(400).json({
-        error: 'PartyId must be a number',
+        status: 409,
+        error: 'Id must be a number',
       });
     }
     next();
