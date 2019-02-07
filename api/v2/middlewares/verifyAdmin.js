@@ -14,7 +14,6 @@ const verifyAdmin = async (req, res, next) => {
       next();
     }
   } catch (error) {
-    console.log({ message: `${error}` });
     return res.status(500).json({
       status: 500,
       error: 'Oops,...something went wrong on this admin route, try again!',

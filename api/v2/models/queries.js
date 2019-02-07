@@ -109,6 +109,7 @@ RETURNING *
 
 export const findOffice = officeName => `SELECT * FROM offices WHERE officeName = '${officeName}'`;
 
+export const findOfficeByType = type => `SELECT * FROM offices WHERE type = '${type}'`;
 
 export const getAllOffice = () => ('SELECT * from offices');
 
