@@ -147,7 +147,7 @@ class Parties {
         const updateParty = await db.query(editParty(partyId, partyName));
         return res.status(404).json({
           status: 200,
-          data: [{ office: updateParty.rows[0] }],
+          data: [{ party: updateParty.rows[0] }],
         });
       }
     } catch (error) {

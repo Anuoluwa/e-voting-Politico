@@ -19,6 +19,7 @@ export const createUserAccount = reqBody => (`
    `);
 
 export const findUser = email => `SELECT * FROM users WHERE email = '${email}'`;
+
 export const findUserById = id => `SELECT * FROM users WHERE id = '${id}'`;
 
 export const checkUser = (firstname, email) => `
@@ -27,7 +28,6 @@ WHERE firstname = '${firstname}' or email = '${email}'
 `;
 
 export const findById = id => `SELECT * FROM users WHERE id = ${id}`;
-
 
 /**
  * @function createParty
