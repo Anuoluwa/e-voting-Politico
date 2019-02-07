@@ -168,15 +168,15 @@ class ValidateInput {
     }
     if (!candidate) {
       return res.status(400)
-        .json('candidate must be a string should not empty');
+        .json('candidate must be a string should not be empty');
     }
     if (!(/^\d*[1-9]\d*$/.test(office))) {
       return res.status(400)
-        .json({ error: 'office input should be a positive numbers only' });
+        .json({ error: 'office input should be positive numbers only' });
     }
     if (!(/^\d*[1-9]\d*$/.test(candidate))) {
       return res.status(400)
-        .json({ error: 'candidate input should be a positive numbers only' });
+        .json({ error: 'candidate input should be positive numbers only' });
     }
     next();
   }

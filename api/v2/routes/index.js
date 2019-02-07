@@ -25,7 +25,7 @@ router.patch('/parties/:id/name', verifyToken, verifyAdmin, Validator.validateId
 router.delete('/parties/:id', verifyToken, verifyAdmin, Validator.validateId, Party.deleteParty);
 router.post('/offices/:id/register', verifyToken, verifyAdmin, Validator.validateId, Validator.registerCandidateValidator, Office.registerCandidate);
 router.post('/votes', verifyToken, Validator.officeCandidateValidator, vote.voteCandidate);
-router.post('/office/:id/result', verifyToken, Validator.validateId, Validator.officeCandidateValidator, Office.collateResults);
+router.post('/offices/:id/result', verifyToken, Validator.validateId, Office.collateResults);
 router.use('*', (req, res) => res.json({ status: 404, error: 'Route does not exist' }));
 
 

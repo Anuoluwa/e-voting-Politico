@@ -9,8 +9,7 @@ class Votes {
   static async voteCandidate(req, res) {
     try {
       const createdBy = req.user.id;
-      const office = Number(req.body.office, 10);
-      const candidate = Number(req.body.candidate, 10);
+      const { office, candidate } = req.body;
       const getOffice = await db.query(checkOffice(office));
       if (getOffice.rowCount === 0) {
         return res.status(404).json({
