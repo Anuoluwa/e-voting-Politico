@@ -19,7 +19,7 @@
     "insert-db-prod": "cross-env NODE_ENV=production babel-node ./api/v2/migrations/seeders.js",
     "create-db-prod": "cross-env NODE_ENV=production babel-node ./api/v2/migrations/createTables.js",
     "create-db-admin": "cross-env NODE_ENV=production babel-node ./api/v2/migrations/createAdmin.js",
-    "migrate-prod": "npm run drop-db-prod && npm run create-db-prod && create-db-admin && npm run insert-db-prod",
+    "migrate-prod": "npm run drop-db-prod && npm run create-db-prod && npm run create-db-admin && npm run insert-db-prod",
     "lint": " esw server.js versioning.js api/v1/* --color",
     "lint-watch": "npm run lint -- --watch",
     "coveralls": "npm run coverage -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
