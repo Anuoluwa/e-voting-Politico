@@ -41,7 +41,7 @@ class Parties {
       if (addParty.rowCount > 0) {
         return res.status(201).json({
           status: 200,
-          party: addParty.rows,
+          data: [{ party: addParty.rows }],
         });
       }
     } catch (error) {
