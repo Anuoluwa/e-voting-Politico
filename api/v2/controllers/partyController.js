@@ -134,7 +134,7 @@ class Parties {
 */
   static async editParty(req, res) {
     try {
-      const partyId = Number(req.params.id, 10);
+      const partyId = Number(req.params.id);
       const { partyName } = req.body;
       const getParty = await db.query(findPartyById(partyId));
       if (getParty.rowCount === 0) {
