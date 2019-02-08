@@ -29,6 +29,10 @@ class ValidateInput {
     if (partyName.length > 100) {
       return res.status(400).json({ error: 'partyName must be a string with maximum 100 characters' });
     }
+    if (!(/^[A-Za-z ]+$/.test(partyName))) {
+      return res.status(400)
+        .json({ error: 'partyName input should be a string without number or special characters' });
+    }
     if (!hqAddress) {
       return res.status(400).json('hqAddress must be a string');
     }
@@ -47,7 +51,10 @@ class ValidateInput {
     if (hqAddress.length > 50) {
       return res.status(400).json({ error: 'hqAddress must be a string with maximum 50 character ' });
     }
-
+    if (!(/^[A-Za-z0-9 ]+$/.test(hqAddress))) {
+      return res.status(400)
+        .json({ error: 'hqAddress input should be a string without number or special characters' });
+    }
     if (typeof logoUrl !== 'string') {
       return res.status(400)
         .json({ error: 'logoUrl input should be a string' });
@@ -62,7 +69,7 @@ class ValidateInput {
     if (logoUrl.length < 8) {
       return res.status(400).json({ error: 'logUrl must be a string with minimum 8 characters' });
     }
-    if (logoUrl.length > 70) {
+    if (logoUrl.length > 300) {
       return res.status(400).json({ error: 'logUrl must be a string with maximum 70 character ' });
     }
     next();
@@ -89,9 +96,9 @@ class ValidateInput {
       return res.status(400)
         .json('type must be a string should not empty');
     }
-    if (type.length < 6) {
+    if (type.length < 4) {
       return res.status(400)
-        .json({ error: 'type must be a string with minimum 6 characters' });
+        .json({ error: 'type must be a string with minimum 4 characters' });
     }
     if (type.length > 50) {
       return res.status(400)
@@ -113,10 +120,10 @@ class ValidateInput {
       return res.status(400)
         .json({ error: 'officeName must be a string and should not be empty!' });
     }
-    if (officeName.length < 8) {
+    if (officeName.length < 4) {
       return res.status(400)
         .json(
-          { error: 'officeName must be a string with minimum 8 characters' },
+          { error: 'officeName must be a string with minimum 4 characters' },
         );
     }
     if (officeName.length > 100) {
@@ -161,15 +168,15 @@ class ValidateInput {
     }
     if (!candidate) {
       return res.status(400)
-        .json('candidate must be a string should not empty');
+        .json('candidate must be a string should not be empty');
     }
     if (!(/^\d*[1-9]\d*$/.test(office))) {
       return res.status(400)
-        .json({ error: 'office input should be a positive numbers only' });
+        .json({ error: 'office input should be positive numbers only' });
     }
     if (!(/^\d*[1-9]\d*$/.test(candidate))) {
       return res.status(400)
-        .json({ error: 'candidate input should be a positive numbers only' });
+        .json({ error: 'candidate input should be positive numbers only' });
     }
     next();
   }

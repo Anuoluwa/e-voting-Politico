@@ -1,6 +1,7 @@
 import db from '../config/connection';
 import {
-  createOffice, findOffice, getAllOffice, findOfficeById, createCandidate,
+  createOffice, findOffice, getAllOffice,
+  findOfficeById, findOfficeByType, createCandidate,
   checkOffice, checkParty, checkCandidate, collateResult,
 } from '../models/queries';
 /**
@@ -26,11 +27,18 @@ class Offices {
       const {
         type, officeName,
       } = req.body;
-      const officeExists = await db.query(findOffice(type));
+      const officeExists = await db.query(findOffice(officeName));
+      const officeTypeExists = await db.query(findOfficeByType(officeName));
       if (officeExists.rowCount > 0) {
         return res.status(409).json({
           status: 409,
-          error: 'A office is registered with this name',
+          error: 'This office name already exists',
+        });
+      }
+      if (officeTypeExists.rowCount > 0) {
+        return res.status(409).json({
+          status: 409,
+          error: 'Type of office exists',
         });
       }
       const newOffice = {
@@ -40,7 +48,7 @@ class Offices {
       if (addOffice.rowCount > 0) {
         return res.status(201).json({
           status: 201,
-          office: [{ data: [addOffice.rows] }],
+          data: [{ office: [addOffice.rows] }],
         });
       }
     } catch (error) {
@@ -87,7 +95,7 @@ class Offices {
  */
   static async getOneOffice(req, res) {
     try {
-      const officeId = Number(req.params.id, 10);
+      const officeId = Number(req.params.id);
       const getOffice = await db.query(findOfficeById(officeId));
       if (getOffice.rowCount === 0) {
         return res.status(404).json({

@@ -31,7 +31,7 @@ export default class AuthController {
       if (userExists.rowCount > 0) {
         return res.status(409).json({
           status: '409',
-          message: 'user already exists',
+          error: 'user already exists',
         });
       }
       const hashedPassword = await PasswordHelper.hashPassword(password);
@@ -49,7 +49,7 @@ export default class AuthController {
       if (createUser.rowCount === 0) {
         return res.status(501).json({
           status: '501',
-          message: 'user not created',
+          error: 'user not created',
         });
       }
       // console.log('newUser', createUser);
@@ -85,10 +85,9 @@ export default class AuthController {
         data: [{ user: [data] }],
       });
     } catch (error) {
-      console.log([{ error: `${error}` }]);
       return res.status(500).json([{
         status: '500',
-        message: 'Oops, something went wrong, try again!',
+        error: 'Oops, something went wrong, try again!',
       }]);
     }
   }
@@ -140,8 +139,7 @@ export default class AuthController {
         process.env.SECRET_KEY, { expiresIn: 86400 },
       );
       console.log('token', token);
-      const data = {
-        token,
+      const user = {
         id: getUser.rows[0].id,
         firstname: getUser.rows[0].firstname,
         lastname: getUser.rows[0].lastname,
@@ -150,14 +148,12 @@ export default class AuthController {
         phoneNumber: getUser.rows[0].phonenumber,
         passportUrl: getUser.rows[0].passporturl,
         email: getUser.rows[0].email,
-        admin: getUser.rows[0].isadmin,
       };
       return res.status(200).json({
         status: 200,
-        data: [{ userToken: [token] }],
+        data: [{ token, user }],
       });
     } catch (error) {
-      console.log({ message: `${error}` });
       return res.status(500).json({
         status: 500,
         error: 'Oops, something went wrong, try again!',

@@ -33,9 +33,7 @@ const verifyToken = (req, res, next) => {
         error: 'Failed to authenticate token',
       });
     }
-    console.log('coded', decoded);
     req.user = decoded;
-    console.log('user', req.user);
     next();
   });
 };
