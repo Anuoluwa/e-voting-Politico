@@ -220,6 +220,42 @@ class ValidateInput {
     }
     next();
   }
+  
+  static partyInputEdit(req, res, next) {
+    const {
+      partyName,
+    } = req.body;
+    if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
+      return res.status(400)
+        .json({ error: 'The request body should not be empty!' });
+    }
+    if (typeof partyName !== 'string') {
+      return res.status(400)
+        .json({ error: 'partyName input should be a string' });
+    }
+    if (!partyName) {
+      return res.status(400)
+        .json({ error: 'partyName must be a string!' });
+    }
+    if (partyName.length === '') {
+      return res.status(400)
+        .json({ error: 'partyName must not be empty' });
+    }
+    if (partyName.length < 7) {
+      return res.status(400).json(
+        { error: 'partyName must be a string with minimum 8 characters' },
+      );
+    }
+    if (partyName.length > 100) {
+      return res.status(400).json({ error: 'partyName must be a string with maximum 100 characters' });
+    }
+    if (!(/^[A-Za-z ]+$/.test(partyName))) {
+      return res.status(400)
+        .json({ error: 'partyName input should be a string without number or special characters' });
+    }
+    next();
+  }
+
 
 
   static validateId(req, res, next) {
