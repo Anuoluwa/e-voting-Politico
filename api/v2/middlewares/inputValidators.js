@@ -51,10 +51,6 @@ class ValidateInput {
     if (hqAddress.length > 50) {
       return res.status(400).json({ error: 'hqAddress must be a string with maximum 50 character ' });
     }
-    if (!(/^[A-Za-z0-9 ]+$/.test(hqAddress))) {
-      return res.status(400)
-        .json({ error: 'hqAddress input should be a string without number or special characters' });
-    }
     if (typeof logoUrl !== 'string') {
       return res.status(400)
         .json({ error: 'logoUrl input should be a string' });
@@ -106,7 +102,7 @@ class ValidateInput {
     }
     if (!(/^[A-Za-z ]+$/.test(type))) {
       return res.status(400)
-        .json({ error: 'officeName input should be a string without number or special characters' });
+        .json({ error: 'type input should be a string without number or special characters' });
     }
     if (typeof officeName !== 'string') {
       return res.status(400)
