@@ -217,6 +217,10 @@ a:active {
           display: flex;
           flex-flow: column;
       } 
+      .top {
+        background-color: #09A603;
+        height: 110px;
+      }
   }
 
 /*
@@ -515,10 +519,13 @@ font-size: 22px;
   #allparties {
     display:none;
   }
-  
+
+  .active, .link:hover {
+    background-color: yellow;
+  }
+
  .active {
    display: block !important;
-
  }
   * {
     box-sizing: border-box;

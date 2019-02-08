@@ -220,7 +220,7 @@ class ValidateInput {
     }
     next();
   }
-  
+
   static partyInputEdit(req, res, next) {
     const {
       partyName,
@@ -255,8 +255,6 @@ class ValidateInput {
     }
     next();
   }
-
-
 
   static validateId(req, res, next) {
     const { id } = req.params;

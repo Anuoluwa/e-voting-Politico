@@ -310,6 +310,10 @@ figure img{
 
 
 @media screen and (min-width: 820px) {
+  .top {
+    background-color: #09A603;
+    height: 110px;
+  }
     header {
         display: flex;
         justify-content: space-between;
