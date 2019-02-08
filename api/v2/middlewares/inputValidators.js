@@ -142,10 +142,6 @@ class ValidateInput {
       return res.status(400)
         .json({ error: 'The request body should not be empty!' });
     }
-    if (typeof office !== 'string') {
-      return res.status(400)
-        .json({ error: 'office input should be a string' });
-    }
     if (office.length === '') {
       return res.status(400)
         .json({ error: 'office must not be empty' });
@@ -153,10 +149,6 @@ class ValidateInput {
     if (!office) {
       return res.status(400)
         .json('office must be a string should not empty');
-    }
-    if (typeof candidate !== 'string') {
-      return res.status(400)
-        .json({ error: 'candidate input should be a string' });
     }
     if (candidate.length === '') {
       return res.status(400)
@@ -186,10 +178,6 @@ class ValidateInput {
       return res.status(400)
         .json({ error: 'The request body should not be empty!' });
     }
-    if (typeof office !== 'string') {
-      return res.status(400)
-        .json({ error: 'office input should be a string' });
-    }
     if (office.length === '') {
       return res.status(400)
         .json({ error: 'office must not be empty' });
@@ -197,10 +185,6 @@ class ValidateInput {
     if (!office) {
       return res.status(400)
         .json('office must be a string should not empty');
-    }
-    if (typeof party !== 'string') {
-      return res.status(400)
-        .json({ error: 'party input should be a string' });
     }
     if (party.length === '') {
       return res.status(400)
