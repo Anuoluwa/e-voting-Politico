@@ -49,7 +49,7 @@ Project is currently being built with the Project Management Tool, Pivotal Track
 
 * [Mocha](https://mochajs.org/) - JavaScript Test Framework for API Tests
 * [Supertest]() - 
-* [Chai](http://chaijs.com/) - TDD/BDD Assertion Library for Node
+* [Chai](http://chaijs.com/) - TDD Assertion Library for Node
 
 
 ## Required Features

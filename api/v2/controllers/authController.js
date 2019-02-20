@@ -63,7 +63,7 @@ export default class AuthController {
           phoneNumber: createUser.rows[0].phonenumber,
           passportUrl: createUser.rows[0].passporturl,
           email: createUser.rows[0].email,
-          admin: createUser.rows[0].isadmin,
+          isAdmin: createUser.rows[0].isadmin,
         },
         process.env.SECRET_KEY, { expiresIn: 86400 },
       );
@@ -85,6 +85,7 @@ export default class AuthController {
         data: [{ user: [data] }],
       });
     } catch (error) {
+      console.log([{ error: `${error}` }]);
       return res.status(500).json([{
         status: '500',
         error: 'Oops, something went wrong, try again!',
@@ -154,6 +155,7 @@ export default class AuthController {
         data: [{ token, user }],
       });
     } catch (error) {
+      console.log([{ error: `${error}` }]);
       return res.status(500).json({
         status: 500,
         error: 'Oops, something went wrong, try again!',
